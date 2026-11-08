@@ -357,9 +357,20 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .btn:focus-visible {
+    .btn:focus-visible, .btn.is-focused {
       outline: 3px solid var(--focus);
       outline-offset: 3px;
+    }
+    .btn.is-selected, .btn[aria-pressed="true"] {
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      border-color: var(--primary);
+      font-weight: 700;
+    }
+    :root[data-contrast="alto"] .btn.is-selected, :root[data-contrast="alto"] .btn[aria-pressed="true"] {
+      background: var(--focus);
+      color: #000;
+      border-color: var(--focus);
     }
     .btn-primary {
       background: var(--primary);
@@ -486,9 +497,17 @@
       outline: none;
       transition: border-color 0.15s;
     }
-    .input-field:focus {
+    .input-field:focus, .input-field.is-focused {
+      border-color: var(--primary);
+      outline: 0;
+      box-shadow: 0 0 0 3px var(--primary-soft);
+    }
+    :root[data-contrast="alto"] .input-field:focus, :root[data-contrast="alto"] .input-field.is-focused {
       border-color: var(--focus);
-      outline: 2px solid var(--focus);
+      box-shadow: 0 0 0 3px var(--focus);
+    }
+    .search-wrap.is-focused svg {
+      color: var(--primary);
     }
     .search-wrap {
       position: relative;
@@ -520,6 +539,16 @@
       height: 1.25rem;
       accent-color: var(--primary);
       cursor: pointer;
+    }
+    .check input[type="checkbox"]:focus-visible, .check input[type="checkbox"].is-focused {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .chip.is-selected {
+      background: var(--accent-soft);
+      color: var(--accent-ink);
+      border-color: var(--primary);
+      font-weight: 700;
     }
 
     /* -------------------------------------------------------------
@@ -1127,6 +1156,30 @@
             <div class="swatch-hex">--surface · #F8FAFC</div>
           </div>
         </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#1D4ED8; color:#fff; outline:3px solid #1D4ED8; outline-offset:2px;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Focus Outline Blue</div>
+            <div class="swatch-hex">--focus · #1D4ED8 (3px ring)</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#DBEAFE; color:#1E40AF; border:2px solid #1D4ED8;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Focus Halo & Selected</div>
+            <div class="swatch-hex">--primary-soft · #DBEAFE</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#38BDF8; color:#0F172A; font-weight:700;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">DUA Bar Selected</div>
+            <div class="swatch-hex">--bar-on-bg · #38BDF8</div>
+          </div>
+        </div>
       </div>
 
       <!-- Subsección: Paletas y Gradientes de Portadas de Asignaturas -->
@@ -1191,7 +1244,7 @@
         </div>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-4">
         <div class="demo-card">
           <div class="demo-card-head">
             <span class="demo-card-title">Botón Primario</span>
@@ -1233,6 +1286,34 @@
             <button type="button" class="btn btn-tertiary">Botón terciario tenue</button>
           </div>
         </div>
+
+        <div class="demo-card" style="border:1.5px solid var(--primary);">
+          <div class="demo-card-head" style="background:var(--accent-soft);">
+            <span class="demo-card-title" style="color:var(--accent-ink); font-weight:700;">Estados Focus & Selected</span>
+            <span class="demo-card-badge" style="background:var(--primary); color:#fff;">WCAG 2.4.7 / 2.4.11</span>
+          </div>
+          <div class="demo-card-body" style="gap:0.85rem;">
+            <div>
+              <span class="muted" style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:0.25rem;">PRIMARIO CON FOCO ACTIVO</span>
+              <button type="button" class="btn btn-primary is-focused">
+                <span>Acción enfocada</span>
+              </button>
+            </div>
+            <div>
+              <span class="muted" style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:0.25rem;">SECUNDARIO CON FOCO ACTIVO</span>
+              <button type="button" class="btn btn-secondary is-focused">
+                <span>Secundario enfocado</span>
+              </button>
+            </div>
+            <div>
+              <span class="muted" style="font-size:0.75rem; font-weight:600; display:block; margin-bottom:0.25rem;">BOTÓN SELECCIONADO / TOGGLE</span>
+              <button type="button" class="btn is-selected" aria-pressed="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Filtro o modo activo</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1245,7 +1326,7 @@
         </div>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-4">
         <div class="demo-card">
           <div class="demo-card-head">
             <span class="demo-card-title">Estado de Asignatura</span>
@@ -1280,6 +1361,23 @@
             <span class="stage-badge">Clase grabada · Mtro. Morales</span>
           </div>
         </div>
+
+        <div class="demo-card" style="border:1.5px solid var(--primary);">
+          <div class="demo-card-head" style="background:var(--accent-soft);">
+            <span class="demo-card-title" style="color:var(--accent-ink); font-weight:700;">Chips Seleccionados</span>
+            <span class="demo-card-badge" style="background:var(--primary); color:#fff;">.is-selected</span>
+          </div>
+          <div class="demo-card-body" style="flex-direction:row; flex-wrap:wrap; align-items:center; gap:0.5rem;">
+            <span class="chip is-selected">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Filtro activo</span>
+            </span>
+            <span class="chip is-selected" style="outline:3px solid var(--focus); outline-offset:2px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Chip con foco</span>
+            </span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1288,11 +1386,11 @@
       <div class="section-head">
         <div>
           <h2>4. Formularios, Búsqueda & Sliders DUA</h2>
-          <p>Controles accesibles con radio de foco visible de 3 px y cumplimiento estricto de contrastes.</p>
+          <p>Controles accesibles con radio de foco visible de 3 px, halo exterior azul #DBEAFE y cumplimiento estricto de contrastes.</p>
         </div>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-4">
         <div class="demo-card">
           <div class="demo-card-head">
             <span class="demo-card-title">Caja de Búsqueda</span>
@@ -1307,6 +1405,20 @@
           </div>
         </div>
 
+        <div class="demo-card" style="border:1.5px solid var(--primary);">
+          <div class="demo-card-head" style="background:var(--accent-soft);">
+            <span class="demo-card-title" style="color:var(--accent-ink); font-weight:700;">Inputs con Foco Visible</span>
+            <span class="demo-card-badge" style="background:var(--primary); color:#fff;">WCAG 2.4.7 / 2.4.11</span>
+          </div>
+          <div class="demo-card-body">
+            <div class="search-wrap is-focused">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+              <input type="search" class="input-field is-focused" value="Búsqueda enfocada activa" aria-label="Búsqueda enfocada">
+            </div>
+            <input type="text" class="input-field is-focused" value="Texto con foco azul y halo" aria-label="Input enfocado">
+          </div>
+        </div>
+
         <div class="demo-card">
           <div class="demo-card-head">
             <span class="demo-card-title">Checkboxes Accesibles</span>
@@ -1315,11 +1427,11 @@
           <div class="demo-card-body">
             <label class="check">
               <input type="checkbox" checked>
-              <span>Lectura automática (Seguir transcripción)</span>
+              <span>Lectura automática (Seleccionado)</span>
             </label>
             <label class="check">
-              <input type="checkbox" checked>
-              <span>Subtítulos sincronizados (CC)</span>
+              <input type="checkbox" checked class="is-focused">
+              <span style="font-weight:700; color:var(--primary);">Subtítulos CC (Con Foco visible)</span>
             </label>
             <label class="check">
               <input type="checkbox">
@@ -1330,17 +1442,23 @@
 
         <div class="demo-card">
           <div class="demo-card-head">
-            <span class="demo-card-title">Sliders de Avance y Volumen</span>
+            <span class="demo-card-title">Sliders & Controles DUA</span>
             <span class="demo-card-badge">input[type="range"]</span>
           </div>
           <div class="demo-card-body">
             <div>
-              <label style="font-size:0.8125rem; font-weight:600; display:block; margin-bottom:0.25rem;">Posición en la clase</label>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                <label style="font-size:0.8125rem; font-weight:600;">Posición en la clase</label>
+                <span style="font-size:0.75rem; color:var(--primary); font-weight:700;">45%</span>
+              </div>
               <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:var(--primary);">
             </div>
             <div>
-              <label style="font-size:0.8125rem; font-weight:600; display:block; margin-bottom:0.25rem;">Nivel de volumen (80%)</label>
-              <input type="range" min="0" max="100" value="80" style="width:100%; accent-color:var(--primary);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                <label style="font-size:0.8125rem; font-weight:600;">Slider con foco activo</label>
+                <span class="chip ok" style="font-size:0.7rem; padding:0.1rem 0.4rem;">Foco activo</span>
+              </div>
+              <input type="range" min="0" max="100" value="80" style="width:100%; accent-color:var(--primary); outline:3px solid var(--focus); outline-offset:2px; border-radius:4px;">
             </div>
           </div>
         </div>
