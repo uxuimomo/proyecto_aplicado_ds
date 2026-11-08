@@ -19,7 +19,7 @@
     body {
       margin: 0;
       padding: 0;
-      font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
+      font: 14px "Poppins", sans-serif;
       background: #fff;
       color: #000
     }
@@ -44,8 +44,8 @@
     /* Concepto de layout: barra DUA oscura y fija arriba, tira de navegación del prototipo, cabecera del sitio y contenido en retícula de 1440 px.
    Bordes de 2 px en lugar de sombras, para que el modo alto contraste conserve la forma de cada componente. */
     :root {
-      --font-body: "Poppins", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-      --font-data: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --font-body: "Poppins", sans-serif;
+      --font-data: "Poppins", sans-serif;
       --bg: #FFFFFF;
       --fg: #0F172A;
       --muted: #475569;
@@ -4635,7 +4635,7 @@
       border-radius: 50%;
       background: rgba(148, 163, 184, 0.3);
       font-size: .75rem;
-      font-family: monospace
+      font-family: var(--font-body);
     }
 
     .wf-tab.is-active .wf-tab-num {
@@ -4743,7 +4743,7 @@
       border: 1px solid #cbd5e1;
       border-radius: 5px;
       padding: .2rem .65rem;
-      font-family: monospace;
+      font-family: var(--font-body);;
       font-size: .75rem;
       color: #475569;
       overflow: hidden;
@@ -4896,7 +4896,7 @@
       background: #e2e8f0;
       color: #0f172a;
       border-color: #94a3b8;
-      font-family: monospace
+      font-family: var(--font-body);
     }
 
     .wf-shell-header {
@@ -8082,7 +8082,7 @@
       bottom: 1.5rem;
       right: 1.5rem;
       z-index: 999999;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
     }
     .temp-capture-btn {
       display: inline-flex;

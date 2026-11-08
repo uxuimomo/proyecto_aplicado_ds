@@ -13,8 +13,8 @@
        WCAG 2.1 AA / AAA Compliant · DUA (Diseño Universal)
     ------------------------------------------------------------- */
     :root {
-      --font-body: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
-      --font-data: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --font-body: "Poppins", sans-serif;
+      --font-data: "Poppins", sans-serif;
       
       /* Colores modo estándar */
       --bg: #FFFFFF;
@@ -1508,22 +1508,22 @@
         </div>
       </div>
 
-      <!-- Familias Tipográficas Oficiales -->
+      <!-- Familia Tipográfica Oficial Única -->
       <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 1.5rem; gap: 1.25rem;">
         <div class="demo-card">
           <div class="demo-card-head">
-            <span class="demo-card-title">Fuente Principal de Interfaz</span>
-            <span class="demo-card-badge">--font-body</span>
+            <span class="demo-card-title">Tipografía Única Universal</span>
+            <span class="demo-card-badge">--font-body · Poppins</span>
           </div>
           <div class="demo-card-body">
-            <div style="font-family: var(--font-body); font-size: 1.75rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
-              Poppins / System Sans
+            <div style="font-family: var(--font-body); font-size: 1.85rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
+              Poppins (Google Fonts)
             </div>
             <p style="font-size: 0.875rem; color: var(--muted); margin: 0; line-height: 1.5;">
-              <code>"Poppins", "Segoe UI", system-ui, -apple-system, sans-serif</code>
+              <code>"Poppins", sans-serif</code> (Estándar unificado para toda la plataforma)
             </p>
             <div style="padding: 0.75rem; background: var(--surface-2); border-radius: 8px; font-size: 0.875rem; line-height: 1.5;">
-              Tipografía geométrica con curvas limpias y alto x-height, garantizando óptima discriminación de caracteres para estudiantes con dislexia o debilidad visual leve.
+              Tipografía sans-serif geométrica elegida como la fuente exclusiva del ecosistema. Provee coherencia visual absoluta en títulos, textos de lectura, controles y micro-interacciones.
             </div>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8125rem;">
               <span><strong>Regular:</strong> 400</span>
@@ -1536,23 +1536,23 @@
 
         <div class="demo-card">
           <div class="demo-card-head">
-            <span class="demo-card-title">Fuente Técnica & Monoespaciada</span>
-            <span class="demo-card-badge">--font-data</span>
+            <span class="demo-card-title">Token de Datos & Números</span>
+            <span class="demo-card-badge">--font-data · Poppins</span>
           </div>
           <div class="demo-card-body">
-            <div style="font-family: var(--font-data); font-size: 1.75rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
-              0123456789 Monospace
+            <div style="font-family: var(--font-body); font-size: 1.85rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
+              0123456789 Poppins
             </div>
             <p style="font-size: 0.875rem; color: var(--muted); margin: 0; line-height: 1.5;">
-              <code>ui-monospace, "SF Mono", Menlo, Consolas, monospace</code>
+              <code>"Poppins", sans-serif</code> (Sin fuentes monoespaciadas ajenas)
             </p>
             <div style="padding: 0.75rem; background: var(--surface-2); border-radius: 8px; font-size: 0.875rem; line-height: 1.5;">
-              Utilizada en contadores de progreso, códigos de estado, timestamps de videos (ej. <code>1:15 de 3:00</code>), tokens de configuración y atajos de teclado accesibles (<kbd>Alt</kbd> + <kbd>A</kbd>).
+              Los números, contadores de tiempo, badges de avance, atajos de teclado y valores técnicos comparten la misma familia Poppins para evitar fracturas estéticas en la identidad del sistema.
             </div>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8125rem;">
-              <span><strong>Alineación tabular</strong></span>
-              <span><strong>Cero unívoco</strong></span>
-              <span><strong>Ancho proporcional fijo</strong></span>
+              <span><strong>Homogeneidad tipográfica</strong></span>
+              <span><strong>Curvas geométricas</strong></span>
+              <span><strong>Lectura accesible</strong></span>
             </div>
           </div>
         </div>
@@ -1667,16 +1667,16 @@
                 <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Pills de estado, indicadores de prioridad y etiquetas de curso.</td>
               </tr>
 
-              <!-- Monospace Code / Key -->
+              <!-- Atajos y Datos (Poppins) -->
               <tr>
-                <td style="padding: 1rem 0.5rem;"><strong>Monospace / Data</strong><br><small style="color:var(--muted)">kbd, code, .kbd-shortcut</small></td>
-                <td style="padding: 1rem 0.5rem;"><code>0.8125rem - 0.875rem</code> (13px)<br><small style="color:var(--muted)">--font-data</small></td>
-                <td style="padding: 1rem 0.5rem;">Medium 500 Monospace<br><small style="color:var(--muted)">line-height: 1.2</small></td>
+                <td style="padding: 1rem 0.5rem;"><strong>Atajos / Datos / Kbd</strong><br><small style="color:var(--muted)">kbd, code, .kbd-shortcut</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>0.8125rem - 0.875rem</code> (13-14px)<br><small style="color:var(--muted)">Poppins Medium</small></td>
+                <td style="padding: 1rem 0.5rem;">Medium 500 / Bold 700<br><small style="color:var(--muted)">line-height: 1.2</small></td>
                 <td style="padding: 1rem 0.5rem;">
                   <div style="display:flex; gap:0.4rem; align-items:center;">
-                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-data); font-size:0.8rem; border:1px solid #334155;">Alt</kbd> + 
-                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-data); font-size:0.8rem; border:1px solid #334155;">A</kbd>
-                    <code style="background:var(--surface-2); padding:0.15rem 0.45rem; border-radius:4px; font-family:var(--font-data); font-size:0.8rem;">0:46 / 2:15</code>
+                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-body); font-size:0.8rem; font-weight:600; border:1px solid #334155;">Alt</kbd> + 
+                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-body); font-size:0.8rem; font-weight:600; border:1px solid #334155;">A</kbd>
+                    <code style="background:var(--surface-2); padding:0.15rem 0.45rem; border-radius:4px; font-family:var(--font-body); font-size:0.8rem; font-weight:600;">0:46 / 2:15</code>
                   </div>
                 </td>
                 <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Atajos de teclado, marcas temporales de video y valores de tokens.</td>
