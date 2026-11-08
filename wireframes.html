@@ -114,6 +114,56 @@
       gap: 0.75rem;
       flex-wrap: wrap;
     }
+
+    /* -------------------------------------------------------------
+       SELECTOR UNIFICADO DE DOCUMENTACIÓN (TABS EN LA MISMA VENTANA)
+    ------------------------------------------------------------- */
+    .doc-nav-tabs {
+      display: inline-flex;
+      align-items: center;
+      background: #1E293B;
+      padding: 0.2rem;
+      border-radius: 9px;
+      border: 1px solid #334155;
+      gap: 0.2rem;
+    }
+    .doc-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #94A3B8;
+      text-decoration: none;
+      border-radius: 7px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      min-height: 32px;
+    }
+    .doc-tab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .doc-tab-btn.is-active,
+    .doc-tab-btn[aria-current="page"] {
+      background: #38BDF8;
+      color: #0F172A;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+    :root[data-contrast="alto"] .doc-nav-tabs {
+      background: #000000 !important;
+      border: 2px solid #FFFFFF !important;
+    }
+    :root[data-contrast="alto"] .doc-tab-btn {
+      color: #FFFFFF !important;
+    }
+    :root[data-contrast="alto"] .doc-tab-btn.is-active {
+      background: #FACC15 !important;
+      color: #000000 !important;
+      border: 1px solid #FFFFFF !important;
+    }
     .studio-btn {
       display: inline-flex;
       align-items: center;
@@ -725,15 +775,21 @@
       </a>
 
       <div class="studio-actions">
-        <a href="sitemap.html" target="_blank" class="studio-btn studio-btn-subtle">
-          🗺️ Ver Sitemap
-        </a>
-        <a href="uikit.html" target="_blank" class="studio-btn studio-btn-subtle">
-          🎨 Ver UI Kit & Tokens
-        </a>
-        <a href="index.html#panel" target="_blank" class="studio-btn studio-btn-primary">
-          🚀 Abrir Plataforma
-        </a>
+        <!-- Navegación Unificada Tipo Tabs (Misma Ventana) -->
+        <nav class="doc-nav-tabs" aria-label="Navegación entre documentos de diseño">
+          <a href="uikit.html" class="doc-tab-btn">
+            <span>🎨</span>
+            <span>UI Kit & Tokens</span>
+          </a>
+          <a href="wireframes.html" class="doc-tab-btn is-active" aria-current="page">
+            <span>📋</span>
+            <span>Wireframe Studio</span>
+          </a>
+          <a href="sitemap.html" class="doc-tab-btn">
+            <span>🗺️</span>
+            <span>Sitemap & Flujos</span>
+          </a>
+        </nav>
       </div>
     </div>
   </header>
