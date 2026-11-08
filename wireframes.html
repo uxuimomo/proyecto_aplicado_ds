@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Wireframe Studio · AccesoEdu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
   <style>
     /* -------------------------------------------------------------
        ACCESOEDU · WIREFRAME STUDIO (LOW-FIDELITY BLUEPRINT)
@@ -15,7 +17,7 @@
     :root {
       --font-body: "Poppins", sans-serif;
       --font-mono: "Poppins", sans-serif;
-      
+
       /* Paleta Wireframe Neutra / Blueprint (Estricta Escala de Grises) */
       --wf-bg: #F1F5F9;
       --wf-canvas: #FFFFFF;
@@ -27,7 +29,7 @@
       --wf-text: #0F172A;
       --wf-muted: #64748B;
       --wf-ink-dim: #94A3B8;
-      
+
       /* Acentos monocromáticos para especificaciones (Escala de grises) */
       --wf-accent: #0F172A;
       --wf-accent-soft: #E2E8F0;
@@ -35,17 +37,26 @@
       --wf-live-soft: #E2E8F0;
       --wf-due: #475569;
       --wf-due-soft: #F1F5F9;
-      
+
       /* Barra superior Studio (Monocromática) */
       --bar-bg: #0F172A;
       --bar-fg: #F8FAFC;
       --bar-accent: #475569;
-      
+
       --r: 8px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--wf-bg);
@@ -77,6 +88,7 @@
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
+
     .doc-header-inner {
       width: 100%;
       max-width: 96rem;
@@ -86,6 +98,7 @@
       justify-content: space-between;
       gap: 1rem;
     }
+
     .doc-header-brand {
       display: inline-flex;
       align-items: center;
@@ -95,9 +108,11 @@
       flex-shrink: 0;
       transition: opacity 0.15s ease;
     }
+
     .doc-header-brand:hover {
       opacity: 0.92;
     }
+
     .doc-header-brand svg {
       width: 36px;
       height: 36px;
@@ -105,18 +120,21 @@
       display: block;
       flex-shrink: 0;
     }
+
     .doc-header-title-group {
       display: flex;
       align-items: center;
       gap: 0.65rem;
       line-height: 1;
     }
+
     .doc-header-title {
       font-size: 1.125rem;
       font-weight: 700;
       color: #FFFFFF;
       letter-spacing: -0.01em;
     }
+
     .doc-header-tag {
       background: #1E293B;
       color: #93C5FD;
@@ -140,6 +158,7 @@
       gap: 0.25rem;
       flex-shrink: 0;
     }
+
     .doc-tab-btn {
       display: inline-flex;
       align-items: center;
@@ -156,10 +175,12 @@
       box-sizing: border-box;
       line-height: 1.2;
     }
+
     .doc-tab-btn:hover {
       color: #FFFFFF;
       background: rgba(255, 255, 255, 0.08);
     }
+
     .doc-tab-btn.is-active,
     .doc-tab-btn[aria-current="page"] {
       background: #1D4ED8;
@@ -167,23 +188,28 @@
       font-weight: 700;
       box-shadow: 0 2px 8px rgba(29, 78, 216, 0.4);
     }
+
     :root[data-contrast="alto"] .doc-header {
       background: #000000 !important;
       border-bottom: 3px solid #FFFFFF !important;
     }
+
     :root[data-contrast="alto"] .doc-nav-tabs {
       background: #000000 !important;
       border: 2px solid #FFFFFF !important;
     }
+
     :root[data-contrast="alto"] .doc-tab-btn {
       color: #FFFFFF !important;
     }
+
     :root[data-contrast="alto"] .doc-tab-btn.is-active,
     :root[data-contrast="alto"] .doc-tab-btn[aria-current="page"] {
       background: #FACC15 !important;
       color: #000000 !important;
       border: 1px solid #FFFFFF !important;
     }
+
     .studio-btn {
       display: inline-flex;
       align-items: center;
@@ -198,20 +224,24 @@
       transition: all 0.15s ease;
       font-family: var(--font-body);
     }
+
     .studio-btn-subtle {
       background: #1E293B;
       color: #F8FAFC;
       border-color: #334155;
     }
+
     .studio-btn-subtle:hover {
       background: #334155;
       color: #FFFFFF;
     }
+
     .studio-btn-primary {
       background: #FFFFFF;
       color: #0F172A;
       font-weight: 700;
     }
+
     .studio-btn-primary:hover {
       background: #E2E8F0;
     }
@@ -226,8 +256,9 @@
       background: #FFFFFF;
       border-bottom: 1.5px solid var(--wf-border-light);
       padding: 0.75rem 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
+
     .studio-toolbar-inner {
       max-width: 96rem;
       margin: 0 auto;
@@ -237,12 +268,14 @@
       justify-content: space-between;
       gap: 1rem;
     }
+
     .wf-nav-tabs {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
+
     .wf-tab-btn {
       display: inline-flex;
       align-items: center;
@@ -258,17 +291,20 @@
       transition: all 0.15s ease;
       font-family: var(--font-body);
     }
+
     .wf-tab-btn:hover {
       background: #E2E8F0;
       color: #0F172A;
       border-color: var(--wf-border);
     }
+
     .wf-tab-btn.is-active {
       background: #0F172A;
       color: #FFFFFF;
       border-color: #0F172A;
-      box-shadow: 0 2px 6px rgba(15,23,42,0.15);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
     }
+
     .wf-tab-num {
       display: inline-flex;
       align-items: center;
@@ -281,6 +317,7 @@
       font-family: var(--font-mono);
       font-weight: 700;
     }
+
     .wf-tab-btn.is-active .wf-tab-num {
       background: #FFFFFF;
       color: #0F172A;
@@ -292,6 +329,7 @@
       gap: 0.75rem;
       flex-wrap: wrap;
     }
+
     .wf-ctrl-label {
       font-size: 0.75rem;
       font-weight: 700;
@@ -300,6 +338,7 @@
       letter-spacing: 0.05em;
       font-family: var(--font-mono);
     }
+
     .wf-device-segmented {
       display: inline-flex;
       border: 1.5px solid var(--wf-border-light);
@@ -307,6 +346,7 @@
       overflow: hidden;
       background: #F8FAFC;
     }
+
     .wf-device-btn {
       padding: 0.4rem 0.75rem;
       font-size: 0.8125rem;
@@ -318,10 +358,12 @@
       transition: background 0.15s;
       font-family: var(--font-body);
     }
+
     .wf-device-btn:hover {
       background: #E2E8F0;
       color: #0F172A;
     }
+
     .wf-device-btn.is-active {
       background: #0F172A;
       color: #FFFFFF;
@@ -341,6 +383,7 @@
       cursor: pointer;
       font-family: var(--font-body);
     }
+
     .wf-tool-toggle.is-active {
       background: #0F172A;
       border-color: #0F172A;
@@ -358,7 +401,7 @@
       border-radius: 8px;
       font-size: 0.84rem;
       font-weight: 500;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
       z-index: 9999;
       display: none;
       align-items: center;
@@ -366,9 +409,17 @@
       border: 1px solid #334155;
       animation: toastIn 0.2s ease;
     }
+
     @keyframes toastIn {
-      from { transform: translateY(12px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(12px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     /* -------------------------------------------------------------
@@ -382,8 +433,9 @@
       background-size: 20px 20px;
       min-height: calc(100vh - 130px);
     }
+
     .studio-canvas.show-grid {
-      background-image: 
+      background-image:
         linear-gradient(to right, #E2E8F0 1px, transparent 1px),
         linear-gradient(to bottom, #E2E8F0 1px, transparent 1px);
       background-size: 20px 20px;
@@ -393,16 +445,18 @@
       background: #FFFFFF;
       border: 2px solid #64748B;
       border-radius: 12px;
-      box-shadow: 0 16px 36px -8px rgba(15,23,42,0.12), 0 4px 12px rgba(15,23,42,0.06);
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
       overflow: hidden;
       margin: 0 auto;
       transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       max-width: 100%;
       filter: grayscale(100%);
     }
+
     .wf-browser-frame.mode-tablet {
       max-width: 768px;
     }
+
     .wf-browser-frame.mode-mobile {
       max-width: 412px;
     }
@@ -415,18 +469,32 @@
       background: #F8FAFC;
       border-bottom: 2px solid var(--wf-border-light);
     }
+
     .wf-browser-dots {
       display: flex;
       gap: 6px;
     }
+
     .wf-browser-dot {
       width: 11px;
       height: 11px;
       border-radius: 50%;
     }
-    .wf-browser-dot.red { background: #E2E8F0; border: 1px solid #94A3B8; }
-    .wf-browser-dot.yellow { background: #CBD5E1; border: 1px solid #94A3B8; }
-    .wf-browser-dot.green { background: #94A3B8; border: 1px solid #64748B; }
+
+    .wf-browser-dot.red {
+      background: #E2E8F0;
+      border: 1px solid #94A3B8;
+    }
+
+    .wf-browser-dot.yellow {
+      background: #CBD5E1;
+      border: 1px solid #94A3B8;
+    }
+
+    .wf-browser-dot.green {
+      background: #94A3B8;
+      border: 1px solid #64748B;
+    }
 
     .wf-browser-url {
       flex: 1;
@@ -441,6 +509,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .wf-browser-tag {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -468,6 +537,7 @@
       padding: 1rem;
       position: relative;
     }
+
     .wf-box-solid {
       border: 1.5px solid var(--wf-border-light);
       background: #FFFFFF;
@@ -475,6 +545,7 @@
       padding: 1.25rem;
       position: relative;
     }
+
     .wf-media-box {
       border: 1.5px dashed var(--wf-border);
       background: #F1F5F9;
@@ -488,16 +559,18 @@
       position: relative;
       overflow: hidden;
     }
+
     .wf-media-box::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: 
+      background:
         linear-gradient(to top right, transparent calc(50% - 1px), #CBD5E1 calc(50% - 1px), #CBD5E1 calc(50% + 1px), transparent calc(50% + 1px)),
         linear-gradient(to bottom right, transparent calc(50% - 1px), #CBD5E1 calc(50% - 1px), #CBD5E1 calc(50% + 1px), transparent calc(50% + 1px));
       opacity: 0.7;
       pointer-events: none;
     }
+
     .wf-media-label {
       position: relative;
       z-index: 2;
@@ -510,7 +583,7 @@
       color: #1E293B;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
     .wf-input-mock {
@@ -524,6 +597,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .wf-pill-btn {
       display: inline-flex;
       align-items: center;
@@ -539,11 +613,13 @@
       cursor: pointer;
       font-family: var(--font-body);
     }
+
     .wf-pill-btn.primary {
       background: #0F172A;
       color: #FFFFFF;
       border-color: #0F172A;
     }
+
     .wf-pill-btn:hover {
       opacity: 0.9;
     }
@@ -561,16 +637,19 @@
       text-transform: uppercase;
       font-family: var(--font-mono);
     }
+
     .wf-tag.live {
       background: #E2E8F0;
       color: #0F172A;
       border-color: #94A3B8;
     }
+
     .wf-tag.due {
       background: #F1F5F9;
       color: #475569;
       border-color: #CBD5E1;
     }
+
     .wf-tag.spec {
       background: #E2E8F0;
       color: #0F172A;
@@ -589,6 +668,7 @@
       margin-left: 0.5rem;
       vertical-align: middle;
     }
+
     body.show-specs .wf-spec-badge {
       display: inline-block;
     }
@@ -605,11 +685,13 @@
       margin-bottom: 1.5rem;
       gap: 1rem;
     }
+
     .wf-shell-body {
       display: grid;
       grid-template-columns: 220px 1fr;
       gap: 1.5rem;
     }
+
     .wf-shell-sidebar {
       border: 1.5px dashed var(--wf-border);
       border-radius: 8px;
@@ -620,6 +702,7 @@
       gap: 0.5rem;
       font-size: 0.875rem;
     }
+
     .wf-shell-main {
       display: flex;
       flex-direction: column;
@@ -631,12 +714,15 @@
     .mode-tablet .wf-shell-body {
       grid-template-columns: 180px 1fr;
     }
+
     .mode-mobile .wf-shell-body {
       grid-template-columns: 1fr;
     }
+
     .mode-mobile .wf-shell-sidebar {
       display: none;
     }
+
     .mode-mobile .wf-browser-viewport {
       padding: 1rem;
     }
@@ -649,13 +735,15 @@
       grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
       gap: 2rem;
     }
+
     .wf-card-board {
       border: 1.5px solid #64748B;
       border-radius: 10px;
       background: #FFFFFF;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
+
     .wf-card-board-head {
       background: #F8FAFC;
       border-bottom: 1.5px solid var(--wf-border-light);
@@ -664,6 +752,7 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .wf-card-board-body {
       padding: 1rem;
       font-size: 0.85rem;
@@ -672,6 +761,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- CABECERA CANÓNICA UNIFICADA (Idéntica en UI Kit, Wireframe Studio y Sitemap) -->
@@ -679,9 +769,10 @@
     <div class="doc-header-inner">
       <a href="uikit.html" class="doc-header-brand" title="AccesoEdu · Documentación">
         <svg viewBox="0 0 40 40" aria-hidden="true">
-          <rect width="40" height="40" rx="9" fill="#1D4ED8"/>
-          <path d="M11 31V19a9 9 0 0 1 18 0v12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path d="M16.5 31v-8a3.5 3.5 0 0 1 7 0v8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <rect width="40" height="40" rx="9" fill="#1D4ED8" />
+          <path d="M11 31V19a9 9 0 0 1 18 0v12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" />
+          <path d="M16.5 31v-8a3.5 3.5 0 0 1 7 0v8" stroke="#fff" stroke-width="3.5" fill="none"
+            stroke-linecap="round" />
         </svg>
         <div class="doc-header-title-group">
           <span class="doc-header-title">AccesoEdu</span>
@@ -712,23 +803,28 @@
     <div class="studio-toolbar-inner">
       <!-- Selector de pantalla -->
       <div class="wf-nav-tabs" role="tablist">
-        <button type="button" class="wf-tab-btn is-active" role="tab" id="tab-login" aria-selected="true" aria-controls="view-login" data-wf-tab="login">
+        <button type="button" class="wf-tab-btn is-active" role="tab" id="tab-login" aria-selected="true"
+          aria-controls="view-login" data-wf-tab="login">
           <span class="wf-tab-num">1</span>
           <span>Login y Acceso</span>
         </button>
-        <button type="button" class="wf-tab-btn" role="tab" id="tab-panel" aria-selected="false" aria-controls="view-panel" data-wf-tab="panel">
+        <button type="button" class="wf-tab-btn" role="tab" id="tab-panel" aria-selected="false"
+          aria-controls="view-panel" data-wf-tab="panel">
           <span class="wf-tab-num">2</span>
           <span>Inicio (Panel Estudiante)</span>
         </button>
-        <button type="button" class="wf-tab-btn" role="tab" id="tab-aula" aria-selected="false" aria-controls="view-aula" data-wf-tab="aula">
+        <button type="button" class="wf-tab-btn" role="tab" id="tab-aula" aria-selected="false"
+          aria-controls="view-aula" data-wf-tab="aula">
           <span class="wf-tab-num">3</span>
           <span>Detalle de Cursos (Aula)</span>
         </button>
-        <button type="button" class="wf-tab-btn" role="tab" id="tab-dua" aria-selected="false" aria-controls="view-dua" data-wf-tab="dua">
+        <button type="button" class="wf-tab-btn" role="tab" id="tab-dua" aria-selected="false" aria-controls="view-dua"
+          data-wf-tab="dua">
           <span class="wf-tab-num">4</span>
           <span>Configuración DUA</span>
         </button>
-        <button type="button" class="wf-tab-btn" role="tab" id="tab-all" aria-selected="false" aria-controls="view-all" data-wf-tab="all">
+        <button type="button" class="wf-tab-btn" role="tab" id="tab-all" aria-selected="false" aria-controls="view-all"
+          data-wf-tab="all">
           <span class="wf-tab-num">📑</span>
           <span>Vista Comparativa (Todas)</span>
         </button>
@@ -738,12 +834,14 @@
       <div class="wf-controls-group">
         <span class="wf-ctrl-label">Viewport:</span>
         <div class="wf-device-segmented" role="group" aria-label="Selector de dispositivo">
-          <button type="button" class="wf-device-btn is-active" data-wf-device="desktop" title="Escritorio 100% / 1400px">Escritorio</button>
+          <button type="button" class="wf-device-btn is-active" data-wf-device="desktop"
+            title="Escritorio 100% / 1400px">Escritorio</button>
           <button type="button" class="wf-device-btn" data-wf-device="tablet" title="Tablet 768px">Tablet</button>
           <button type="button" class="wf-device-btn" data-wf-device="mobile" title="Móvil 412px">Móvil</button>
         </div>
 
-        <button type="button" class="wf-tool-toggle" id="btn-toggle-specs" title="Alternar visualización de anotaciones de accesibilidad DUA">
+        <button type="button" class="wf-tool-toggle" id="btn-toggle-specs"
+          title="Alternar visualización de anotaciones de accesibilidad DUA">
           <span>🏷️ Anotaciones DUA</span>
         </button>
         <button type="button" class="wf-tool-toggle" id="btn-toggle-grid" title="Alternar cuadrícula de diseño">
@@ -755,7 +853,7 @@
 
   <!-- LIENZO PRINCIPAL -->
   <main class="studio-canvas" id="studio-canvas">
-    
+
     <div class="wf-browser-frame" id="wf-frame">
       <!-- Barra del navegador simulado -->
       <div class="wf-browser-bar">
@@ -764,7 +862,8 @@
           <span class="wf-browser-dot yellow"></span>
           <span class="wf-browser-dot green"></span>
         </div>
-        <div class="wf-browser-url" id="wf-url-bar">https://accesoedu.universidad.example/#inicio (Pantalla 1: Login y Acceso)</div>
+        <div class="wf-browser-url" id="wf-url-bar">https://accesoedu.universidad.example/#inicio (Pantalla 1: Login y
+          Acceso)</div>
         <span class="wf-browser-tag" id="wf-size-tag">1400 × 900 px</span>
       </div>
 
@@ -776,10 +875,12 @@
              ======================================================== -->
         <div class="wf-view-panel" id="view-login" data-wf-view="login" role="tabpanel" aria-labelledby="tab-login">
           <!-- Barra flotante DUA -->
-          <div class="wf-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;background:#0F172A;color:#FFFFFF;border-color:#334155;">
+          <div class="wf-box"
+            style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;background:#0F172A;color:#FFFFFF;border-color:#334155;">
             <div>
               <strong style="color:#FFFFFF;">[💡 Barra Superior DUA]</strong>
-              <span style="margin-left:0.5rem;font-size:0.875rem;">Tamaño de texto (16 / 18 / 20 px) · Alto Contraste · Lector de Voz · Pausar Animaciones</span>
+              <span style="margin-left:0.5rem;font-size:0.875rem;">Tamaño de texto (16 / 18 / 20 px) · Alto Contraste ·
+                Lector de Voz · Pausar Animaciones</span>
               <span class="wf-spec-badge">WCAG 1.4.4 / 1.4.11</span>
             </div>
             <span class="wf-tag spec">Flotante Persistente</span>
@@ -800,7 +901,8 @@
                   <span class="wf-spec-badge">H1 Único</span>
                 </h1>
                 <p style="color:#64748B;font-size:0.95rem;margin:0;line-height:1.6;">
-                  Aprende de una forma más accesible y flexible. Ajusta la experiencia a tus necesidades y avanza a tu propio ritmo.
+                  Aprende de una forma más accesible y flexible. Ajusta la experiencia a tus necesidades y avanza a tu
+                  propio ritmo.
                 </p>
               </div>
 
@@ -809,17 +911,20 @@
                 <div class="wf-box" style="border-style:solid;border-color:#CBD5E1;background:#FFFFFF;">
                   <strong style="color:#0F172A;">[✓] Accesibilidad que se adapta a ti</strong>
                   <span class="wf-spec-badge">DUA Pauta 1</span><br>
-                  <span style="font-size:0.8125rem;color:#64748B;">Cambia el tamaño del texto, activa el alto contraste, usa el lector de voz y pausa las animaciones.</span>
+                  <span style="font-size:0.8125rem;color:#64748B;">Cambia el tamaño del texto, activa el alto contraste,
+                    usa el lector de voz y pausa las animaciones.</span>
                 </div>
                 <div class="wf-box" style="border-style:solid;border-color:#CBD5E1;background:#FFFFFF;">
                   <strong style="color:#0F172A;">[✓] Aprende a tu ritmo</strong>
                   <span class="wf-spec-badge">DUA Pauta 7</span><br>
-                  <span style="font-size:0.8125rem;color:#64748B;">Pausa, repite y retoma cada lección cuando lo necesites, sin límites de tiempo.</span>
+                  <span style="font-size:0.8125rem;color:#64748B;">Pausa, repite y retoma cada lección cuando lo
+                    necesites, sin límites de tiempo.</span>
                 </div>
                 <div class="wf-box" style="border-style:solid;border-color:#CBD5E1;background:#FFFFFF;">
                   <strong style="color:#0F172A;">[✓] Elige cómo aprender</strong>
                   <span class="wf-spec-badge">DUA Pauta 2</span><br>
-                  <span style="font-size:0.8125rem;color:#64748B;">Consulta videos, subtítulos, transcripciones y resúmenes para encontrar la forma que mejor te funcione.</span>
+                  <span style="font-size:0.8125rem;color:#64748B;">Consulta videos, subtítulos, transcripciones y
+                    resúmenes para encontrar la forma que mejor te funcione.</span>
                 </div>
               </div>
 
@@ -893,7 +998,8 @@
 
               <!-- Nota de prueba -->
               <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;">
-                <strong>[ℹ Nota de demo]</strong> Credenciales precargadas para evaluación sin fricción en entorno de pruebas.
+                <strong>[ℹ Nota de demo]</strong> Credenciales precargadas para evaluación sin fricción en entorno de
+                pruebas.
               </div>
             </div>
           </div>
@@ -902,7 +1008,8 @@
         <!-- ========================================================
              2. WIREFRAME: INICIO / PANEL DEL ESTUDIANTE
              ======================================================== -->
-        <div class="wf-view-panel" id="view-panel" data-wf-view="panel" role="tabpanel" aria-labelledby="tab-panel" hidden>
+        <div class="wf-view-panel" id="view-panel" data-wf-view="panel" role="tabpanel" aria-labelledby="tab-panel"
+          hidden>
           <!-- Cabecera de la Plataforma -->
           <div class="wf-shell-header">
             <div style="display:flex;align-items:center;gap:0.65rem;">
@@ -924,7 +1031,9 @@
           <div class="wf-shell-body">
             <!-- Sidebar Lateral -->
             <div class="wf-shell-sidebar">
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Menú Principal</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Menú
+                Principal</span>
               <div class="wf-box" style="background:#0F172A;color:#FFFFFF;border-color:#0F172A;">
                 <strong>[🏠 Inicio (Activo)]</strong>
                 <span class="wf-spec-badge" style="background:#334155;color:#FFFFFF;">aria-current="page"</span>
@@ -935,13 +1044,16 @@
               <div class="wf-box"><span>[👥 Compañeros]</span></div>
               <div class="wf-box"><span>[⚙ Configuración]</span></div>
 
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Accesibilidad</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Accesibilidad</span>
               <div class="wf-box"><span>[💡 Herramientas DUA]</span></div>
               <div class="wf-box"><span>[⌨ Atajos de teclado]</span></div>
 
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Plataforma</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Plataforma</span>
               <div class="wf-box"><span>[🎨 UI Tokens (uikit.html)]</span></div>
-              <div class="wf-box" style="border-color:#0F172A;font-weight:600;"><span>[📋 Wireframes (Activo)]</span></div>
+              <div class="wf-box" style="border-color:#0F172A;font-weight:600;"><span>[📋 Wireframes (Activo)]</span>
+              </div>
 
               <div class="wf-box" style="margin-top:auto;color:#475569;border-color:#94A3B8;">
                 <span>[⎋ Cerrar sesión]</span>
@@ -956,19 +1068,23 @@
                   [H1: Hola, Mariana]
                 </h1>
                 <p style="color:#64748B;font-size:0.95rem;margin:0;">
-                  Tienes 2 entregas esta semana y 1 tarea atrasada. Te sugerimos continuar con la lección 7 de Introducción a la Psicología.
+                  Tienes 2 entregas esta semana y 1 tarea atrasada. Te sugerimos continuar con la lección 7 de
+                  Introducción a la Psicología.
                 </p>
               </div>
 
               <!-- Hero Live Class Card -->
-              <div class="wf-box-solid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;background:#0F172A;color:#FFFFFF;border-color:#334155;">
+              <div class="wf-box-solid"
+                style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;background:#0F172A;color:#FFFFFF;border-color:#334155;">
                 <div style="display:flex;flex-direction:column;justify-content:center;">
-                  <span style="font-size:0.8125rem;color:#94A3B8;">Dra. Lucía Hernández Ortega · Lección 7 en curso</span>
+                  <span style="font-size:0.8125rem;color:#94A3B8;">Dra. Lucía Hernández Ortega · Lección 7 en
+                    curso</span>
                   <h2 style="font-size:1.45rem;font-weight:700;margin:0.5rem 0 1.25rem;color:#FFFFFF;line-height:1.3;">
                     [H3: Clase en vivo: Introducción a la Psicología]
                   </h2>
                   <div>
-                    <button type="button" class="wf-pill-btn" style="background:#FFFFFF;color:#0F172A;border-color:#FFFFFF;font-weight:700;padding:0.65rem 1.25rem;">
+                    <button type="button" class="wf-pill-btn"
+                      style="background:#FFFFFF;color:#0F172A;border-color:#FFFFFF;font-weight:700;padding:0.65rem 1.25rem;">
                       [ Botón: Entrar a la clase ]
                     </button>
                     <span class="wf-spec-badge">data-goto="aula"</span>
@@ -994,7 +1110,8 @@
                   </div>
                   <div>
                     <span style="font-size:0.75rem;color:#64748B;">Historia de México · vence jueves 12</span>
-                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Próxima entrega: Ensayo reflexivo</h3>
+                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Próxima entrega: Ensayo
+                      reflexivo</h3>
                     <button type="button" class="wf-pill-btn" style="width:100%;">[ Ver entrega ]</button>
                   </div>
                 </div>
@@ -1007,7 +1124,8 @@
                   </div>
                   <div>
                     <span style="font-size:0.75rem;color:#64748B;">Clase guardada · 52 min</span>
-                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Última clase: Cálculo Diferencial</h3>
+                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Última clase: Cálculo
+                      Diferencial</h3>
                     <button type="button" class="wf-pill-btn" style="width:100%;">[ Retomar clase ]</button>
                   </div>
                 </div>
@@ -1019,7 +1137,8 @@
                   </div>
                   <div>
                     <span style="font-size:0.75rem;color:#64748B;">Comunicación Oral y Escrita · 9.5/10</span>
-                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Calificación: Presentación final</h3>
+                    <h3 style="font-size:1rem;font-weight:700;margin:0.25rem 0 0.65rem;">Calificación: Presentación
+                      final</h3>
                     <button type="button" class="wf-pill-btn" style="width:100%;">[ Ver calificación ]</button>
                   </div>
                 </div>
@@ -1031,7 +1150,8 @@
                   <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
                     [H2: Continuar aprendiendo]
                   </h2>
-                  <span style="font-size:0.8125rem;color:#0F172A;text-decoration:underline;cursor:pointer;">Ir a mis cursos →</span>
+                  <span style="font-size:0.8125rem;color:#0F172A;text-decoration:underline;cursor:pointer;">Ir a mis
+                    cursos →</span>
                 </div>
 
                 <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1.25rem;">
@@ -1043,7 +1163,8 @@
                     <h3 style="font-size:0.95rem;font-weight:700;margin:0;">El México posrevolucionario</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Historia Contemporánea · 1:15 de 3:00</span>
                     <div>
-                      <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
+                      <div
+                        style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
                         <span>Progreso</span><span>42%</span>
                       </div>
                       <div class="wf-box" style="padding:0.2rem;background:#E2E8F0;border-radius:4px;border:none;">
@@ -1061,7 +1182,8 @@
                     <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Correo electrónico seguro</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Alfabetización Digital · 0:46 de 2:15</span>
                     <div>
-                      <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
+                      <div
+                        style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
                         <span>Progreso</span><span>34%</span>
                       </div>
                       <div class="wf-box" style="padding:0.2rem;background:#E2E8F0;border-radius:4px;border:none;">
@@ -1079,7 +1201,8 @@
                     <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Límites y continuidad</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Cálculo Diferencial · 0:52 de 3:10</span>
                     <div>
-                      <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
+                      <div
+                        style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:0.25rem;">
                         <span>Progreso</span><span>27%</span>
                       </div>
                       <div class="wf-box" style="padding:0.2rem;background:#E2E8F0;border-radius:4px;border:none;">
@@ -1092,15 +1215,18 @@
               </div>
 
               <!-- Banner de Autoevaluación DUA -->
-              <div class="wf-box-solid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;background:#F8FAFC;border-color:#CBD5E1;">
+              <div class="wf-box-solid"
+                style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;background:#F8FAFC;border-color:#CBD5E1;">
                 <div>
                   <h2 style="font-size:1.3rem;font-weight:700;color:#0F172A;margin:0 0 0.35rem;">
                     [H2: Mide tus avances y aptitudes]
                   </h2>
                   <p style="font-size:0.9rem;color:#475569;margin:0 0 1.25rem;line-height:1.5;">
-                    Realiza un test de aprendizaje para conocer tus fortalezas y descubrir qué contenidos te ayudarán a seguir avanzando.
+                    Realiza un test de aprendizaje para conocer tus fortalezas y descubrir qué contenidos te ayudarán a
+                    seguir avanzando.
                   </p>
-                  <button type="button" class="wf-pill-btn primary" style="background:#0F172A;border-color:#0F172A;color:#FFFFFF;padding:0.65rem 1.25rem;">
+                  <button type="button" class="wf-pill-btn primary"
+                    style="background:#0F172A;border-color:#0F172A;color:#FFFFFF;padding:0.65rem 1.25rem;">
                     [ Botón Primario: Hacer el test ]
                   </button>
                   <span class="wf-spec-badge">Call-To-Action</span>
@@ -1116,44 +1242,55 @@
                   <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
                     [H2: Mis asignaturas activas]
                   </h2>
-                  <span style="font-size:0.8125rem;color:#0F172A;text-decoration:underline;cursor:pointer;">Ir a mis asignaturas →</span>
+                  <span style="font-size:0.8125rem;color:#0F172A;text-decoration:underline;cursor:pointer;">Ir a mis
+                    asignaturas →</span>
                 </div>
 
                 <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:1rem;">
                   <!-- Asignatura 1 -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label" style="font-size:0.65rem;">[ Portada Psicología ]</span></div>
+                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label"
+                        style="font-size:0.65rem;">[ Portada Psicología ]</span></div>
                     <h3 style="font-size:0.9rem;font-weight:700;margin:0;">Introducción a la Psicología</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Dra. Lucía Hernández</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la asignatura ]</button>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la
+                      asignatura ]</button>
                   </div>
                   <!-- Asignatura 2 -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label" style="font-size:0.65rem;">[ Portada Historia ]</span></div>
+                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label"
+                        style="font-size:0.65rem;">[ Portada Historia ]</span></div>
                     <h3 style="font-size:0.9rem;font-weight:700;margin:0;">Historia Contemporánea</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Mtro. Andrés Villalobos</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la asignatura ]</button>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la
+                      asignatura ]</button>
                   </div>
                   <!-- Asignatura 3 -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label" style="font-size:0.65rem;">[ Portada Cálculo ]</span></div>
+                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label"
+                        style="font-size:0.65rem;">[ Portada Cálculo ]</span></div>
                     <h3 style="font-size:0.9rem;font-weight:700;margin:0;">Cálculo Diferencial</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Dr. Rodrigo Salas</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la asignatura ]</button>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la
+                      asignatura ]</button>
                   </div>
                   <!-- Asignatura 4 -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label" style="font-size:0.65rem;">[ Portada Digital ]</span></div>
+                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label"
+                        style="font-size:0.65rem;">[ Portada Digital ]</span></div>
                     <h3 style="font-size:0.9rem;font-weight:700;margin:0;">Alfabetización Digital</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Mtra. Sofía Valdés</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la asignatura ]</button>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la
+                      asignatura ]</button>
                   </div>
                   <!-- Asignatura 5 -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
-                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label" style="font-size:0.65rem;">[ Portada Oral ]</span></div>
+                    <div class="wf-media-box" style="height:70px;"><span class="wf-media-label"
+                        style="font-size:0.65rem;">[ Portada Oral ]</span></div>
                     <h3 style="font-size:0.9rem;font-weight:700;margin:0;">Comunicación Oral</h3>
                     <span style="font-size:0.75rem;color:#64748B;">Lic. Javier Duarte</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la asignatura ]</button>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;font-size:0.8125rem;">[ Ir a la
+                      asignatura ]</button>
                   </div>
                 </div>
               </div>
@@ -1182,14 +1319,17 @@
 
           <div class="wf-shell-body">
             <div class="wf-shell-sidebar">
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Menú Aula</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Menú
+                Aula</span>
               <div class="wf-box"><span>[🏠 Inicio]</span></div>
               <div class="wf-box" style="background:#0F172A;color:#FFFFFF;border-color:#0F172A;">
                 <strong>[📚 Mis cursos (Activo)]</strong>
               </div>
               <div class="wf-box"><span>[📅 Calendario]</span></div>
               <div class="wf-box"><span>[📁 Tareas]</span></div>
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Accesibilidad</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);margin-top:0.75rem;">Accesibilidad</span>
               <div class="wf-box"><span>[💡 Panel DUA]</span></div>
               <div class="wf-box"><span>[⌨ Atajos]</span></div>
             </div>
@@ -1197,7 +1337,8 @@
             <div class="wf-shell-main">
               <!-- Migas de pan -->
               <div style="font-size:0.875rem;color:#64748B;">
-                <span>[ Inicio ]</span> / <span>[ Mis cursos ]</span> / <strong style="color:#0F172A;">[ Introducción a la Psicología ]</strong>
+                <span>[ Inicio ]</span> / <span>[ Mis cursos ]</span> / <strong style="color:#0F172A;">[ Introducción a
+                  la Psicología ]</strong>
                 <span class="wf-spec-badge">nav.crumbs aria-label</span>
               </div>
 
@@ -1208,7 +1349,9 @@
                     [H1: Detalle de Clase · Aula Virtual]
                   </h1>
                   <p style="color:#64748B;font-size:0.95rem;margin:0;">
-                    Arquitectura adaptativa según modalidad: <strong>Clases en vivo</strong> (video en directo + chat interactivo sin botón de resumen ni bloque posterior) vs <strong>Clases guardadas</strong> (audio/video con temario modular, transcripción sincronizada y resumen descargable).
+                    Arquitectura adaptativa según modalidad: <strong>Clases en vivo</strong> (video en directo + chat
+                    interactivo sin botón de resumen ni bloque posterior) vs <strong>Clases guardadas</strong>
+                    (audio/video con temario modular, transcripción sincronizada y resumen descargable).
                   </p>
                 </div>
                 <div style="display:flex;gap:0.5rem;align-items:center;">
@@ -1218,26 +1361,35 @@
               </div>
 
               <!-- Escenario del Reproductor de Video (16:9) -->
-              <div class="wf-box-solid" style="background:#0F172A;color:#FFFFFF;padding:0.85rem;display:flex;flex-direction:column;gap:0.65rem;">
+              <div class="wf-box-solid"
+                style="background:#0F172A;color:#FFFFFF;padding:0.85rem;display:flex;flex-direction:column;gap:0.65rem;">
                 <div class="wf-media-box" style="height:340px;background:#020617;border-color:#334155;">
-                  <span class="wf-media-label" style="background:#0F172A;color:#FFFFFF;border-color:#475569;font-size:0.9rem;">
+                  <span class="wf-media-label"
+                    style="background:#0F172A;color:#FFFFFF;border-color:#475569;font-size:0.9rem;">
                     [ REPRODUCTOR ACCESIBLE HTML5 · VIDEO 16:9 / AUDIO CON PORTADA ]
                   </span>
                   <span style="margin-top:0.65rem;font-size:0.8125rem;color:#94A3B8;">
                     [ Subtítulos CC en español sincronizados en tiempo real ]
                   </span>
-                  <span class="wf-spec-badge" style="position:absolute;bottom:10px;right:10px;background:#0F172A;color:#FFFFFF;border-color:#334155;">
+                  <span class="wf-spec-badge"
+                    style="position:absolute;bottom:10px;right:10px;background:#0F172A;color:#FFFFFF;border-color:#334155;">
                     WCAG 1.2.2 / 1.2.4 Accesibilidad Multimedia
                   </span>
                 </div>
 
                 <!-- Barra de Transporte de Video -->
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding:0.5rem 0.85rem;background:#1E293B;border-radius:6px;">
+                <div
+                  style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;padding:0.5rem 0.85rem;background:#1E293B;border-radius:6px;">
                   <div style="display:flex;align-items:center;gap:0.5rem;">
-                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">▶ Reproducir</button>
-                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">↺ -10s</button>
-                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">↻ +10s</button>
-                    <span style="font-size:0.8125rem;color:#CBD5E1;margin-left:0.5rem;font-family:var(--font-mono);">01:15 / 02:40</span>
+                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">▶
+                      Reproducir</button>
+                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">↺
+                      -10s</button>
+                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">↻
+                      +10s</button>
+                    <span
+                      style="font-size:0.8125rem;color:#CBD5E1;margin-left:0.5rem;font-family:var(--font-mono);">01:15 /
+                      02:40</span>
                   </div>
                   <div style="display:flex;align-items:center;gap:0.5rem;">
                     <span class="wf-tag" style="background:#334155;color:#FFF;">🔊 Volumen 80%</span>
@@ -1250,7 +1402,8 @@
               <!-- Comparativa de Estructura: Clase en Vivo vs Clase Guardada -->
               <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:1.5rem;">
                 <!-- Panel 1: Chat en Vivo (Solo en clases en vivo) -->
-                <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #334155;">
+                <div class="wf-box-solid"
+                  style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #334155;">
                   <div style="display:flex;justify-content:space-between;align-items:center;">
                     <h2 style="font-size:1.15rem;font-weight:700;margin:0;color:#0F172A;">
                       [H2: 💬 Chat en vivo de la clase]
@@ -1258,37 +1411,45 @@
                     <span class="wf-tag live">● EN VIVO · 34 alumnos</span>
                   </div>
                   <p style="font-size:0.8125rem;color:#64748B;margin:0;">
-                    Espacio interactivo en tiempo real en sustitución de la transcripción. Sin botón de descarga de resumen ni sección posterior.
+                    Espacio interactivo en tiempo real en sustitución de la transcripción. Sin botón de descarga de
+                    resumen ni sección posterior.
                   </p>
 
                   <div class="wf-box" style="font-size:0.775rem;background:#F1F5F9;">
-                    <strong>[ℹ Moderación activa]:</strong> Preguntas gestionadas por Mtra. Sofía (Moderadora) y Dra. Lucía Hernández (Docente).
+                    <strong>[ℹ Moderación activa]:</strong> Preguntas gestionadas por Mtra. Sofía (Moderadora) y Dra.
+                    Lucía Hernández (Docente).
                   </div>
 
                   <!-- Mensajes simulados -->
-                  <div style="display:flex;flex-direction:column;gap:0.5rem;max-height:220px;overflow-y:auto;padding-right:0.25rem;">
+                  <div
+                    style="display:flex;flex-direction:column;gap:0.5rem;max-height:220px;overflow-y:auto;padding-right:0.25rem;">
                     <div class="wf-box" style="font-size:0.8125rem;">
-                      <strong>[LH] Dra. Lucía Hernández [Docente]:</strong> Bienvenidos al aula en vivo. Pueden dejar sus dudas aquí.
+                      <strong>[LH] Dra. Lucía Hernández [Docente]:</strong> Bienvenidos al aula en vivo. Pueden dejar
+                      sus dudas aquí.
                     </div>
                     <div class="wf-box" style="font-size:0.8125rem;">
                       <strong>[CM] Carlos Méndez [Estudiante]:</strong> ¿La codificación dual ayuda a personas con TDAH?
                     </div>
                     <div class="wf-box" style="font-size:0.8125rem;background:#F8FAFC;">
-                      <strong>[SH] Mtra. Sofía [Moderadora]:</strong> ¡Excelente pregunta! La profesora la abordará en el minuto 2.
+                      <strong>[SH] Mtra. Sofía [Moderadora]:</strong> ¡Excelente pregunta! La profesora la abordará en
+                      el minuto 2.
                     </div>
                     <div class="wf-box" style="font-size:0.8125rem;border-color:#0F172A;">
-                      <strong>[MT] Mariana Torres (Tú):</strong> [Mensaje propio interactivo con confirmación por lector de voz]
+                      <strong>[MT] Mariana Torres (Tú):</strong> [Mensaje propio interactivo con confirmación por lector
+                      de voz]
                     </div>
                   </div>
 
                   <div style="display:flex;gap:0.5rem;margin-top:auto;">
-                    <div class="wf-input-mock" style="flex:1;"><span>[Escribe tu pregunta o comentario en vivo...]</span></div>
+                    <div class="wf-input-mock" style="flex:1;"><span>[Escribe tu pregunta o comentario en
+                        vivo...]</span></div>
                     <button type="button" class="wf-pill-btn primary" style="font-size:0.8125rem;">[ Enviar ]</button>
                   </div>
                 </div>
 
                 <!-- Panel 2: Temario de la Asignatura (Solo en clases guardadas) -->
-                <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #CBD5E1;">
+                <div class="wf-box-solid"
+                  style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #CBD5E1;">
                   <div style="display:flex;justify-content:space-between;align-items:center;">
                     <h2 style="font-size:1.15rem;font-weight:700;margin:0;color:#0F172A;">
                       [H2: Temario de la Asignatura]
@@ -1310,8 +1471,10 @@
                   <div class="wf-box" style="font-size:0.8125rem;background:#F8FAFC;border-color:#0F172A;">
                     <strong>[Unidad 2: Reconstrucción Institucional]</strong> · 3 lecciones
                     <div style="margin-top:0.35rem;padding-left:0.5rem;">
-                      <div style="color:#0F172A;font-weight:700;">▶ Lección 4 · México Posrevolucionario y la SEP (3 min) <span class="wf-tag live">[En curso]</span></div>
-                      <div style="color:#64748B;">○ Lección 5 · La reforma agraria y movimientos sociales (14 min) <span class="wf-tag">[Pendiente]</span></div>
+                      <div style="color:#0F172A;font-weight:700;">▶ Lección 4 · México Posrevolucionario y la SEP (3
+                        min) <span class="wf-tag live">[En curso]</span></div>
+                      <div style="color:#64748B;">○ Lección 5 · La reforma agraria y movimientos sociales (14 min) <span
+                          class="wf-tag">[Pendiente]</span></div>
                     </div>
                   </div>
 
@@ -1336,9 +1499,12 @@
                     <div class="wf-media-box" style="height:70px;background:#F1F5F9;border-color:#CBD5E1;">
                       <span class="wf-media-label" style="font-size:0.7rem;">[ Patrón Evaluación Psicología ]</span>
                     </div>
-                    <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Cuestionario de repaso: Introducción a la Psicología</h3>
-                    <span style="font-size:0.75rem;color:#64748B;">5 preguntas · Introducción a la Psicología · 5 min</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;">[ Responder cuestionario ]</button>
+                    <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Cuestionario de repaso: Introducción a la
+                      Psicología</h3>
+                    <span style="font-size:0.75rem;color:#64748B;">5 preguntas · Introducción a la Psicología · 5
+                      min</span>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;">[ Responder cuestionario
+                      ]</button>
                   </div>
 
                   <!-- Card Siguiente Lección -->
@@ -1346,9 +1512,12 @@
                     <div class="wf-media-box" style="height:70px;">
                       <span class="wf-media-label" style="font-size:0.7rem;">[ Portada Lección 8 Psicología ]</span>
                     </div>
-                    <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Lección 8 · Atención sostenida y selectiva</h3>
-                    <span style="font-size:0.75rem;color:#64748B;">Siguiente lección · Introducción a la Psicología · 3 min 15 s</span>
-                    <button type="button" class="wf-pill-btn" style="margin-top:auto;">[ Ir a la siguiente lección ]</button>
+                    <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Lección 8 · Atención sostenida y selectiva
+                    </h3>
+                    <span style="font-size:0.75rem;color:#64748B;">Siguiente lección · Introducción a la Psicología · 3
+                      min 15 s</span>
+                    <button type="button" class="wf-pill-btn" style="margin-top:auto;">[ Ir a la siguiente lección
+                      ]</button>
                   </div>
                 </div>
               </div>
@@ -1377,7 +1546,8 @@
 
           <div class="wf-shell-body">
             <div class="wf-shell-sidebar">
-              <span style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Navegación</span>
+              <span
+                style="font-size:0.75rem;font-weight:700;color:#94A3B8;text-transform:uppercase;font-family:var(--font-mono);">Navegación</span>
               <div class="wf-box"><span>[🏠 Inicio]</span></div>
               <div class="wf-box"><span>[📚 Mis cursos]</span></div>
               <div class="wf-box" style="background:#0F172A;color:#FFFFFF;border-color:#0F172A;">
@@ -1393,7 +1563,8 @@
                   [H1: Estado adaptativo DUA activado]
                 </h1>
                 <p style="color:#64748B;font-size:0.95rem;margin:0;">
-                  Así se ve la plataforma con el alto contraste y el texto macrotipo de 20 px. Los cambios se aplican de inmediato en toda la interfaz.
+                  Así se ve la plataforma con el alto contraste y el texto macrotipo de 20 px. Los cambios se aplican de
+                  inmediato en toda la interfaz.
                 </p>
               </div>
 
@@ -1407,7 +1578,8 @@
                     </h2>
 
                     <!-- Tamaño de texto -->
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
+                    <div
+                      style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
                       <div>
                         <strong>Tamaño de texto</strong><br>
                         <span style="font-size:0.8125rem;color:#64748B;">Ajuste global de tipografía</span>
@@ -1420,7 +1592,8 @@
                     </div>
 
                     <!-- Modo visual -->
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
+                    <div
+                      style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
                       <div>
                         <strong>Modo visual</strong><br>
                         <span style="font-size:0.8125rem;color:#64748B;">Paleta y contraste lumínico</span>
@@ -1432,7 +1605,8 @@
                     </div>
 
                     <!-- Lector de voz -->
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
+                    <div
+                      style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid #E2E8F0;">
                       <div>
                         <strong>Lector de voz</strong><br>
                         <span style="font-size:0.8125rem;color:#64748B;">Síntesis de voz (Web Speech API)</span>
@@ -1444,7 +1618,8 @@
                     </div>
 
                     <!-- Animaciones -->
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+                    <div
+                      style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
                       <div>
                         <strong>Animaciones</strong><br>
                         <span style="font-size:0.8125rem;color:#64748B;">Control de movimiento vestibular</span>
@@ -1457,7 +1632,8 @@
 
                   <!-- Tabla de contraste medido reubicada debajo de Preferencias DUA -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:1rem;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                    <div
+                      style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
                       <div>
                         <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
                           [H2: Contraste medido (WCAG 2.1)]
@@ -1481,30 +1657,44 @@
                         <tbody>
                           <tr style="border-bottom:1px solid #E2E8F0;">
                             <td style="padding:0.65rem 0.85rem;">Texto sobre fondo oscuro</td>
-                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#fff;border:0;font-weight:700;">Aa</span></td>
-                            <td style="padding:0.65rem 0.85rem;"><strong>21,0:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box"
+                                style="padding:0.2rem 0.5rem;background:#000;color:#fff;border:0;font-weight:700;">Aa</span>
+                            </td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>21,0:1</strong> · <span
+                                class="wf-tag live">Cumple AAA</span></td>
                           </tr>
                           <tr style="border-bottom:1px solid #E2E8F0;">
                             <td style="padding:0.65rem 0.85rem;">Acento alto contraste sobre negro</td>
-                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#FFF;border:0;font-weight:700;">Aa</span></td>
-                            <td style="padding:0.65rem 0.85rem;"><strong>14,2:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box"
+                                style="padding:0.2rem 0.5rem;background:#000;color:#FFF;border:0;font-weight:700;">Aa</span>
+                            </td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>14,2:1</strong> · <span
+                                class="wf-tag live">Cumple AAA</span></td>
                           </tr>
                           <tr style="border-bottom:1px solid #E2E8F0;">
                             <td style="padding:0.65rem 0.85rem;">Texto sobre botón primario</td>
-                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#334155;color:#fff;border:0;font-weight:700;">Aa</span></td>
-                            <td style="padding:0.65rem 0.85rem;"><strong>7,4:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box"
+                                style="padding:0.2rem 0.5rem;background:#334155;color:#fff;border:0;font-weight:700;">Aa</span>
+                            </td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>7,4:1</strong> · <span
+                                class="wf-tag live">Cumple AAA</span></td>
                           </tr>
                           <tr>
                             <td style="padding:0.65rem 0.85rem;">Texto estándar sobre fondo</td>
-                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#fff;color:#0F172A;border:1px solid #CBD5E1;font-weight:700;">Aa</span></td>
-                            <td style="padding:0.65rem 0.85rem;"><strong>16,8:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box"
+                                style="padding:0.2rem 0.5rem;background:#fff;color:#0F172A;border:1px solid #CBD5E1;font-weight:700;">Aa</span>
+                            </td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>16,8:1</strong> · <span
+                                class="wf-tag live">Cumple AAA</span></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
 
                     <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;">
-                      <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral normativo es 4,5:1 para texto normal y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan con holgura los criterios exigidos.
+                      <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral normativo es 4,5:1 para texto normal y 3:1
+                      para componentes de interfaz. Todas las combinaciones de AccesoEdu superan con holgura los
+                      criterios exigidos.
                     </div>
                   </div>
 
@@ -1513,10 +1703,13 @@
                     <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
                       [H2: Muestra de lectura fluida]
                     </h2>
-                    <div class="wf-box" style="background:#FFFFFF;border-style:solid;border-color:#CBD5E1;padding:1.25rem;">
-                      <h3 style="font-size:1.2rem;font-weight:700;margin:0 0 0.5rem;color:#0F172A;">Memoria de trabajo: tres ideas clave</h3>
+                    <div class="wf-box"
+                      style="background:#FFFFFF;border-style:solid;border-color:#CBD5E1;padding:1.25rem;">
+                      <h3 style="font-size:1.2rem;font-weight:700;margin:0 0 0.5rem;color:#0F172A;">Memoria de trabajo:
+                        tres ideas clave</h3>
                       <p style="font-size:1rem;color:#334155;line-height:1.6;margin-bottom:0.75rem;">
-                        La memoria de trabajo es el espacio mental donde sostienes información mientras la usas. El texto se reordena en una sola columna al agrandarlo sin desplazamiento horizontal.
+                        La memoria de trabajo es el espacio mental donde sostienes información mientras la usas. El
+                        texto se reordena en una sola columna al agrandarlo sin desplazamiento horizontal.
                       </p>
                       <ul style="font-size:0.9rem;color:#64748B;padding-left:1.25rem;margin:0;line-height:1.6;">
                         <li>Agrupa los datos en bloques con sentido.</li>
@@ -1543,14 +1736,22 @@
                   </p>
 
                   <div style="display:grid;gap:0.5rem;font-size:0.875rem;">
-                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + 1/2/3]</span><span>Texto 16 / 18 / 20 px</span></div>
-                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + A]</span><span>Alto Contraste AAA</span></div>
-                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + V]</span><span>Lector de voz</span></div>
-                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span>[Tab]</span><span>Navegación secuencial</span></div>
+                    <div
+                      style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;">
+                      <span>[Alt + 1/2/3]</span><span>Texto 16 / 18 / 20 px</span></div>
+                    <div
+                      style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;">
+                      <span>[Alt + A]</span><span>Alto Contraste AAA</span></div>
+                    <div
+                      style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;">
+                      <span>[Alt + V]</span><span>Lector de voz</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;">
+                      <span>[Tab]</span><span>Navegación secuencial</span></div>
                   </div>
 
                   <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;margin-top:0.5rem;">
-                    <strong>[💡 Principio DUA: Representación]</strong> Múltiples formas de representación gráfica y textual para eliminar barreras cognitivas y sensoriales.
+                    <strong>[💡 Principio DUA: Representación]</strong> Múltiples formas de representación gráfica y
+                    textual para eliminar barreras cognitivas y sensoriales.
                   </div>
                 </div>
               </div>
@@ -1586,7 +1787,8 @@
                     <strong>[H1 Intro]</strong><br>Beneficios accesibles + Arte collage
                   </div>
                   <div class="wf-box-solid" style="font-size:0.75rem;">
-                    <strong>[H2 Iniciar sesión]</strong><br>Email, Password, Mantener sesión, Botones primario/secundario
+                    <strong>[H2 Iniciar sesión]</strong><br>Email, Password, Mantener sesión, Botones
+                    primario/secundario
                   </div>
                 </div>
               </div>
@@ -1599,7 +1801,8 @@
                 <span class="wf-tag">Dashboard</span>
               </div>
               <div class="wf-card-board-body">
-                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Cabecera: Buscador + DUA + Perfil]</div>
+                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Cabecera: Buscador + DUA + Perfil]
+                </div>
                 <div class="wf-box-solid" style="margin-bottom:0.5rem;font-size:0.75rem;background:#0F172A;color:#fff;">
                   [Hero Card: Clase en vivo Introducción a la Psicología + Video 16:9]
                 </div>
@@ -1608,7 +1811,8 @@
                   <div class="wf-box" style="font-size:0.7rem;">[Clase guardada]</div>
                   <div class="wf-box" style="font-size:0.7rem;">[Calificación]</div>
                 </div>
-                <div class="wf-box" style="font-size:0.75rem;">[Continuar aprendiendo (3 videos) + Banner Test + 5 Asignaturas]</div>
+                <div class="wf-box" style="font-size:0.75rem;">[Continuar aprendiendo (3 videos) + Banner Test + 5
+                  Asignaturas]</div>
               </div>
             </div>
 
@@ -1619,9 +1823,11 @@
                 <span class="wf-tag">Lección Activa</span>
               </div>
               <div class="wf-card-board-body">
-                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Crumbs: Inicio > Cursos > Psicología]</div>
+                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Crumbs: Inicio > Cursos >
+                  Psicología]</div>
                 <div class="wf-media-box" style="height:120px;margin-bottom:0.5rem;">
-                  <span class="wf-media-label" style="font-size:0.75rem;">[Reproductor Video HTML5 16:9 + Transporte]</span>
+                  <span class="wf-media-label" style="font-size:0.75rem;">[Reproductor Video HTML5 16:9 +
+                    Transporte]</span>
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
                   <div class="wf-box" style="font-size:0.75rem;">
@@ -1669,92 +1875,92 @@
 
   <!-- JAVASCRIPT DEL ESTUDIO DE WIREFRAMES -->
   <script>
-  (function(){
-    'use strict';
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-wf-tab]'));
-    var views = Array.prototype.slice.call(document.querySelectorAll('.wf-view-panel'));
-    var devBtns = Array.prototype.slice.call(document.querySelectorAll('[data-wf-device]'));
-    var frame = document.getElementById('wf-frame');
-    var canvas = document.getElementById('studio-canvas');
-    var urlBar = document.getElementById('wf-url-bar');
-    var sizeTag = document.getElementById('wf-size-tag');
-    var btnSpecs = document.getElementById('btn-toggle-specs');
-    var btnGrid = document.getElementById('btn-toggle-grid');
+    (function () {
+      'use strict';
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-wf-tab]'));
+      var views = Array.prototype.slice.call(document.querySelectorAll('.wf-view-panel'));
+      var devBtns = Array.prototype.slice.call(document.querySelectorAll('[data-wf-device]'));
+      var frame = document.getElementById('wf-frame');
+      var canvas = document.getElementById('studio-canvas');
+      var urlBar = document.getElementById('wf-url-bar');
+      var sizeTag = document.getElementById('wf-size-tag');
+      var btnSpecs = document.getElementById('btn-toggle-specs');
+      var btnGrid = document.getElementById('btn-toggle-grid');
 
-    var URLS = {
-      'login': 'https://accesoedu.universidad.example/#inicio (Pantalla 1: Login y Acceso)',
-      'panel': 'https://accesoedu.universidad.example/#panel (Pantalla 2: Panel del Estudiante)',
-      'aula': 'https://accesoedu.universidad.example/#aula (Pantalla 3: Detalle de Cursos y Aula Virtual)',
-      'dua': 'https://accesoedu.universidad.example/#dua-activo (Pantalla 4: Configuración DUA Adaptativa)',
-      'all': 'https://accesoedu.universidad.example/specs/#comparativa (Vista Arquitectónica Global)'
-    };
+      var URLS = {
+        'login': 'https://accesoedu.universidad.example/#inicio (Pantalla 1: Login y Acceso)',
+        'panel': 'https://accesoedu.universidad.example/#panel (Pantalla 2: Panel del Estudiante)',
+        'aula': 'https://accesoedu.universidad.example/#aula (Pantalla 3: Detalle de Cursos y Aula Virtual)',
+        'dua': 'https://accesoedu.universidad.example/#dua-activo (Pantalla 4: Configuración DUA Adaptativa)',
+        'all': 'https://accesoedu.universidad.example/specs/#comparativa (Vista Arquitectónica Global)'
+      };
 
-    var SIZES = {
-      'desktop': '1400 × 900 px (Escritorio)',
-      'tablet': '768 × 1024 px (Tablet)',
-      'mobile': '412 × 915 px (Móvil)'
-    };
+      var SIZES = {
+        'desktop': '1400 × 900 px (Escritorio)',
+        'tablet': '768 × 1024 px (Tablet)',
+        'mobile': '412 × 915 px (Móvil)'
+      };
 
-    var currentDevice = 'desktop';
+      var currentDevice = 'desktop';
 
-    // Manejo de tabs de wireframe
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(){
-        var target = this.getAttribute('data-wf-tab');
-        tabs.forEach(function(t){
-          var isSel = (t === tab);
-          t.setAttribute('aria-selected', String(isSel));
-          t.classList.toggle('is-active', isSel);
+      // Manejo de tabs de wireframe
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var target = this.getAttribute('data-wf-tab');
+          tabs.forEach(function (t) {
+            var isSel = (t === tab);
+            t.setAttribute('aria-selected', String(isSel));
+            t.classList.toggle('is-active', isSel);
+          });
+          views.forEach(function (v) {
+            v.hidden = (v.getAttribute('data-wf-view') !== target);
+          });
+          if (urlBar && URLS[target]) urlBar.textContent = URLS[target];
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        views.forEach(function(v){
-          v.hidden = (v.getAttribute('data-wf-view') !== target);
+      });
+
+      // Manejo de selectores de dispositivo (Viewport)
+      devBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var device = this.getAttribute('data-wf-device');
+          currentDevice = device;
+          devBtns.forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+          if (frame) {
+            frame.classList.remove('mode-tablet', 'mode-mobile');
+            if (device === 'tablet') frame.classList.add('mode-tablet');
+            else if (device === 'mobile') frame.classList.add('mode-mobile');
+          }
+          if (sizeTag && SIZES[device]) sizeTag.textContent = SIZES[device];
         });
-        if(urlBar && URLS[target]) urlBar.textContent = URLS[target];
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-    });
 
-    // Manejo de selectores de dispositivo (Viewport)
-    devBtns.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var device = this.getAttribute('data-wf-device');
-        currentDevice = device;
-        devBtns.forEach(function(b){ b.classList.toggle('is-active', b === btn); });
-        if(frame){
-          frame.classList.remove('mode-tablet', 'mode-mobile');
-          if(device === 'tablet') frame.classList.add('mode-tablet');
-          else if(device === 'mobile') frame.classList.add('mode-mobile');
-        }
-        if(sizeTag && SIZES[device]) sizeTag.textContent = SIZES[device];
+      // Toggle de anotaciones DUA
+      btnSpecs.addEventListener('click', function () {
+        var active = document.body.classList.toggle('show-specs');
+        this.classList.toggle('is-active', active);
       });
-    });
 
-    // Toggle de anotaciones DUA
-    btnSpecs.addEventListener('click', function(){
-      var active = document.body.classList.toggle('show-specs');
-      this.classList.toggle('is-active', active);
-    });
+      // Toggle de cuadrícula
+      btnGrid.addEventListener('click', function () {
+        var active = canvas.classList.toggle('show-grid');
+        this.classList.toggle('is-active', active);
+      });
 
-    // Toggle de cuadrícula
-    btnGrid.addEventListener('click', function(){
-      var active = canvas.classList.toggle('show-grid');
-      this.classList.toggle('is-active', active);
-    });
-
-    // Toast de notificación
-    var toast = document.getElementById('wf-toast');
-    var toastMsg = document.getElementById('toast-msg');
-    var toastTimer = null;
-    function showToast(msg, duration){
-      if(!toast || !toastMsg) return;
-      toastMsg.innerHTML = msg;
-      toast.style.display = 'flex';
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function(){
-        toast.style.display = 'none';
-      }, duration || 3500);
-    }
-  })();
+      // Toast de notificación
+      var toast = document.getElementById('wf-toast');
+      var toastMsg = document.getElementById('toast-msg');
+      var toastTimer = null;
+      function showToast(msg, duration) {
+        if (!toast || !toastMsg) return;
+        toastMsg.innerHTML = msg;
+        toast.style.display = 'flex';
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.style.display = 'none';
+        }, duration || 3500);
+      }
+    })();
   </script>
 
   <!-- TOAST DE NOTIFICACIÓN ACCESIBLE -->
@@ -1762,5 +1968,5 @@
     <span id="toast-msg">Mensaje informativo</span>
   </div>
 </body>
-</html>
 
+</html>
