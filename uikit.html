@@ -1,0 +1,1824 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>UI Kit & Design System · AccesoEdu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <style>
+    /* -------------------------------------------------------------
+       ACCESOEDU · DESIGN SYSTEM TOKENS & BASE STYLES
+       WCAG 2.1 AA / AAA Compliant · DUA (Diseño Universal)
+    ------------------------------------------------------------- */
+    :root {
+      --font-body: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --font-data: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      
+      /* Colores modo estándar */
+      --bg: #FFFFFF;
+      --fg: #0F172A;
+      --muted: #475569;
+      --surface: #F8FAFC;
+      --surface-2: #F1F5F9;
+      --surface-3: #E2E8F0;
+      --line: #475569;
+      --line-soft: #CBD5E1;
+      
+      /* Marca y Primario */
+      --primary: #1D4ED8;
+      --primary-hover: #1E40AF;
+      --primary-soft: #DBEAFE;
+      --primary-ink: #172554;
+      
+      --accent: #1D4ED8;
+      --on-accent: #FFFFFF;
+      --accent-soft: #DBEAFE;
+      --accent-ink: #1E40AF;
+      --focus: #1D4ED8;
+      
+      /* Estados y feedback */
+      --ok: #166534;
+      --ok-soft: #DCFCE7;
+      --warn: #92400E;
+      --warn-soft: #FEF3C7;
+      --bad: #991B1B;
+      --bad-soft: #FEE2E2;
+      
+      /* Barra superior y DUA */
+      --bar-bg: #0F172A;
+      --bar-fg: #F8FAFC;
+      --bar-line: #94A3B8;
+      --bar-hover: #1E293B;
+      --bar-on-bg: #FACC15;
+      --bar-on-fg: #0F172A;
+      --bar-focus: #FACC15;
+      --bar-accent: #FACC15;
+      
+      /* Elevaciones y radios */
+      --r: 12px;
+      --shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 8px 24px rgba(15, 23, 42, 0.12);
+      
+      color-scheme: light;
+    }
+
+    :root[data-contrast="alto"] {
+      --bg: #000000;
+      --fg: #FFFFFF;
+      --muted: #E5E7EB;
+      --surface: #0D0D0D;
+      --surface-2: #1A1A1A;
+      --surface-3: #262626;
+      --line: #FFFFFF;
+      --line-soft: #A3A3A3;
+      
+      --primary: #FACC15;
+      --primary-hover: #EAB308;
+      --primary-soft: #262000;
+      --primary-ink: #000000;
+      
+      --accent: #FACC15;
+      --on-accent: #000000;
+      --accent-soft: #262000;
+      --accent-ink: #FACC15;
+      --focus: #FACC15;
+      
+      --ok: #86EFAC;
+      --ok-soft: #052E16;
+      --warn: #FDE68A;
+      --warn-soft: #2B1D00;
+      --bad: #FECACA;
+      --bad-soft: #450A0A;
+      
+      --bar-bg: #000000;
+      --bar-fg: #FFFFFF;
+      --bar-line: #FFFFFF;
+      --bar-hover: #262626;
+      --bar-on-bg: #FACC15;
+      --bar-on-fg: #000000;
+      
+      --shadow: none;
+      --shadow-hover: none;
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* -------------------------------------------------------------
+       BARRA SUPERIOR DE CONTROL DEL UI KIT
+    ------------------------------------------------------------- */
+    .uikit-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bar-bg);
+      color: var(--bar-fg);
+      border-bottom: 3px solid var(--bar-accent);
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .uikit-header-inner {
+      max-width: 90rem;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .uikit-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--bar-fg);
+    }
+    .uikit-brand svg {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+    .uikit-tag {
+      background: var(--bar-on-bg);
+      color: var(--bar-on-fg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .uikit-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* -------------------------------------------------------------
+       NAV RÁPIDA DE SECCIONES (PILLS)
+    ------------------------------------------------------------- */
+    .uikit-nav {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--line-soft);
+      padding: 0.6rem 1.5rem;
+      position: sticky;
+      top: 59px;
+      z-index: 90;
+      backdrop-filter: blur(8px);
+    }
+    .uikit-nav-inner {
+      max-width: 90rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--fg);
+      background: var(--bg);
+      border: 1px solid var(--line-soft);
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .nav-pill:hover {
+      background: var(--primary-soft);
+      color: var(--primary-ink);
+      border-color: var(--primary);
+    }
+
+    /* -------------------------------------------------------------
+       LAYOUT PRINCIPAL EN GRID
+    ------------------------------------------------------------- */
+    .uikit-main {
+      max-width: 90rem;
+      margin: 2rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+    .section-head {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--line-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+    .section-head h2 {
+      font-size: 1.625rem;
+      font-weight: 700;
+      color: var(--fg);
+    }
+    .section-head p {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      margin-top: 0.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .grid-full {
+      margin-bottom: 3.5rem;
+    }
+
+    /* -------------------------------------------------------------
+       TARJETA DE DEMO DEL UI KIT
+    ------------------------------------------------------------- */
+    .demo-card {
+      background: var(--surface);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--r);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+    }
+    :root[data-contrast="alto"] .demo-card {
+      border: 2px solid var(--line);
+    }
+    .demo-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      border-bottom: 1px dashed var(--line-soft);
+      padding-bottom: 0.5rem;
+    }
+    .demo-card-title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .demo-card-badge {
+      font-family: var(--font-data);
+      font-size: 0.75rem;
+      padding: 0.15rem 0.4rem;
+      background: var(--surface-2);
+      border-radius: 4px;
+      color: var(--muted);
+    }
+    .demo-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTES: SWATCHES & TOKENS
+    ------------------------------------------------------------- */
+    .swatch-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+      gap: 1rem;
+    }
+    .swatch-item {
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .swatch-color {
+      height: 4.5rem;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.5rem;
+      font-weight: 700;
+      font-size: 0.8125rem;
+    }
+    .swatch-meta {
+      padding: 0.65rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .swatch-name { font-weight: 600; margin-bottom: 0.2rem; }
+    .swatch-hex { font-family: var(--font-data); color: var(--muted); font-size: 0.75rem; }
+
+    /* -------------------------------------------------------------
+       COMPONENTES: BOTONES
+    ------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.6rem 1.25rem;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      font: inherit;
+      font-weight: 500;
+      line-height: 1.25;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      color: #fff;
+    }
+    :root[data-contrast="alto"] .btn-primary {
+      background: var(--primary);
+      color: #000;
+      border-color: #000;
+    }
+    .btn-secondary {
+      background: var(--bg);
+      color: var(--fg);
+      border-color: var(--line-soft);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-2);
+      border-color: var(--line);
+    }
+    :root[data-contrast="alto"] .btn-secondary {
+      border-color: var(--line);
+    }
+    .btn-tertiary {
+      background: transparent;
+      color: var(--accent-ink);
+    }
+    .btn-tertiary:hover {
+      background: var(--accent-soft);
+    }
+    .btn-link {
+      background: transparent;
+      color: var(--accent-ink);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      border: 0;
+      padding: 0.25rem 0;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-link:hover {
+      color: var(--primary-hover);
+    }
+    .btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTES: CHIPS & BADGES
+    ------------------------------------------------------------- */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      line-height: 1.2;
+      border: 1px solid transparent;
+    }
+    .chip.status-progreso { background: #FEF3C7; color: #92400E; border-color: #FDE68A; }
+    .chip.status-revision { background: #E0E7FF; color: #3730A3; border-color: #C7D2FE; }
+    .chip.status-completada { background: #DCFCE7; color: #166534; border-color: #BBF7D0; }
+    
+    .chip.priority-alta { background: #FEE2E2; color: #991B1B; border-color: #FECACA; }
+    .chip.priority-media { background: #FEF3C7; color: #92400E; border-color: #FDE68A; }
+    .chip.priority-baja { background: #E2E8F0; color: #334155; border-color: #CBD5E1; }
+
+    :root[data-contrast="alto"] .chip {
+      border: 2px solid #FFFFFF !important;
+      background: #000000 !important;
+      color: #FFFFFF !important;
+    }
+
+    .learning-badge {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      background: #BEF264;
+      color: #14532D;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    :root[data-contrast="alto"] .learning-badge {
+      background: #FACC15;
+      color: #000000;
+      border: 1px solid #FFFFFF;
+    }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 8px;
+      background: rgba(18, 16, 35, 0.78);
+      padding: 0.55rem 0.85rem;
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTES: FORMULARIOS & CONTROLES
+    ------------------------------------------------------------- */
+    .input-field {
+      width: 100%;
+      min-height: 44px;
+      padding: 0.6rem 0.9rem;
+      border: 2px solid var(--line-soft);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--fg);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .input-field:focus {
+      border-color: var(--focus);
+      outline: 2px solid var(--focus);
+    }
+    .search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 0.85rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .search-wrap .input-field {
+      padding-left: 2.6rem;
+    }
+
+    .check {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 500;
+    }
+    .check input[type="checkbox"] {
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTES: CARDS (LEARNING, RESUME, COURSE)
+    ------------------------------------------------------------- */
+    .learning-card {
+      position: relative;
+      display: flex;
+      min-height: 13rem;
+      overflow: hidden;
+      padding: 0;
+      background: #17201F;
+      color: #fff;
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+    }
+    .learning-card.featured {
+      min-height: 16rem;
+    }
+    .learning-card .learning-copy {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+    .learning-card h3 {
+      margin-top: auto;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .learning-card p {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .learning-card .btn {
+      min-height: 2.5rem;
+      background: #fff;
+      color: #17201F;
+      border: 0;
+      font-weight: 600;
+    }
+    .learning-card .learning-media {
+      position: relative;
+      width: 48%;
+      display: flex;
+      min-height: 100%;
+      overflow: hidden;
+    }
+    .learning-card img,
+    .learning-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .learning-card .learning-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+
+    /* Resume Cards */
+    .resume-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      color: var(--fg);
+      border-radius: var(--r);
+      border: 1px solid var(--line-soft);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .resume-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    :root[data-contrast="alto"] .resume-card {
+      border: 2px solid var(--line);
+    }
+    .resume-media {
+      position: relative;
+      flex: 0 0 38%;
+      height: 7.5rem;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--surface-2);
+    }
+    .resume-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .resume-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(15, 23, 42, 0.32);
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    .resume-info {
+      display: flex;
+      min-width: 0;
+      flex: 1;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .resume-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .resume-info p {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+    .resume-progress {
+      height: 0.35rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--surface-3);
+    }
+    .resume-progress span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--primary);
+    }
+
+    /* Course Cards */
+    .card.course {
+      background: var(--bg);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    :root[data-contrast="alto"] .card.course {
+      border: 2px solid var(--line);
+    }
+    .course-media {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: 9.5rem;
+      padding: 1rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--media-start, #1D4ED8), var(--media-end, #3B82F6));
+      color: #fff;
+    }
+    .course-art {
+      position: absolute;
+      right: .8rem;
+      top: 50%;
+      display: grid;
+      grid-template-columns: repeat(7, 1.15rem);
+      grid-template-rows: repeat(5, 1.15rem);
+      gap: .22rem;
+      transform: translateY(-50%);
+      opacity: .95;
+    }
+    .course-art span { display: block; }
+    .course-art .tone-a { background: var(--cover-a, var(--media-start)); }
+    .course-art .tone-b { background: var(--cover-b, var(--media-end)); }
+    .course-art .tone-c { background: color-mix(in srgb, var(--cover-a, var(--media-start)) 55%, var(--cover-b, var(--media-end))); }
+    .course-art .circle { border-radius: 50%; }
+    .course-art .round-left { border-radius: 100% 0 0 0; }
+    .course-art .round-right { border-radius: 0 100% 0 0; }
+    .course-art .round-bottom { border-radius: 0 0 100% 0; }
+    .course-art .outline { background: transparent; border: 1px solid var(--media-end); }
+
+    /* Indicadores de estado y prioridad en cards */
+    .status-donut {
+      display: inline-block;
+      width: .8rem;
+      height: .8rem;
+      border: .18rem solid var(--status-color, #2563EB);
+      border-right-color: transparent;
+      border-radius: 50%;
+      flex: none;
+      margin-right: 0.35rem;
+    }
+    .status-chip.status-progreso { --status-color: #2563EB; }
+    .status-chip.status-completado { --status-color: #16A34A; }
+    .status-chip.status-pendiente { --status-color: #D97706; }
+    .status-chip.status-atrasado { --status-color: #DC2626; }
+
+    .priority-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .status-progress {
+      display: inline-flex;
+      gap: 2px;
+      color: var(--priority-color, #D97706);
+    }
+    .status-progress i {
+      display: inline-block;
+      width: 4px;
+      height: 10px;
+      border-radius: 1px;
+      background: currentColor;
+      opacity: .25;
+    }
+    .priority-indicator.priority-alta { --priority-color: #DC2626; }
+    .priority-indicator.priority-alta .status-progress i { opacity: 1; }
+    .priority-indicator.priority-media { --priority-color: #D97706; }
+    .priority-indicator.priority-media .status-progress i:nth-child(-n+2) { opacity: 1; }
+    .priority-indicator.priority-baja { --priority-color: #16A34A; }
+    .priority-indicator.priority-baja .status-progress i:first-child { opacity: 1; }
+    .course-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      flex: 1;
+    }
+    .course-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .course-body p {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+    .c-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTE: REPRODUCTOR MULTIMEDIA & STAGE
+    ------------------------------------------------------------- */
+    .player-wrap {
+      background: var(--bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      box-shadow: var(--shadow);
+    }
+    :root[data-contrast="alto"] .player-wrap {
+      border: 2px solid var(--line);
+    }
+    .stage {
+      position: relative;
+      min-height: 28rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: #252143;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 1rem;
+    }
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(18, 16, 35, 0.35) 0%, transparent 40%, rgba(18, 16, 35, 0.75) 100%);
+      z-index: 1;
+    }
+    .stage-media-el {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+    .stage .stage-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+    .stage-player {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      background: rgba(18, 16, 35, 0.88);
+      backdrop-filter: blur(8px);
+      color: #fff;
+    }
+    .stage-player .btn {
+      width: 2.25rem;
+      min-width: 2.25rem;
+      height: 2.25rem;
+      min-height: 2.25rem;
+      padding: 0.4rem;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #fff;
+    }
+    .stage-player .btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .stage-player input[type="range"] {
+      flex: 1 1 auto;
+      height: 1.25rem;
+      accent-color: #8B82F1;
+      cursor: pointer;
+    }
+    .stage-player .stage-time {
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      padding: 0 0.35rem;
+    }
+    .stage-player .rate-btn {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+      background: #252143;
+      color: #fff;
+      font: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+    }
+
+    .captions-box {
+      background: #17201F;
+      color: #fff;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.9375rem;
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    :root[data-contrast="alto"] .captions-box {
+      background: #000;
+      color: #FACC15;
+      font-weight: 700;
+      border-top: 2px solid #fff;
+    }
+
+    /* -------------------------------------------------------------
+       COMPONENTE: ASSESSMENT BANNER
+    ------------------------------------------------------------- */
+    .assessment-banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 11rem;
+      padding: 1.75rem 2rem;
+      overflow: hidden;
+      background: #202221;
+      color: #fff;
+      border-radius: 12px;
+    }
+    :root[data-contrast="alto"] .assessment-banner {
+      background: #000;
+      border: 2px solid #fff;
+    }
+    .banner-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      max-width: 32rem;
+    }
+    .banner-copy h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .banner-copy p {
+      color: #D7DCDA;
+      font-size: 0.9375rem;
+    }
+    .assessment-art {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%) scale(1.1);
+      display: grid;
+      grid-template-columns: repeat(12, 1.25rem);
+      grid-template-rows: repeat(4, 1.25rem);
+      gap: 0.25rem;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .assessment-art span { display: block; border-radius: 3px; }
+    .art-blue { background: #4CC9F0; }
+    .art-indigo { background: #4361EE; }
+    .art-purple { background: #B5179E; }
+    .art-pink { background: #F72585; }
+    .art-orange { background: #FF9F1C; }
+    .art-yellow { background: #FFBF00; }
+    .art-circle { border-radius: 50% !important; }
+
+    /* -------------------------------------------------------------
+       COMPONENTE: CATÁLOGO DE ICONOS SVG
+    ------------------------------------------------------------- */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+      gap: 0.75rem;
+    }
+    .icon-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0.5rem;
+      background: var(--bg);
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .icon-tile svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .icon-tile span {
+      font-family: var(--font-data);
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER DEL UI KIT
+    ------------------------------------------------------------- */
+    .uikit-footer {
+      border-top: 1px solid var(--line-soft);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE CONTROL GLOBAL DEL UI KIT -->
+  <header class="uikit-header">
+    <div class="uikit-header-inner">
+      <a href="#tokens" class="uikit-brand">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <rect width="40" height="40" rx="9" fill="#1D4ED8"/>
+          <path d="M11 31V19a9 9 0 0 1 18 0v12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M16.5 31v-8a3.5 3.5 0 0 1 7 0v8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span>AccesoEdu</span>
+        <span class="uikit-tag">UI Kit & Design Tokens</span>
+      </a>
+
+      <div class="uikit-controls">
+        <!-- Selector de escala tipográfica -->
+        <div style="display:inline-flex; border:1px solid var(--bar-line); border-radius:6px; overflow:hidden;">
+          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(16)">16 px</button>
+          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(18)">18 px</button>
+          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(20)">20 px</button>
+        </div>
+
+        <!-- Toggle Alto Contraste -->
+        <button type="button" class="btn btn-secondary" style="min-height:36px; padding:0.25rem 0.75rem; font-size:0.8125rem;" id="toggle-contrast-btn" onclick="toggleContrast()">
+          Contraste Estándar
+        </button>
+
+        <!-- Retorno a la plataforma -->
+        <a href="sitemap.html" target="_blank" class="btn btn-secondary" style="min-height:36px; padding:0.25rem 0.85rem; font-size:0.8125rem;">
+          🗺️ Sitemap ↗
+        </a>
+        <a href="wireframes.html" target="_blank" class="btn btn-secondary" style="min-height:36px; padding:0.25rem 0.85rem; font-size:0.8125rem;">
+          📋 Wireframe Studio ↗
+        </a>
+        <a href="index.html#panel" class="btn btn-primary" style="min-height:36px; padding:0.25rem 0.9rem; font-size:0.8125rem;">
+          ← Volver a la plataforma
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVEGACIÓN RÁPIDA POR COMPONENTES -->
+  <nav class="uikit-nav" aria-label="Navegación del UI Kit">
+    <div class="uikit-nav-inner">
+      <a href="#tokens" class="nav-pill">🎨 Tokens & Variables</a>
+      <a href="#buttons" class="nav-pill">🔘 Botones & Acciones</a>
+      <a href="#chips" class="nav-pill">🏷️ Chips & Badges</a>
+      <a href="#inputs" class="nav-pill">📝 Formularios & Sliders</a>
+      <a href="#cards-section" class="nav-pill">🗂️ Grid de Cards</a>
+      <a href="#video-section" class="nav-pill">🎬 Reproductor de Video</a>
+      <a href="#banner-section" class="nav-pill">⭐ Banner de Evaluación</a>
+      <a href="#icons-section" class="nav-pill">✨ Iconografía SVG</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="uikit-main">
+
+    <!-- SECCIÓN 1: TOKENS DE COLOR Y VARIABLES -->
+    <section id="tokens" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>1. Tokens de Color & Variables CSS</h2>
+          <p>Valores fundamentales de color con contraste medido AA / AAA bajo WCAG 2.1.</p>
+        </div>
+      </div>
+
+      <div class="swatch-group">
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#1D4ED8; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Primary Blue</div>
+            <div class="swatch-hex">--primary · #1D4ED8</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#1E40AF; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Primary Hover</div>
+            <div class="swatch-hex">--primary-hover · #1E40AF</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#DBEAFE; color:#1E40AF;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Primary Soft</div>
+            <div class="swatch-hex">--primary-soft · #DBEAFE</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#FACC15; color:#0F172A;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">High-Contrast Yellow</div>
+            <div class="swatch-hex">--bar-on-bg · #FACC15</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#0F172A; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Dark Slate / Topbar</div>
+            <div class="swatch-hex">--bar-bg · #0F172A</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#252143; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Stage Indigo</div>
+            <div class="swatch-hex">stage-bg · #252143</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#166534; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Success Green</div>
+            <div class="swatch-hex">--ok · #166534</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#92400E; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Warning Amber</div>
+            <div class="swatch-hex">--warn · #92400E</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#991B1B; color:#fff;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Danger Red</div>
+            <div class="swatch-hex">--bad · #991B1B</div>
+          </div>
+        </div>
+
+        <div class="swatch-item">
+          <div class="swatch-color" style="background:#F8FAFC; color:#0F172A; border-bottom:1px solid #CBD5E1;">Aa</div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Surface Light</div>
+            <div class="swatch-hex">--surface · #F8FAFC</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subsección: Paletas y Gradientes de Portadas de Asignaturas -->
+      <div style="margin-top: 2rem;">
+        <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.35rem;">Paletas Temáticas de Portadas por Asignatura</h3>
+        <p style="font-size:0.875rem; color:var(--muted); margin-bottom:1rem;">
+          Combinación fija e inmutable de gradiente (<code>--media-start</code> → <code>--media-end</code>) asignada por asignatura según la regla de identidad visual de la plataforma (<code>PORTADAS-ASIGNATURAS.md</code>).
+        </p>
+        <div class="swatch-group">
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #6C63D9, #8B82F1); color:#fff; font-size:0.75rem; font-weight:700;">PSICOLOGÍA</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Ciencias Sociales</div>
+              <div class="swatch-hex">#6C63D9 → #8B82F1</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #E77A47, #F3B05B); color:#fff; font-size:0.75rem; font-weight:700;">HISTORIA</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Humanidades</div>
+              <div class="swatch-hex">#E77A47 → #F3B05B</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #2A9D8F, #55C9A6); color:#fff; font-size:0.75rem; font-weight:700;">CÁLCULO</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Ciencias Exactas</div>
+              <div class="swatch-hex">#2A9D8F → #55C9A6</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #2878A8, #65B5D5); color:#fff; font-size:0.75rem; font-weight:700;">COMUNICACIÓN</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Comunicación</div>
+              <div class="swatch-hex">#2878A8 → #65B5D5</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #C05BA5, #EB8BC5); color:#fff; font-size:0.75rem; font-weight:700;">ALFABETIZACIÓN</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Tecnología</div>
+              <div class="swatch-hex">#C05BA5 → #EB8BC5</div>
+            </div>
+          </div>
+          <div class="swatch-item">
+            <div class="swatch-color" style="background:linear-gradient(135deg, #5171C5, #7EA4EC); color:#fff; font-size:0.75rem; font-weight:700;">INGLÉS</div>
+            <div class="swatch-meta">
+              <div class="swatch-name">Idiomas</div>
+              <div class="swatch-hex">#5171C5 → #7EA4EC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: BOTONES Y ACCIONES -->
+    <section id="buttons" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>2. Botones & Acciones</h2>
+          <p>Jerarquía de interacción: Primario, Secundario, Terciario, Enlace y Estados interactivos.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Botón Primario</span>
+            <span class="demo-card-badge">.btn.btn-primary</span>
+          </div>
+          <div class="demo-card-body">
+            <button type="button" class="btn btn-primary">Acción principal</button>
+            <button type="button" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+              <span>Descargar resumen</span>
+            </button>
+            <button type="button" class="btn btn-primary" disabled>Deshabilitado</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Botón Secundario</span>
+            <span class="demo-card-badge">.btn.btn-secondary</span>
+          </div>
+          <div class="demo-card-body">
+            <button type="button" class="btn btn-secondary">Acción secundaria</button>
+            <button type="button" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5"/><path d="M4.5 4.5v4h4"/></svg>
+              <span>Volver al panel</span>
+            </button>
+            <button type="button" class="btn btn-secondary" disabled>Deshabilitado</button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Enlace y Terciario</span>
+            <span class="demo-card-badge">.btn-link / .btn-tertiary</span>
+          </div>
+          <div class="demo-card-body">
+            <button type="button" class="btn-link">Ir a la asignatura</button>
+            <button type="button" class="btn-link">Responder cuestionario</button>
+            <button type="button" class="btn btn-tertiary">Botón terciario tenue</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: CHIPS Y BADGES -->
+    <section id="chips" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>3. Chips, Badges & Etiquetas</h2>
+          <p>Micro-componentes para representar estado académico, prioridad y badges de transmisión.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Estado de Asignatura</span>
+            <span class="demo-card-badge">.status-*</span>
+          </div>
+          <div class="demo-card-body" style="flex-direction:row; flex-wrap:wrap;">
+            <span class="chip status-progreso">En curso</span>
+            <span class="chip status-revision">En revisión</span>
+            <span class="chip status-completada">Completada</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Nivel de Prioridad</span>
+            <span class="demo-card-badge">.priority-*</span>
+          </div>
+          <div class="demo-card-body" style="flex-direction:row; flex-wrap:wrap;">
+            <span class="chip priority-alta">Prioridad alta</span>
+            <span class="chip priority-media">Prioridad media</span>
+            <span class="chip priority-baja">Prioridad baja</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Badges de Escenario</span>
+            <span class="demo-card-badge">.learning-badge</span>
+          </div>
+          <div class="demo-card-body" style="flex-direction:row; flex-wrap:wrap; align-items:center;">
+            <span class="learning-badge">En vivo</span>
+            <span class="stage-badge">Clase grabada · Mtro. Morales</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: FORMULARIOS & CONTROLES -->
+    <section id="inputs" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>4. Formularios, Búsqueda & Sliders DUA</h2>
+          <p>Controles accesibles con radio de foco visible de 3 px y cumplimiento estricto de contrastes.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Caja de Búsqueda</span>
+            <span class="demo-card-badge">.search-wrap</span>
+          </div>
+          <div class="demo-card-body">
+            <div class="search-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+              <input type="search" class="input-field" placeholder="Buscar lecciones, tareas o recursos...">
+            </div>
+            <input type="text" class="input-field" placeholder="Campo de texto estándar">
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Checkboxes Accesibles</span>
+            <span class="demo-card-badge">.check</span>
+          </div>
+          <div class="demo-card-body">
+            <label class="check">
+              <input type="checkbox" checked>
+              <span>Lectura automática (Seguir transcripción)</span>
+            </label>
+            <label class="check">
+              <input type="checkbox" checked>
+              <span>Subtítulos sincronizados (CC)</span>
+            </label>
+            <label class="check">
+              <input type="checkbox">
+              <span>Modo concentración sin distracciones</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Sliders de Avance y Volumen</span>
+            <span class="demo-card-badge">input[type="range"]</span>
+          </div>
+          <div class="demo-card-body">
+            <div>
+              <label style="font-size:0.8125rem; font-weight:600; display:block; margin-bottom:0.25rem;">Posición en la clase</label>
+              <input type="range" min="0" max="100" value="45" style="width:100%; accent-color:var(--primary);">
+            </div>
+            <div>
+              <label style="font-size:0.8125rem; font-weight:600; display:block; margin-bottom:0.25rem;">Nivel de volumen (80%)</label>
+              <input type="range" min="0" max="100" value="80" style="width:100%; accent-color:var(--primary);">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: GRID DE CARDS DEL SISTEMA -->
+    <section id="cards-section" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>5. Grid de Cards del Sistema</h2>
+          <p>Modelos de tarjetas para clases en vivo, progreso de aprendizaje y asignaturas activas.</p>
+        </div>
+      </div>
+
+      <!-- Card Featured (Clase en vivo con video) -->
+      <div style="margin-bottom: 1.5rem;">
+        <article class="learning-card featured">
+          <div class="learning-copy">
+            <p>Dra. Lucía Hernández Ortega · Lección 7 en curso</p>
+            <h3>Clase en vivo: Introducción a la Psicología</h3>
+            <a href="index.html#aula" class="btn">Entrar a la clase</a>
+          </div>
+          <div class="learning-media">
+            <span class="learning-badge">En vivo</span>
+            <video src="Assets/Class_video/psicologia.mp4" autoplay muted loop playsinline poster="Assets/Card_Class/profesora-psicologia.jpg" aria-label="Video en vivo"></video>
+          </div>
+        </article>
+      </div>
+
+      <!-- Grid de Cards de Continuar Aprendiendo -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <!-- Card Historia -->
+        <article class="resume-card">
+          <div class="resume-media">
+            <img src="Assets/Card_Class/historia.avif" alt="Historia de México">
+            <span class="resume-play" aria-hidden="true">▶</span>
+          </div>
+          <div class="resume-info">
+            <h3 title="El México posrevolucionario">El México posrevolucionario</h3>
+            <p>Historia de México · 1:15 de 3:00</p>
+            <div class="resume-progress"><span style="width:42%"></span></div>
+            <a class="btn-link" href="index.html#aula">Continuar clase</a>
+          </div>
+        </article>
+
+        <!-- Card Alfabetización Digital -->
+        <article class="resume-card">
+          <div class="resume-media">
+            <img src="Assets/Card_Class/alfabetizacion.jpg" alt="Alfabetización Digital">
+            <span class="resume-play" aria-hidden="true">▶</span>
+          </div>
+          <div class="resume-info">
+            <h3 title="Correo electrónico seguro">Correo electrónico seguro</h3>
+            <p>Alfabetización Digital · 0:46 de 2:15</p>
+            <div class="resume-progress"><span style="width:34%"></span></div>
+            <a class="btn-link" href="index.html#aula">Continuar clase</a>
+          </div>
+        </article>
+
+        <!-- Card Matemáticas -->
+        <article class="resume-card">
+          <div class="resume-media">
+            <img src="Assets/Card_Class/matematicas.avif" alt="Cálculo Diferencial">
+            <span class="resume-play" aria-hidden="true">▶</span>
+          </div>
+          <div class="resume-info">
+            <h3 title="Límites y continuidad">Límites y continuidad</h3>
+            <p>Cálculo Diferencial · 0:52 de 3:10</p>
+            <div class="resume-progress"><span style="width:27%"></span></div>
+            <a class="btn-link" href="index.html#aula">Continuar clase</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Grid de Cards de Asignatura con el Patrón Geométrico Oficial de la Plataforma -->
+      <div style="margin-top: 2.5rem; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem;">Portadas de Asignatura Oficiales (Patrón Geométrico 7×5)</h3>
+        <p style="font-size: 0.875rem; color: var(--muted); margin: 0;">
+          Patrón inmutable generado mediante composición CSS estricta (.course-art), paletas temáticas asignadas según la regla institucional (PORTADAS-ASIGNATURAS.md) y chips de estado/prioridad idénticos a la plataforma.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card course" style="--media-start:#6C63D9; --media-end:#8B82F1;">
+          <div class="course-media" role="img" aria-label="Portada de Introducción a la Psicología">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-b round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-b outline" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a round-bottom" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Introducción a la Psicología</h3>
+              <p>Dra. Lucía Hernández Ortega · Ciencias sociales</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
+              <span class="chip neutral priority-indicator priority-alta" aria-label="Prioridad Alta"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Alta</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card course" style="--media-start:#E77A47; --media-end:#F3B05B;">
+          <div class="course-media" role="img" aria-label="Portada de Historia de México Contemporáneo">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-b round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-b outline" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a round-bottom" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Historia de México Contemporáneo</h3>
+              <p>Mtro. Andrés Villalobos Cruz · Humanidades</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
+              <span class="chip neutral priority-indicator priority-media" aria-label="Prioridad Media"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Media</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card course" style="--media-start:#2A9D8F; --media-end:#55C9A6;">
+          <div class="course-media" role="img" aria-label="Portada de Cálculo Diferencial">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-b round-left" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-a circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-b outline" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-c round-right" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span class="tone-a circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-a circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span class="tone-a round-bottom" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span><span class="tone-c circle" style="--cover-a:#2A9D8F;--cover-b:#55C9A6"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Cálculo Diferencial</h3>
+              <p>Dr. Rodrigo Salas Medina · Ciencias exactas</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-atrasado"><span class="status-donut" aria-hidden="true"></span>Atrasado</span>
+              <span class="chip neutral priority-indicator priority-alta" aria-label="Prioridad Alta"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Alta</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card course" style="--media-start:#2878A8; --media-end:#65B5D5;">
+          <div class="course-media" role="img" aria-label="Portada de Comunicación Oral y Escrita">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-b round-left" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-a circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-b outline" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-c round-right" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span class="tone-a circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-a circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span class="tone-a round-bottom" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span><span class="tone-c circle" style="--cover-a:#2878A8;--cover-b:#65B5D5"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Comunicación Oral y Escrita</h3>
+              <p>Mtra. Karla Domínguez Reyes · Comunicación</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-completado"><span class="status-donut" aria-hidden="true"></span>Completado</span>
+              <span class="chip neutral priority-indicator priority-baja" aria-label="Prioridad Baja"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Baja</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card course" style="--media-start:#C05BA5; --media-end:#EB8BC5;">
+          <div class="course-media" role="img" aria-label="Portada de Alfabetización Digital">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-b round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-b outline" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a round-bottom" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Alfabetización Digital</h3>
+              <p>Lic. Esperanza Guzmán Cruz · Tecnología</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
+              <span class="chip neutral priority-indicator priority-baja" aria-label="Prioridad Baja"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Baja</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card course" style="--media-start:#5171C5; --media-end:#7EA4EC;">
+          <div class="course-media" role="img" aria-label="Portada de Inglés Técnico B1">
+            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-b round-left" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-a circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-b outline" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-c round-right" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span class="tone-a circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-a circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span class="tone-a round-bottom" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span><span class="tone-c circle" style="--cover-a:#5171C5;--cover-b:#7EA4EC"></span><span></span></div>
+          </div>
+          <div class="course-body">
+            <div>
+              <h3>Inglés Técnico B1</h3>
+              <p>Mtro. David Ortega Lara · Idiomas</p>
+            </div>
+            <div class="c-tags">
+              <span class="chip neutral status-chip status-pendiente"><span class="status-donut" aria-hidden="true"></span>Pendiente</span>
+              <span class="chip neutral priority-indicator priority-media" aria-label="Prioridad Media"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Media</span>
+            </div>
+            <div style="margin-top:auto;">
+              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: COMPONENTE DE VIDEO Y REPRODUCTOR MULTIMEDIA -->
+    <section id="video-section" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>6. Componente de Video & Reproductor Multimedia</h2>
+          <p>Reproductor accesible con video en vivo, barra de control personalizada, subtítulos sincronizados y transcripción interactiva.</p>
+        </div>
+      </div>
+
+      <div class="player-wrap">
+        <div class="stage" role="group" aria-label="Reproductor de demostración del UI Kit">
+          <video class="stage-media-el" id="demo-video" src="Assets/Class_video/psicologia.mp4" muted playsinline preload="metadata" poster="Assets/Card_Class/profesora-psicologia.jpg"></video>
+          <span class="stage-badge">Clase en vivo · Dra. Lucía Hernández Ortega</span>
+
+          <!-- Barra flotante de controles -->
+          <div class="stage-player">
+            <button type="button" class="btn" id="demo-play-btn" aria-label="Reproducir video" onclick="toggleDemoPlay()">
+              <svg id="demo-play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+            </button>
+            <button type="button" class="btn" aria-label="Retroceder 10 segundos" onclick="stepDemoTime(-10)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5"/><path d="M4.5 4.5v4h4"/></svg>
+            </button>
+            <button type="button" class="btn" aria-label="Avanzar 10 segundos" onclick="stepDemoTime(10)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12a7.5 7.5 0 1 1-2.4-5.5"/><path d="M19.5 4.5v4h-4"/></svg>
+            </button>
+
+            <!-- Control de volumen con mute toggle -->
+            <button type="button" class="btn" id="demo-vol-btn" aria-label="Silenciar video" onclick="toggleDemoMute()">
+              <svg id="demo-vol-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+            </button>
+
+            <span class="stage-time" id="demo-time-txt">0:00 / 2:40</span>
+            <input type="range" id="demo-seek" min="0" max="160" value="0" oninput="onDemoSeek(this.value)">
+
+            <button type="button" class="btn" id="demo-cc-btn" aria-label="Subtítulos" onclick="toggleDemoCC()">
+              <span style="font-size:0.75rem; font-weight:700;">CC</span>
+            </button>
+
+            <button type="button" class="rate-btn" id="demo-rate-btn" onclick="cycleDemoRate()">1×</button>
+          </div>
+        </div>
+
+        <!-- Caja de subtítulos sincronizados -->
+        <div class="captions-box" id="demo-captions">
+          <p id="demo-cap-text" style="margin:0;">Te damos la bienvenida a la lección siete: cómo funciona la memoria de trabajo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: BANNER DE AUTOEVALUACIÓN -->
+    <section id="banner-section" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>7. Banner de Autoevaluación & Arte Pixel-Art</h2>
+          <p>Componente de motivación con patrón geométrico decorativo y botón primario de llamada a la acción.</p>
+        </div>
+      </div>
+
+      <aside class="assessment-banner">
+        <div class="banner-copy">
+          <h3>Mide tus avances y aptitudes</h3>
+          <p>Realiza un test de aprendizaje para conocer tus fortalezas y descubrir qué contenidos te ayudarán a seguir avanzando.</p>
+          <div>
+            <button type="button" class="btn btn-primary" onclick="alert('Acción del botón primario del banner activada.')">Hacer el test</button>
+          </div>
+        </div>
+
+        <div class="assessment-art" aria-hidden="true">
+          <span class="art-blue"></span><span class="art-blue art-circle"></span><span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span><span class="art-pink art-circle"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-blue"></span><span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span>
+          <span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span><span class="art-pink art-circle"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-yellow art-circle"></span><span class="art-blue"></span><span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span><span class="art-orange"></span>
+          <span class="art-purple"></span><span class="art-pink"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-yellow art-circle"></span><span class="art-blue"></span><span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-blue"></span>
+          <span class="art-pink"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-blue"></span><span class="art-indigo"></span><span class="art-purple"></span><span class="art-pink"></span><span class="art-orange"></span><span class="art-yellow"></span><span class="art-blue"></span><span class="art-indigo"></span><span class="art-purple"></span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SECCIÓN 8: CATÁLOGO DE ICONOGRAFÍA SVG -->
+    <section id="icons-section">
+      <div class="section-head">
+        <div>
+          <h2>8. Iconografía SVG del Sistema</h2>
+          <p>Iconos lineales normalizados en retícula de 24×24 con trazo de 2.2 px y esquinas redondeadas.</p>
+        </div>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
+          <span>i-play</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></svg>
+          <span>i-pause</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5"/><path d="M4.5 4.5v4h4"/></svg>
+          <span>i-back</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.4-5.5"/><path d="M19.5 4.5v4h-4"/></svg>
+          <span>i-fwd</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></svg>
+          <span>i-voice</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+          <span>i-mute</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><text x="12" y="15.3" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none">CC</text></svg>
+          <span>i-cc</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>
+          <span>i-download</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+          <span>i-search</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+          <span>i-contrast</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          <span>i-check</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M12 3.5L2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.4v.1"/></svg>
+          <span>i-alert</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.1"/></svg>
+          <span>i-info</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2.5V10a4.5 4.5 0 0 0-9 0v4.5z"/><path d="M10 20h4"/></svg>
+          <span>i-bell</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 5.5v15M8 7h8M8 11h8"/></svg>
+          <span>i-book</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M16 13.5a5 5 0 0 1 4.5 5.5"/></svg>
+          <span>i-users</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.6V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.6-1H6v-2.6h.4A1.7 1.7 0 0 0 8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2H15V5a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v2.6H21a1.7 1.7 0 0 0-1.6 1z"/></svg>
+          <span>i-settings</span>
+        </div>
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+          <span>i-cal</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="uikit-footer">
+    <p><strong>AccesoEdu UI Kit & Design System</strong> · Diseñado con base en estándares WCAG 2.1 AA / AAA y DUA (Diseño Universal para el Aprendizaje).</p>
+  </footer>
+
+  <!-- SCRIPT INTERACTIVO DEL UI KIT -->
+  <script>
+    // Control de tamaño de fuente
+    function setFontSize(px) {
+      document.documentElement.style.fontSize = px + 'px';
+    }
+
+    // Control de Alto Contraste
+    function toggleContrast() {
+      var root = document.documentElement;
+      var isHigh = root.getAttribute('data-contrast') === 'alto';
+      var next = !isHigh;
+      root.setAttribute('data-contrast', next ? 'alto' : 'estandar');
+      var btn = document.getElementById('toggle-contrast-btn');
+      if (btn) btn.textContent = next ? 'Contraste Alto' : 'Contraste Estándar';
+    }
+
+    // Control del Reproductor Multimedia de Demostración
+    var demoVideo = document.getElementById('demo-video');
+    var demoSeek = document.getElementById('demo-seek');
+    var demoTimeTxt = document.getElementById('demo-time-txt');
+    var demoPlayIcon = document.getElementById('demo-play-icon');
+    var demoVolIcon = document.getElementById('demo-vol-icon');
+    var demoCapText = document.getElementById('demo-cap-text');
+    var demoRates = [0.75, 1, 1.25, 1.5];
+    var demoRateIdx = 1;
+    var demoCCActive = true;
+
+    var DEMO_LINES = [
+      [0, 'Te damos la bienvenida a la lección siete: cómo funciona la memoria de trabajo.'],
+      [12, 'Cuando recibes información nueva, primero pasa por la memoria sensorial, que dura apenas una fracción de segundo.'],
+      [26, 'Si le prestas atención, la información llega a la memoria de trabajo, el espacio donde piensas y resuelves problemas.'],
+      [42, 'Este espacio es limitado: la investigación actual sugiere que sostenemos alrededor de cuatro elementos a la vez.'],
+      [58, 'Sin repaso, esos elementos se desvanecen en unas decenas de segundos.'],
+      [70, 'Por eso conviene agrupar los datos en bloques con sentido. Un número de teléfono se recuerda mejor en grupos de dos o tres cifras.'],
+      [88, 'Otra estrategia es combinar canales: leer, escuchar y hacer un esquema al mismo tiempo refuerza el recuerdo.'],
+      [106, 'Esto se conoce como codificación dual, y es la razón por la que esta lección ofrece video, subtítulos, transcripción y resumen.'],
+      [124, 'Por último, repasar en intervalos espaciados, uno, tres y siete días después, consolida lo aprendido en la memoria a largo plazo.'],
+      [142, 'Para cerrar, descarga el resumen accesible y responde el cuestionario de repaso. Gracias por tu atención.']
+    ];
+
+    function fmtTime(s) {
+      s = Math.floor(s);
+      return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+    }
+
+    function toggleDemoPlay() {
+      if (!demoVideo) return;
+      if (demoVideo.paused) {
+        demoVideo.play().then(function(){
+          demoPlayIcon.innerHTML = '<path d="M8 5v14M16 5v14" stroke-width="3.4"/>';
+        }).catch(function(){});
+      } else {
+        demoVideo.pause();
+        demoPlayIcon.innerHTML = '<path d="M7 4.5v15l12.5-7.5z"/>';
+      }
+    }
+
+    function stepDemoTime(delta) {
+      if (!demoVideo) return;
+      demoVideo.currentTime = Math.max(0, Math.min(demoVideo.duration || 160, demoVideo.currentTime + delta));
+    }
+
+    function toggleDemoMute() {
+      if (!demoVideo) return;
+      demoVideo.muted = !demoVideo.muted;
+      if (demoVideo.muted) {
+        demoVolIcon.innerHTML = '<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>';
+      } else {
+        demoVolIcon.innerHTML = '<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>';
+      }
+    }
+
+    function onDemoSeek(val) {
+      if (!demoVideo) return;
+      demoVideo.currentTime = +val;
+    }
+
+    function toggleDemoCC() {
+      demoCCActive = !demoCCActive;
+      var cap = document.getElementById('demo-captions');
+      if (cap) cap.style.display = demoCCActive ? 'flex' : 'none';
+      var btn = document.getElementById('demo-cc-btn');
+      if (btn) btn.style.opacity = demoCCActive ? '1' : '0.5';
+    }
+
+    function cycleDemoRate() {
+      demoRateIdx = (demoRateIdx + 1) % demoRates.length;
+      var rate = demoRates[demoRateIdx];
+      if (demoVideo) demoVideo.playbackRate = rate;
+      var btn = document.getElementById('demo-rate-btn');
+      if (btn) btn.textContent = String(rate).replace('.', ',') + '×';
+    }
+
+    if (demoVideo) {
+      demoVideo.addEventListener('timeupdate', function(){
+        var cur = demoVideo.currentTime;
+        var dur = demoVideo.duration || 160;
+        demoSeek.value = String(Math.floor(cur));
+        demoSeek.max = String(Math.floor(dur));
+        demoTimeTxt.textContent = fmtTime(cur) + ' / ' + fmtTime(dur);
+
+        // Actualizar subtítulos dinámicamente
+        var currentText = DEMO_LINES[0][1];
+        for (var i = 0; i < DEMO_LINES.length; i++) {
+          if (cur >= DEMO_LINES[i][0]) currentText = DEMO_LINES[i][1];
+        }
+        if (demoCapText) demoCapText.textContent = currentText;
+      });
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sitemap & Flujo de Navegación · AccesoEdu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <style>
+    /* -------------------------------------------------------------
+       ACCESOEDU · SITEMAP & FLOW DIAGRAM (100vh DUAL VIEW)
+       Diseño en escala viewport (vh) · Flujo interactivo navegable
+    ------------------------------------------------------------- */
+    :root {
+      --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+      
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-subtle: #F1F5F9;
+      --border: #CBD5E1;
+      --border-dark: #64748B;
+      --text: #0F172A;
+      --muted: #64748B;
+      
+      --primary: #1D4ED8;
+      --primary-soft: #DBEAFE;
+      --accent: #FACC15;
+      
+      --bar-bg: #0F172A;
+      --bar-fg: #F8FAFC;
+      
+      /* Colores temáticos de ramas del flujo (según captura de referencia) */
+      --c-sec: #0284C7;        /* Categorías principales (Celeste / Sky) */
+      --c-acceso: #1E293B;     /* Acceso & Cuenta (Navy) */
+      --c-dash: #047857;       /* Dashboard (Verde Esmeralda) */
+      --c-aula: #6D28D9;       /* Aula Virtual & Cursos (Púrpura) */
+      --c-sub-course: #D97706; /* Subramas de asignaturas (Ámbar / Naranja) */
+      --c-tools: #B45309;      /* Herramientas (Canela / Terracota) */
+      --c-dua: #EAB308;        /* Accesibilidad DUA (Oro / Amarillo) */
+      --c-plat: #BE185D;       /* Plataforma & Tokens (Magenta / Rosa) */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* Contenedor en 100vh */
+    .sitemap-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Cabecera compacta */
+    .sitemap-header {
+      flex: 0 0 auto;
+      height: 60px;
+      background: var(--bar-bg);
+      color: var(--bar-fg);
+      border-bottom: 3px solid var(--accent);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      z-index: 20;
+    }
+    .sitemap-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--bar-fg);
+    }
+    .sitemap-brand svg {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    .sitemap-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+    }
+    .sitemap-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .sitemap-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Selector de vista (Flujo vs Cuadrícula) */
+    .view-switcher {
+      display: inline-flex;
+      border: 1.5px solid #334155;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1E293B;
+    }
+    .view-btn {
+      padding: 0.35rem 0.85rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: #94A3B8;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: var(--font-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .view-btn:hover {
+      color: #FFFFFF;
+      background: #334155;
+    }
+    .view-btn.is-active {
+      background: #38BDF8;
+      color: #0F172A;
+      font-weight: 700;
+    }
+
+    .sitemap-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .sitemap-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--bar-fg);
+      background: #1E293B;
+      border: 1px solid #334155;
+      transition: all 0.15s ease;
+      font-family: var(--font-body);
+    }
+    .sitemap-btn:hover {
+      background: #334155;
+      color: #FFFFFF;
+    }
+    .sitemap-btn-primary {
+      background: var(--accent);
+      color: #0F172A;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+    .sitemap-btn-primary:hover {
+      background: #FDE047;
+      color: #000000;
+    }
+
+    /* Área de contenido en vh */
+    .sitemap-content {
+      flex: 1 1 auto;
+      height: calc(100vh - 98px);
+      overflow: auto;
+      position: relative;
+      background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+      background-size: 20px 20px;
+    }
+
+    /* =============================================================
+       VISTA 1: DIAGRAMA DE FLUJO JERÁRQUICO (TREE FLOWCHART)
+       Inspirado en la captura de referencia del usuario
+    ============================================================= */
+    .flow-viewport {
+      min-width: 1100px;
+      padding: 2rem 2.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Nodo Raíz: Homepage / AccesoEdu */
+    .flow-root-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .flow-root-node {
+      background: #FFFFFF;
+      border: 2px solid #334155;
+      border-radius: 8px;
+      padding: 0.65rem 1.75rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0F172A;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .flow-root-node:hover {
+      border-color: #0284C7;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2,132,199,0.15);
+    }
+    .flow-root-stem {
+      width: 2px;
+      height: 32px;
+      background: var(--border-dark);
+    }
+
+    /* Bus horizontal maestro que conecta todas las ramas principales */
+    .flow-branches-row {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      gap: 1.5rem;
+      width: 100%;
+      padding-top: 32px;
+    }
+    .flow-bus-bar {
+      position: absolute;
+      top: 0;
+      left: calc(100% / 8);
+      right: calc(100% / 8);
+      height: 2px;
+      background: var(--border-dark);
+    }
+
+    /* Rama individual (Columna del flujo) */
+    .flow-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      flex: 1;
+      max-width: 235px;
+    }
+    /* Línea vertical desde el bus horizontal hasta la caja de categoría */
+    .flow-branch-stem-top {
+      position: absolute;
+      top: -32px;
+      width: 2px;
+      height: 32px;
+      background: var(--border-dark);
+    }
+
+    /* Nodo de Sección Principal (Caja Azul / Celeste de categoría) */
+    .flow-category-box {
+      width: 100%;
+      background: var(--c-sec);
+      color: #FFFFFF;
+      padding: 0.7rem 0.65rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: 1px solid #0369A1;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    /* Tallo hacia la lista de hijos */
+    .flow-category-stem-bottom {
+      width: 2px;
+      height: 24px;
+      background: var(--border-dark);
+    }
+
+    /* Contenedor vertical de nodos hijos (con tronco a la izquierda) */
+    .flow-tree-trunk {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      padding-left: 20px;
+    }
+    /* Línea vertical del tronco */
+    .flow-tree-trunk::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 24px;
+      left: 0;
+      width: 2px;
+      background: var(--border-dark);
+    }
+
+    /* Fila de cada nodo hijo */
+    .flow-node-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 0.65rem;
+    }
+    /* Conector horizontal desde el tronco con flecha terminal */
+    .flow-node-row::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: var(--border-dark);
+    }
+    .flow-node-row::after {
+      content: "▶";
+      position: absolute;
+      left: -5px;
+      top: calc(50% - 6px);
+      font-size: 8px;
+      color: var(--border-dark);
+    }
+
+    /* Tarjeta del nodo (Pill coloreada interactiva) */
+    .flow-leaf {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78125rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .flow-leaf:hover {
+      transform: translateX(4px);
+      box-shadow: 0 6px 14px rgba(15,23,42,0.2);
+      filter: brightness(1.12);
+    }
+
+    /* Colores temáticos por rama */
+    .theme-acceso .flow-leaf { background: var(--c-acceso); }
+    .theme-dash .flow-leaf { background: var(--c-dash); }
+    .theme-aula .flow-leaf { background: var(--c-aula); }
+    .theme-tools .flow-leaf { background: var(--c-tools); }
+    .theme-dua .flow-leaf { background: var(--c-dua); color: #0F172A; border-color: #CA8A04; }
+    .theme-plat .flow-leaf { background: var(--c-plat); }
+
+    .leaf-tag {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.22);
+      color: #FFFFFF;
+    }
+    .theme-dua .leaf-tag {
+      background: #0F172A;
+      color: #FFFFFF;
+    }
+
+    /* Subrama anidada a la derecha (como en la captura: "Sort by Activity" -> Subitems) */
+    .flow-subbranch-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+    }
+    .flow-subbranch-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      position: relative;
+    }
+    .flow-subbranch-children {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      padding-left: 18px;
+    }
+    .flow-subbranch-children::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 0;
+      width: 2px;
+      background: var(--border-dark);
+    }
+    .flow-subleaf-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .flow-subleaf-row::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      width: 18px;
+      height: 2px;
+      background: var(--border-dark);
+    }
+    .flow-subleaf-row::after {
+      content: "▶";
+      position: absolute;
+      left: -4px;
+      top: calc(50% - 6px);
+      font-size: 8px;
+      color: var(--border-dark);
+    }
+    .flow-subleaf {
+      background: #FFFFFF;
+      color: #B45309;
+      border: 1.5px dashed #D97706;
+      border-radius: 6px;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .flow-subleaf:hover {
+      background: #FEF3C7;
+      color: #78350F;
+      border-style: solid;
+      transform: translateX(3px);
+    }
+
+    /* =============================================================
+       VISTA 2: CUADRÍCULA DE COLUMNAS (SITEMAP TRADICIONAL)
+    ============================================================= */
+    .grid-viewport {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .sitemap-root-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .sitemap-branches-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 0.85rem;
+    }
+    .sitemap-card-col {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .card-col-head {
+      padding: 0.65rem 0.85rem;
+      background: #F8FAFC;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .card-col-body {
+      padding: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .col-leaf-item {
+      padding: 0.5rem 0.65rem;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: #0F172A;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.78125rem;
+      transition: all 0.15s ease;
+    }
+    .col-leaf-item:hover {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+      transform: translateY(-1px);
+    }
+    .col-leaf-item.is-proto {
+      background: #F0FDF4;
+      border-color: #86EFAC;
+    }
+    .col-leaf-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    /* Pie fijo compacto */
+    .sitemap-footer {
+      flex: 0 0 auto;
+      height: 38px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      z-index: 20;
+    }
+
+    /* Toast emergente para navegación accesible */
+    .toast-box {
+      position: fixed;
+      bottom: 50px;
+      right: 20px;
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 0.65rem 1.15rem;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      animation: toastIn 0.2s ease;
+    }
+    @keyframes toastIn {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sitemap-container">
+    <!-- BARRA SUPERIOR -->
+    <header class="sitemap-header">
+      <div class="sitemap-brand">
+        <a href="index.html#panel" title="Ir al panel del estudiante" style="display:flex;align-items:center;text-decoration:none;">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <rect width="40" height="40" rx="9" fill="#1D4ED8"/>
+            <path d="M11 31V19a9 9 0 0 1 18 0v12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M16.5 31v-8a3.5 3.5 0 0 1 7 0v8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <div class="sitemap-title-group">
+          <h1 class="sitemap-title">Flujo & Sitemap de Navegación</h1>
+          <span class="sitemap-tag">AccesoEdu · Arquitectura de Información</span>
+        </div>
+      </div>
+
+      <!-- Selector de Modo de Visualización -->
+      <div class="view-switcher" role="group" aria-label="Selector de visualización">
+        <button type="button" class="view-btn is-active" id="btn-flow" data-mode="flow" title="Ver diagrama de árbol por niveles de flujo">
+          🌳 Diagrama de Flujo
+        </button>
+        <button type="button" class="view-btn" id="btn-grid" data-mode="grid" title="Ver cuadrícula de navegación compacta">
+          📊 Vista Cuadrícula
+        </button>
+      </div>
+
+      <div class="sitemap-header-actions">
+        <a href="uikit.html" target="_blank" class="sitemap-btn">🎨 UI Tokens</a>
+        <a href="wireframes.html" target="_blank" class="sitemap-btn">📋 Wireframes</a>
+        <a href="index.html#panel" target="_blank" class="sitemap-btn sitemap-btn-primary">🚀 Ir a Plataforma</a>
+      </div>
+    </header>
+
+    <!-- ÁREA DE CONTENIDO (ESCALADA EN VH) -->
+    <main class="sitemap-content" id="sitemap-main">
+
+      <!-- =============================================================
+           MODO 1: DIAGRAMA DE FLUJO JERÁRQUICO (TREE FLOWCHART)
+           Diseño idéntico a la captura de ejemplo proporcionada
+      ============================================================= -->
+      <div class="flow-viewport" id="flow-view">
+        <!-- 1. NODO RAÍZ / HOMEPAGE -->
+        <div class="flow-root-container">
+          <a href="index.html#panel" target="_blank" class="flow-root-node" title="Hacer clic para ir al inicio de la plataforma">
+            <span style="font-size:1.15rem;">🏠</span>
+            <span>AccesoEdu · Plataforma Central</span>
+            <span class="leaf-tag" style="background:#0F172A;color:#FFFFFF;">Inicio</span>
+          </a>
+          <div class="flow-root-stem"></div>
+        </div>
+
+        <!-- 2. BUS MAESTRO Y LAS 4 RAMAS PRINCIPALES -->
+        <div class="flow-branches-row">
+          <div class="flow-bus-bar"></div>
+
+          <!-- RAMA 1: ACCESO & CUENTA (Navy) -->
+          <div class="flow-branch theme-acceso">
+            <div class="flow-branch-stem-top"></div>
+            <div class="flow-category-box">
+              <span>🔑 Acceso y Onboarding</span>
+            </div>
+            <div class="flow-category-stem-bottom"></div>
+
+            <div class="flow-tree-trunk">
+              <div class="flow-node-row">
+                <a href="index.html#inicio" target="_blank" class="flow-leaf">
+                  <span>Iniciar Sesión</span>
+                  <span class="leaf-tag">#inicio</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#inicio" target="_blank" class="flow-leaf" onclick="showToast('Modal de recuperación disponible en la pantalla de acceso.');">
+                  <span>Recuperar Contraseña</span>
+                  <span class="leaf-tag">Modal</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Acceso por Magic Link por correo institucional.');">
+                  <span>Enlace Mágico (Email)</span>
+                  <span class="leaf-tag">Token</span>
+                </div>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Proceso de inducción y bienvenida del estudiante.');">
+                  <span>Onboarding y Registro</span>
+                  <span class="leaf-tag">Guía</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RAMA 2: DASHBOARD ESTUDIANTE (Verde Esmeralda) -->
+          <div class="flow-branch theme-dash">
+            <div class="flow-branch-stem-top"></div>
+            <div class="flow-category-box">
+              <span>📊 Portal Estudiante</span>
+            </div>
+            <div class="flow-category-stem-bottom"></div>
+
+            <div class="flow-tree-trunk">
+              <div class="flow-node-row">
+                <a href="index.html#panel" target="_blank" class="flow-leaf">
+                  <span>Panel Principal</span>
+                  <span class="leaf-tag">#panel</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#aula" target="_blank" class="flow-leaf">
+                  <span>Clase en Vivo Destacada</span>
+                  <span class="leaf-tag">Hero</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Módulo de tareas próximas y vencimientos semanales.');">
+                  <span>Próximas Entregas</span>
+                  <span class="leaf-tag">Fechas</span>
+                </div>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#panel" target="_blank" class="flow-leaf">
+                  <span>Continuar Aprendiendo</span>
+                  <span class="leaf-tag">Progreso</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Test diagnóstico de fortalezas y necesidades DUA.');">
+                  <span>Test Diagnóstico DUA</span>
+                  <span class="leaf-tag">Banner</span>
+                </div>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Panel de alertas y notificaciones académicas.');">
+                  <span>Centro de Alertas</span>
+                  <span class="leaf-tag">Avisos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RAMA 3: AULA VIRTUAL & ASIGNATURAS (Púrpura con subrama) -->
+          <div class="flow-branch theme-aula" style="max-width:380px;flex:1.6;">
+            <div class="flow-branch-stem-top"></div>
+            <div class="flow-category-box">
+              <span>🎓 Aula Virtual & Asignaturas</span>
+            </div>
+            <div class="flow-category-stem-bottom"></div>
+
+            <div class="flow-tree-trunk">
+              <div class="flow-node-row">
+                <a href="index.html#aula" target="_blank" class="flow-leaf">
+                  <span>Aula Virtual (Lección Activa)</span>
+                  <span class="leaf-tag">#aula</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#aula" target="_blank" class="flow-leaf">
+                  <span>Transcripción Interactiva DUA</span>
+                  <span class="leaf-tag">Audio/Texto</span>
+                </a>
+              </div>
+
+              <!-- Subrama de Asignaturas (Idéntica a la estructura de la captura) -->
+              <div class="flow-node-row flow-subbranch-wrapper">
+                <div class="flow-subbranch-row">
+                  <div class="flow-leaf" style="width:170px;">
+                    <span>Mis 5 Asignaturas</span>
+                    <span class="leaf-tag">Catálogo</span>
+                  </div>
+                  <!-- Conectores a la derecha -->
+                  <div class="flow-subbranch-children">
+                    <div class="flow-subleaf-row">
+                      <a href="index.html#aula" target="_blank" class="flow-subleaf">
+                        📚 Intro. a la Psicología
+                      </a>
+                    </div>
+                    <div class="flow-subleaf-row">
+                      <a href="index.html#panel" target="_blank" class="flow-subleaf">
+                        🏛️ Historia Contemporánea
+                      </a>
+                    </div>
+                    <div class="flow-subleaf-row">
+                      <a href="index.html#panel" target="_blank" class="flow-subleaf">
+                        📐 Cálculo Diferencial
+                      </a>
+                    </div>
+                    <div class="flow-subleaf-row">
+                      <a href="index.html#panel" target="_blank" class="flow-subleaf">
+                        💻 Alfabetización Digital
+                      </a>
+                    </div>
+                    <div class="flow-subleaf-row">
+                      <a href="index.html#panel" target="_blank" class="flow-subleaf">
+                        🗣️ Comunicación Oral y Escrita
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Repositorio de diapositivas accesibles, podcast y resúmenes PDF.');">
+                  <span>Descarga de Materiales</span>
+                  <span class="leaf-tag">PDF / MP3</span>
+                </div>
+              </div>
+              <div class="flow-node-row">
+                <div class="flow-leaf" onclick="showToast('Evaluaciones formativas y quizzes con lectura por voz.');">
+                  <span>Cuestionarios de Repaso</span>
+                  <span class="leaf-tag">Quizzes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RAMA 4: ACCESIBILIDAD UNIVERSAL DUA (Oro / Amarillo) -->
+          <div class="flow-branch theme-dua">
+            <div class="flow-branch-stem-top"></div>
+            <div class="flow-category-box">
+              <span>💡 Accesibilidad DUA</span>
+            </div>
+            <div class="flow-category-stem-bottom"></div>
+
+            <div class="flow-tree-trunk">
+              <div class="flow-node-row">
+                <a href="index.html#panel" target="_blank" class="flow-leaf">
+                  <span>Barra Rápida Flotante</span>
+                  <span class="leaf-tag">Global</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#dua-activo" target="_blank" class="flow-leaf">
+                  <span>Estado DUA Activado</span>
+                  <span class="leaf-tag">#dua-activo</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#panel" target="_blank" class="flow-leaf">
+                  <span>Atajos de Teclado</span>
+                  <span class="leaf-tag">Alt+1/2/3</span>
+                </a>
+              </div>
+              <div class="flow-node-row">
+                <a href="index.html#dua-activo" target="_blank" class="flow-leaf">
+                  <span>Monitor de Contraste</span>
+                  <span class="leaf-tag">WCAG 2.1</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =============================================================
+           MODO 2: VISTA DE CUADRÍCULA (SITEMAP TRADICIONAL)
+      ============================================================= -->
+      <div class="grid-viewport" id="grid-view" hidden>
+        <!-- Tarjeta Raíz -->
+        <section class="sitemap-root-card">
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="background:#0F172A;color:#FFFFFF;padding:0.25rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:700;font-family:var(--font-mono);">RAÍZ</span>
+            <div>
+              <strong style="font-size:0.95rem;color:#0F172A;">Plataforma Educativa Accesible AccesoEdu</strong>
+              <p style="font-size:0.8125rem;color:#64748B;margin:0;">Arquitectura de información completa, enlaces navegables y módulos del sistema integral.</p>
+            </div>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:#64748B;background:#F1F5F9;padding:0.25rem 0.65rem;border-radius:4px;border:1px solid var(--border);">
+            4 Secciones Principales · 19 Módulos
+          </span>
+        </section>
+
+        <!-- Grilla de Columnas -->
+        <div class="sitemap-branches-grid">
+          <!-- Col 1 -->
+          <div class="sitemap-card-col">
+            <div class="card-col-head"><span>🔑 1. Acceso</span><span class="leaf-tag" style="background:#0F172A;">4 Nodos</span></div>
+            <div class="card-col-body">
+              <a href="index.html#inicio" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Iniciar Sesión</span><span style="color:#166534;font-size:0.7rem;">● Activo</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Formulario institucional validado</span>
+              </a>
+              <div class="col-leaf-item is-proto" onclick="showToast('Recuperación modal en la pantalla de login.');">
+                <div class="col-leaf-head"><span>Recuperar Contraseña</span><span style="color:#1E40AF;font-size:0.7rem;">Modal</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Instrucciones vía correo</span>
+              </div>
+              <div class="col-leaf-item" onclick="showToast('Acceso sin contraseña mediante Magic Link.');">
+                <div class="col-leaf-head"><span>Enlace Mágico</span><span style="color:#64748B;font-size:0.7rem;">Email</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Token seguro de un solo uso</span>
+              </div>
+              <div class="col-leaf-item" onclick="showToast('Inducción estudiantil y configuración DUA.');">
+                <div class="col-leaf-head"><span>Onboarding</span><span style="color:#64748B;font-size:0.7rem;">Guía</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Ajuste de preferencias</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2 -->
+          <div class="sitemap-card-col">
+            <div class="card-col-head"><span>📊 2. Dashboard</span><span class="leaf-tag" style="background:#0F172A;">6 Nodos</span></div>
+            <div class="card-col-body">
+              <a href="index.html#panel" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Panel Estudiante</span><span style="color:#166534;font-size:0.7rem;">● Activo</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Resumen y entregas pendientes</span>
+              </a>
+              <a href="index.html#aula" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Clase en Vivo</span><span style="color:#166534;font-size:0.7rem;">Hero</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Psicología · Dra. Lucía</span>
+              </a>
+              <div class="col-leaf-item" onclick="showToast('Gestor de tareas y entregas próximas.');">
+                <div class="col-leaf-head"><span>Próximas Entregas</span><span style="color:#64748B;font-size:0.7rem;">Fechas</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Ensayo de Historia y Cálculo</span>
+              </div>
+              <div class="col-leaf-item is-proto" onclick="showToast('Reanudación cuantitativa de clases.');">
+                <div class="col-leaf-head"><span>Continuar</span><span style="color:#166534;font-size:0.7rem;">42% / 34%</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Barras de avance en videos</span>
+              </div>
+              <div class="col-leaf-item" onclick="showToast('Test diagnóstico de fortalezas y necesidades.');">
+                <div class="col-leaf-head"><span>Test DUA</span><span style="color:#64748B;font-size:0.7rem;">Aptitudes</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Diagnóstico adaptativo</span>
+              </div>
+              <div class="col-leaf-item is-proto" onclick="showToast('Notificaciones con cálculo de atrasos.');">
+                <div class="col-leaf-head"><span>Alertas</span><span style="color:#166534;font-size:0.7rem;">Campana (4)</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Avisos institucionales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 3 -->
+          <div class="sitemap-card-col">
+            <div class="card-col-head"><span>🎓 3. Aula & Cursos</span><span class="leaf-tag" style="background:#0F172A;">5 Nodos</span></div>
+            <div class="card-col-body">
+              <a href="index.html#aula" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Aula Virtual</span><span style="color:#166534;font-size:0.7rem;">● Activo</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Reproductor accesible y CC</span>
+              </a>
+              <a href="index.html#aula" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Transcripción</span><span style="color:#166534;font-size:0.7rem;">DUA Sync</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Buscador y lectura por voz</span>
+              </a>
+              <div class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>5 Asignaturas</span><span style="color:#166534;font-size:0.7rem;">Catálogo</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Psicología, Historia, Cálculo, Alfa, Oral</span>
+              </div>
+              <div class="col-leaf-item" onclick="showToast('Descarga multimodal de diapositivas y podcasts.');">
+                <div class="col-leaf-head"><span>Materiales</span><span style="color:#64748B;font-size:0.7rem;">PDF / Audio</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Recursos accesibles</span>
+              </div>
+              <div class="col-leaf-item" onclick="showToast('Quizzes y cuestionarios de repaso.');">
+                <div class="col-leaf-head"><span>Evaluaciones</span><span style="color:#64748B;font-size:0.7rem;">Quizzes</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Evaluación formativa</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 4 -->
+          <div class="sitemap-card-col">
+            <div class="card-col-head"><span>💡 4. Soporte DUA</span><span class="leaf-tag" style="background:#0F172A;">4 Nodos</span></div>
+            <div class="card-col-body">
+              <a href="index.html#panel" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Barra Flotante</span><span style="color:#166534;font-size:0.7rem;">Global</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">16/18/20px, Contraste, Voz, Pausa</span>
+              </a>
+              <a href="index.html#dua-activo" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Estado DUA</span><span style="color:#166534;font-size:0.7rem;">● Activo</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Alto contraste y macrotipo</span>
+              </a>
+              <a href="index.html#panel" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Atajos de Teclado</span><span style="color:#166534;font-size:0.7rem;">Alt+A/V</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Navegación 100% por teclado</span>
+              </a>
+              <a href="index.html#dua-activo" target="_blank" class="col-leaf-item is-proto">
+                <div class="col-leaf-head"><span>Ratios Contraste</span><span style="color:#166534;font-size:0.7rem;">WCAG AAA</span></div>
+                <span style="font-size:0.7rem;color:#64748B;">Medición matemática en vivo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="sitemap-footer">
+      <div>AccesoEdu · Arquitectura de Navegación Interactiva · Cumple con estándares WCAG 2.1 AA/AAA y DUA.</div>
+      <div style="font-family:var(--font-mono);font-size:0.7rem;color:#94A3B8;">Diseñado a escala Viewport (100vh)</div>
+    </footer>
+  </div>
+
+  <!-- TOAST DE NOTIFICACIÓN ACCESIBLE -->
+  <div class="toast-box" id="sitemap-toast" role="status" aria-live="polite">
+    <span id="toast-msg">Mensaje informativo</span>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var btnFlow = document.getElementById('btn-flow');
+    var btnGrid = document.getElementById('btn-grid');
+    var flowView = document.getElementById('flow-view');
+    var gridView = document.getElementById('grid-view');
+    var toast = document.getElementById('sitemap-toast');
+    var toastMsg = document.getElementById('toast-msg');
+    var toastTimer = null;
+
+    window.showToast = function(msg){
+      if(!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
+      toast.style.display = 'flex';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toast.style.display = 'none';
+      }, 3500);
+    };
+
+    function switchView(mode){
+      if(mode === 'flow'){
+        btnFlow.classList.add('is-active');
+        btnGrid.classList.remove('is-active');
+        flowView.hidden = false;
+        gridView.hidden = true;
+      } else {
+        btnGrid.classList.add('is-active');
+        btnFlow.classList.remove('is-active');
+        flowView.hidden = true;
+        gridView.hidden = false;
+      }
+    }
+
+    function alignBusBar(){
+      var row = document.querySelector('.flow-branches-row');
+      var bus = document.querySelector('.flow-bus-bar');
+      var branches = document.querySelectorAll('.flow-branch');
+      if(!row || !bus || branches.length < 2) return;
+      var first = branches[0];
+      var last = branches[branches.length - 1];
+      var rowRect = row.getBoundingClientRect();
+      var firstRect = first.getBoundingClientRect();
+      var lastRect = last.getBoundingClientRect();
+      var leftOffset = (firstRect.left + firstRect.width / 2) - rowRect.left;
+      var rightOffset = rowRect.right - (lastRect.left + lastRect.width / 2);
+      bus.style.left = Math.max(0, leftOffset) + 'px';
+      bus.style.right = Math.max(0, rightOffset) + 'px';
+    }
+
+    btnFlow.addEventListener('click', function(){ 
+      switchView('flow'); 
+      setTimeout(alignBusBar, 20);
+    });
+    btnGrid.addEventListener('click', function(){ switchView('grid'); });
+    window.addEventListener('load', alignBusBar);
+    window.addEventListener('resize', alignBusBar);
+  })();
+  </script>
+</body>
+</html>
