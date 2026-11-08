@@ -756,17 +756,22 @@
     }
     .status-progress {
       display: inline-flex;
+      align-items: flex-end;
       gap: 2px;
+      width: .85rem;
+      height: .85rem;
       color: var(--priority-color, #D97706);
     }
     .status-progress i {
-      display: inline-block;
-      width: 4px;
-      height: 10px;
-      border-radius: 1px;
+      display: block;
+      width: 3px;
+      border-radius: 2px;
       background: currentColor;
       opacity: .25;
     }
+    .status-progress i:nth-child(1) { height: 35%; }
+    .status-progress i:nth-child(2) { height: 65%; }
+    .status-progress i:nth-child(3) { height: 100%; }
     .priority-indicator.priority-alta { --priority-color: #DC2626; }
     .priority-indicator.priority-alta .status-progress i { opacity: 1; }
     .priority-indicator.priority-media { --priority-color: #D97706; }
@@ -791,7 +796,13 @@
     .c-tags {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 0.4rem;
+    }
+    :root:not([data-contrast="alto"]) .c-tags .chip.neutral {
+      background: #FFFFFF !important;
+      color: var(--fg) !important;
+      border: 1px solid transparent !important;
     }
 
     /* -------------------------------------------------------------
@@ -1542,7 +1553,7 @@
         </p>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-4">
         <div class="card course" style="--media-start:#6C63D9; --media-end:#8B82F1;">
           <div class="course-media" role="img" aria-label="Portada de Introducción a la Psicología">
             <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-b round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-b outline" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-c round-right" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span class="tone-a round-bottom" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span><span class="tone-c circle" style="--cover-a:#6C63D9;--cover-b:#8B82F1"></span><span></span></div>
@@ -1555,25 +1566,6 @@
             <div class="c-tags">
               <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
               <span class="chip neutral priority-indicator priority-alta" aria-label="Prioridad Alta"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Alta</span>
-            </div>
-            <div style="margin-top:auto;">
-              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card course" style="--media-start:#E77A47; --media-end:#F3B05B;">
-          <div class="course-media" role="img" aria-label="Portada de Historia de México Contemporáneo">
-            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-b round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-b outline" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-c round-right" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span class="tone-a round-bottom" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span><span class="tone-c circle" style="--cover-a:#E77A47;--cover-b:#F3B05B"></span><span></span></div>
-          </div>
-          <div class="course-body">
-            <div>
-              <h3>Historia de México Contemporáneo</h3>
-              <p>Mtro. Andrés Villalobos Cruz · Humanidades</p>
-            </div>
-            <div class="c-tags">
-              <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
-              <span class="chip neutral priority-indicator priority-media" aria-label="Prioridad Media"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Media</span>
             </div>
             <div style="margin-top:auto;">
               <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
@@ -1611,25 +1603,6 @@
             </div>
             <div class="c-tags">
               <span class="chip neutral status-chip status-completado"><span class="status-donut" aria-hidden="true"></span>Completado</span>
-              <span class="chip neutral priority-indicator priority-baja" aria-label="Prioridad Baja"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Baja</span>
-            </div>
-            <div style="margin-top:auto;">
-              <a href="index.html#aula" class="btn btn-primary" style="width:100%;text-decoration:none;text-align:center;">Ir a la asignatura</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card course" style="--media-start:#C05BA5; --media-end:#EB8BC5;">
-          <div class="course-media" role="img" aria-label="Portada de Alfabetización Digital">
-            <div class="course-art" aria-hidden="true"><span></span><span class="tone-b round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-b round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-c round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-a round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-b outline" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-c round-right" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-b outline round-left" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span class="tone-a round-bottom" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span><span class="tone-c circle" style="--cover-a:#C05BA5;--cover-b:#EB8BC5"></span><span></span></div>
-          </div>
-          <div class="course-body">
-            <div>
-              <h3>Alfabetización Digital</h3>
-              <p>Lic. Esperanza Guzmán Cruz · Tecnología</p>
-            </div>
-            <div class="c-tags">
-              <span class="chip neutral status-chip status-progreso"><span class="status-donut" aria-hidden="true"></span>En progreso</span>
               <span class="chip neutral priority-indicator priority-baja" aria-label="Prioridad Baja"><span class="status-progress" aria-hidden="true"><i></i><i></i><i></i></span>Baja</span>
             </div>
             <div style="margin-top:auto;">
