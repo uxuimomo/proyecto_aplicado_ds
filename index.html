@@ -1542,17 +1542,34 @@
       margin-top: auto
     }
 
+    .learning-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .3rem .65rem;
+      border-radius: 6px;
+      background: #BEF264;
+      color: #14532D;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      line-height: 1.2
+    }
+
     .learning-card .learning-badge {
       position: absolute;
       top: 1rem;
       left: 1rem;
       z-index: 2;
-      padding: .25rem .55rem;
-      border-radius: 6px;
       background: #d9f99d;
-      color: #17201f;
-      font-size: .75rem;
-      font-weight: 700
+      color: #17201f
+    }
+
+    :root[data-contrast="alto"] .learning-badge {
+      background: #FACC15;
+      color: #000000;
+      border: 1px solid #FFFFFF
     }
 
     @media (max-width:900px) {
@@ -5529,8 +5546,7 @@
               <div class="live-chat-header">
                 <div>
                   <h2 id="h-live-chat">Chat en vivo</h2>
-                  <p class="muted" style="margin:0.2rem 0 0; font-size:0.8125rem;">Participación activa con docentes y
-                    compañeros</p>
+                  <p class="muted" style="margin:0.2rem 0 0; font-size:0.8125rem;">Participación activa con docentes y compañeros</p>
                 </div>
                 <span class="learning-badge" style="position:static;">En vivo · 34</span>
               </div>
@@ -5566,7 +5582,7 @@
           <p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p>
         </div>
       </footer>
-    </div>
+</div>
 
     <!-- PANTALLA 4 · Configuración DUA y Accesibilidad -->
     <div class="screen" data-screen="configuracion" id="screen-configuracion" hidden>
@@ -5721,18 +5737,11 @@
         </main>
       </div>
       <footer class="site-footer">
-        <div class="wrap"
-          style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-          <p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p><a href="uikit.html" target="_blank"
-            class="btn-link" style="color:var(--primary);">Ver UI Kit & Tokens</a>
-        </div>
-      </footer>
-      <footer class="site-footer">
         <div class="wrap">
           <p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p>
         </div>
       </footer>
-    </div>
+</div>
 
     <!-- PANTALLA 5 · Wireframes -->
     <div class="screen" data-screen="wireframes" id="screen-wireframes" hidden>
@@ -6558,18 +6567,11 @@
         </main>
       </div>
       <footer class="site-footer">
-        <div class="wrap"
-          style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-          <p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p><a href="uikit.html" target="_blank"
-            class="btn-link" style="color:var(--primary);">Ver UI Kit & Tokens</a>
-        </div>
-      </footer>
-      <footer class="site-footer">
         <div class="wrap">
           <p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p>
         </div>
       </footer>
-    </div>
+</div>
 
   </div>
 
