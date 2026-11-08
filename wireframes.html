@@ -1521,6 +1521,59 @@
                     </div>
                   </div>
 
+                  <!-- Tabla de contraste medido reubicada debajo de Preferencias DUA -->
+                  <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:1rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                      <div>
+                        <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
+                          [H2: Contraste medido (WCAG 2.1)]
+                        </h2>
+                        <p style="font-size:0.875rem;color:#64748B;margin:0.25rem 0 0;">
+                          Relaciones de contraste calculadas matemáticamente bajo la fórmula estándar W3C.
+                        </p>
+                      </div>
+                      <span class="wf-tag live">[ 100% Supera WCAG AAA ]</span>
+                    </div>
+
+                    <div style="border:1.5px solid var(--wf-border-light);border-radius:8px;overflow:hidden;">
+                      <table style="width:100%;border-collapse:collapse;font-size:0.875rem;text-align:left;">
+                        <thead style="background:#F8FAFC;border-bottom:1.5px solid var(--wf-border-light);">
+                          <tr>
+                            <th style="padding:0.65rem 0.85rem;">Combinación</th>
+                            <th style="padding:0.65rem 0.85rem;">Muestra</th>
+                            <th style="padding:0.65rem 0.85rem;">Relación</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:0.65rem 0.85rem;">Texto sobre fondo oscuro</td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#fff;border:0;font-weight:700;">Aa</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>21,0:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                          </tr>
+                          <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:0.65rem 0.85rem;">Acento alto contraste sobre negro</td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#FFF;border:0;font-weight:700;">Aa</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>14,2:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                          </tr>
+                          <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:0.65rem 0.85rem;">Texto sobre botón primario</td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#334155;color:#fff;border:0;font-weight:700;">Aa</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>7,4:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                          </tr>
+                          <tr>
+                            <td style="padding:0.65rem 0.85rem;">Texto estándar sobre fondo</td>
+                            <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#fff;color:#0F172A;border:1px solid #CBD5E1;font-weight:700;">Aa</span></td>
+                            <td style="padding:0.65rem 0.85rem;"><strong>16,8:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;">
+                      <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral normativo es 4,5:1 para texto normal y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan con holgura los criterios exigidos.
+                    </div>
+                  </div>
+
                   <!-- Muestra de lectura fluida -->
                   <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.75rem;">
                     <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
@@ -1546,51 +1599,24 @@
                   </div>
                 </div>
 
-                <!-- Columna Derecha: Tabla de contraste -->
+                <!-- Columna Derecha: Atajos y Principios DUA -->
                 <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:1rem;">
                   <h2 style="font-size:1.25rem;font-weight:700;color:#0F172A;margin:0;">
-                    [H2: Contraste medido (WCAG 2.1)]
+                    [H2: Atajos de teclado DUA]
                   </h2>
                   <p style="font-size:0.875rem;color:#64748B;margin:0;">
-                    Relaciones de contraste calculadas matemáticamente bajo la fórmula estándar W3C.
+                    Navegación accesible mediante atajos rápidos sin uso de ratón.
                   </p>
 
-                  <div style="border:1.5px solid var(--wf-border-light);border-radius:8px;overflow:hidden;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.875rem;text-align:left;">
-                      <thead style="background:#F8FAFC;border-bottom:1.5px solid var(--wf-border-light);">
-                        <tr>
-                          <th style="padding:0.65rem 0.85rem;">Combinación</th>
-                          <th style="padding:0.65rem 0.85rem;">Muestra</th>
-                          <th style="padding:0.65rem 0.85rem;">Relación</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr style="border-bottom:1px solid #E2E8F0;">
-                          <td style="padding:0.65rem 0.85rem;">Texto sobre fondo oscuro</td>
-                          <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#fff;border:0;font-weight:700;">Aa</span></td>
-                          <td style="padding:0.65rem 0.85rem;"><strong>21,0:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #E2E8F0;">
-                          <td style="padding:0.65rem 0.85rem;">Acento alto contraste sobre negro</td>
-                          <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#000;color:#FFF;border:0;font-weight:700;">Aa</span></td>
-                          <td style="padding:0.65rem 0.85rem;"><strong>14,2:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #E2E8F0;">
-                          <td style="padding:0.65rem 0.85rem;">Texto sobre botón primario</td>
-                          <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#334155;color:#fff;border:0;font-weight:700;">Aa</span></td>
-                          <td style="padding:0.65rem 0.85rem;"><strong>7,4:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                        </tr>
-                        <tr>
-                          <td style="padding:0.65rem 0.85rem;">Texto estándar sobre fondo</td>
-                          <td style="padding:0.65rem 0.85rem;"><span class="wf-box" style="padding:0.2rem 0.5rem;background:#fff;color:#0F172A;border:1px solid #CBD5E1;font-weight:700;">Aa</span></td>
-                          <td style="padding:0.65rem 0.85rem;"><strong>16,8:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div style="display:grid;gap:0.5rem;font-size:0.875rem;">
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + 1/2/3]</span><span>Texto 16 / 18 / 20 px</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + A]</span><span>Alto Contraste AAA</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #E2E8F0;"><span>[Alt + V]</span><span>Lector de voz</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;"><span>[Tab]</span><span>Navegación secuencial</span></div>
                   </div>
 
-                  <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;">
-                    <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral normativo es 4,5:1 para texto normal y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan con holgura los criterios exigidos.
+                  <div class="wf-box" style="font-size:0.8125rem;color:#475569;background:#F8FAFC;margin-top:0.5rem;">
+                    <strong>[💡 Principio DUA: Representación]</strong> Múltiples formas de representación gráfica y textual para eliminar barreras cognitivas y sensoriales.
                   </div>
                 </div>
               </div>

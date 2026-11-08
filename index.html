@@ -438,21 +438,11 @@ th{font-size:.9375rem;color:var(--muted)}
 .stack{display:flex;flex-direction:column;gap:1.75rem}
 .stack>section{display:flex;flex-direction:column;gap:.9rem}
 
-/* Aviso y foco de lectura (Notificaciones flotantes modernas) */
-.toast-wrap{position:fixed;left:0;right:0;top:calc(var(--dua-bar-h, 40px) + env(safe-area-inset-top,0px) + .85rem);z-index:200;pointer-events:none;display:flex;justify-content:center;padding:0 1rem}
-.toast-wrap .wrap{max-width:none;padding:0;width:auto}
-.toast{pointer-events:auto;display:inline-flex;align-items:center;gap:.85rem;min-width:min(22rem,calc(100vw - 2rem));max-width:38rem;margin-inline:auto;padding:.65rem 1rem .65rem .85rem;background:#FFFFFF;color:#0F172A;border:1.5px solid #CBD5E1;border-radius:12px;box-shadow:0 16px 36px -4px rgba(15,23,42,.18), 0 4px 12px -2px rgba(15,23,42,.08);transition:all .2s ease;animation:toastSlideDown .22s cubic-bezier(0.16,1,0.3,1)}
-.toast[hidden]{display:none !important}
-.toast-icon-wrap{width:28px;height:28px;border-radius:50%;background:#EFF6FF;color:#2563EB;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.toast p{margin:0;font-size:.875rem;font-weight:600;color:#1E293B;line-height:1.4;flex:1}
-.toast .btn,#toast-close{display:inline-flex;align-items:center;justify-content:center;min-height:28px;min-width:28px;padding:.25rem .75rem;font-size:.75rem;font-weight:600;border-radius:6px;background:#F1F5F9;color:#334155;border:1px solid #CBD5E1;cursor:pointer;transition:all .15s ease}
-.toast .btn:hover,#toast-close:hover{background:#E2E8F0;color:#0F172A;border-color:#94A3B8}
-
-:root[data-contrast="alto"] .toast{background:#000000;color:#FFFFFF;border:2px solid #FACC15;box-shadow:none}
-:root[data-contrast="alto"] .toast-icon-wrap{background:#000;color:#FACC15;border:1px solid #FACC15}
-:root[data-contrast="alto"] .toast p{color:#FFFFFF}
-:root[data-contrast="alto"] .toast .btn,:root[data-contrast="alto"] #toast-close{background:#000;color:#FACC15;border-color:#FACC15}
-
+/* Aviso y foco de lectura */
+.toast-wrap{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + .75rem);z-index:70;pointer-events:none;padding-inline:max(1rem,env(safe-area-inset-left,0px));}
+.toast{pointer-events:auto;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;max-width:44rem;margin-inline:auto;padding:.75rem 1rem;background:var(--fg);color:var(--bg);border:3px solid var(--bg);outline:2px solid var(--fg);border-radius:8px}
+.toast p{flex:1 1 14rem;min-width:0}
+.toast .btn{background:transparent;color:var(--bg);border-color:var(--bg)}
 .tts-now{outline:4px dashed var(--accent-ink);outline-offset:6px;background:var(--accent-soft)}
 [data-tts]{scroll-margin-top:9rem;scroll-margin-bottom:5rem}
 
@@ -1176,6 +1166,25 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
                 </ul>
               </section>
 
+              <!-- Sección Contraste medido (WCAG 2.1) reubicada debajo de Preferencias DUA -->
+              <section aria-labelledby="h-ratio" class="card" style="padding:1.5rem; border-radius:var(--r); background:var(--bg); border:1px solid var(--line-soft);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+                  <div>
+                    <h2 id="h-ratio" style="margin:0; font-size:1.25rem;" data-tts>Contraste medido (WCAG 2.1)</h2>
+                    <p class="muted" style="margin:0.25rem 0 0; font-size:0.875rem;">Relación de contraste calculada matemáticamente en tiempo real bajo la fórmula estándar W3C.</p>
+                  </div>
+                  <span class="chip ok" style="font-size:0.75rem;"><i data-ic="check"></i>100% Supera WCAG AAA</span>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <caption>Relación de contraste de los colores principales</caption>
+                    <thead><tr><th scope="col">Combinación</th><th scope="col">Muestra</th><th scope="col">Relación</th></tr></thead>
+                    <tbody id="ratio-body"></tbody>
+                  </table>
+                </div>
+                <p class="note-small" style="margin-top:0.75rem;">El mínimo de WCAG AA es 4,5:1 para texto normal y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan el estándar AA y alcanzan AAA.</p>
+              </section>
+
               <section aria-labelledby="h-sample">
                 <h2 id="h-sample" data-tts>Muestra de lectura adaptada</h2>
                 <div class="card sample">
@@ -1197,25 +1206,19 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
               </div>
             </div>
 
-            <aside class="col-side" aria-labelledby="h-ratio">
-              <h2 id="h-ratio">Contraste medido</h2>
-              <div class="table-wrap">
-                <table>
-                  <caption>Relación de contraste de los colores principales</caption>
-                  <thead><tr><th scope="col">Combinación</th><th scope="col">Muestra</th><th scope="col">Relación</th></tr></thead>
-                  <tbody id="ratio-body"></tbody>
-                </table>
-              </div>
-              <p class="note-small">El mínimo de WCAG AA es 4,5:1 para texto normal y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan el estándar AA y alcanzan AAA.</p>
+            <aside class="col-side" aria-labelledby="h-side-keys">
+              <h2 id="h-side-keys" style="font-size:1.15rem; margin-top:0;">⌨️ Atajos de teclado DUA</h2>
+              <p class="muted" style="font-size:0.875rem; margin-top:0.25rem; line-height:1.45;">Accede a todas las funciones DUA y ajustes visuales rápidamente usando tu teclado sin necesidad de ratón.</p>
+              <dl class="keys" style="display:grid; gap:0.5rem; font-size:0.85rem; margin-top:0.75rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid var(--line-soft);"><dt><kbd>Alt</kbd> + <kbd>1/2/3</kbd></dt><dd>Texto 16 / 18 / 20 px</dd></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid var(--line-soft);"><dt><kbd>Alt</kbd> + <kbd>A</kbd></dt><dd>Alto Contraste AAA</dd></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid var(--line-soft);"><dt><kbd>Alt</kbd> + <kbd>V</kbd></dt><dd>Lector de voz</dd></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0;"><dt><kbd>Tab</kbd></dt><dd>Navegación secuencial</dd></div>
+              </dl>
 
-              <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--line-soft);">
-                <h3 style="font-size:1rem; margin-top:0;">⌨️ Atajos de teclado DUA</h3>
-                <dl class="keys" style="display:grid; gap:0.4rem; font-size:0.8125rem;">
-                  <div style="display:flex; justify-content:space-between;"><dt><kbd>Alt</kbd> + <kbd>1/2/3</kbd></dt><dd>Texto 16 / 18 / 20 px</dd></div>
-                  <div style="display:flex; justify-content:space-between;"><dt><kbd>Alt</kbd> + <kbd>A</kbd></dt><dd>Alto Contraste AAA</dd></div>
-                  <div style="display:flex; justify-content:space-between;"><dt><kbd>Alt</kbd> + <kbd>V</kbd></dt><dd>Lector de voz</dd></div>
-                  <div style="display:flex; justify-content:space-between;"><dt><kbd>Tab</kbd></dt><dd>Navegación secuencial</dd></div>
-                </dl>
+              <div style="margin-top:1.5rem; padding:1.15rem; border-radius:12px; background:var(--accent-soft); color:var(--accent-ink); font-size:0.875rem; line-height:1.5;">
+                <strong style="display:flex; align-items:center; gap:0.4rem;"><i data-ic="bulb"></i>Principio DUA</strong>
+                <p style="margin:0.4rem 0 0;">Múltiples formas de representación: la adaptación dinámica elimina barreras cognitivas y sensoriales para todo el alumnado.</p>
               </div>
             </aside>
           </div>
@@ -1789,6 +1792,55 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
                             </div>
                           </div>
 
+                          <!-- Tabla de contraste medido reubicada debajo de Preferencias DUA -->
+                          <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.75rem;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                              <div>
+                                <h3 style="font-size:1.15rem;font-weight:700;margin:0;">[H2: Contraste medido (WCAG 2.1)]</h3>
+                                <p style="font-size:0.8125rem;color:#64748b;margin:0.2rem 0 0;">Mediciones automáticas de relación de contraste para texto e interactivos.</p>
+                              </div>
+                              <span class="wf-tag live">[ 100% Supera WCAG AAA ]</span>
+                            </div>
+
+                            <div style="border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;">
+                              <table style="width:100%;border-collapse:collapse;font-size:0.8125rem;text-align:left;">
+                                <thead style="background:#f8fafc;border-bottom:1px solid #cbd5e1;">
+                                  <tr>
+                                    <th style="padding:0.5rem 0.65rem;">Combinación</th>
+                                    <th style="padding:0.5rem 0.65rem;">Muestra</th>
+                                    <th style="padding:0.5rem 0.65rem;">Relación</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr style="border-bottom:1px solid #e2e8f0;">
+                                    <td style="padding:0.5rem 0.65rem;">Texto sobre fondo oscuro</td>
+                                    <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#000;color:#fff;border:0;">Aa</span></td>
+                                    <td style="padding:0.5rem 0.65rem;"><strong>21,0:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                                  </tr>
+                                  <tr style="border-bottom:1px solid #e2e8f0;">
+                                    <td style="padding:0.5rem 0.65rem;">Acento alto contraste sobre negro</td>
+                                    <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#000;color:#fff;border:0;">Aa</span></td>
+                                    <td style="padding:0.5rem 0.65rem;"><strong>14,2:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                                  </tr>
+                                  <tr style="border-bottom:1px solid #e2e8f0;">
+                                    <td style="padding:0.5rem 0.65rem;">Texto sobre botón primario</td>
+                                    <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#334155;color:#fff;border:0;">Aa</span></td>
+                                    <td style="padding:0.5rem 0.65rem;"><strong>7,4:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding:0.5rem 0.65rem;">Texto estándar sobre fondo</td>
+                                    <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#fff;color:#0f172a;border:1px solid #cbd5e1;">Aa</span></td>
+                                    <td style="padding:0.5rem 0.65rem;"><strong>16,8:1</strong> · <span class="wf-tag live">Cumple AAA</span></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+
+                            <div class="wf-box" style="font-size:0.75rem;color:#475569;background:#f8fafc;">
+                              <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral mínimo requerido es de 4,5:1 para texto estándar y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan el estándar AA y alcanzan AAA.
+                            </div>
+                          </div>
+
                           <!-- Muestra de lectura fluida -->
                           <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.5rem;">
                             <h3 style="font-size:1.1rem;font-weight:700;margin:0;">[H2: Muestra de lectura fluida]</h3>
@@ -1810,47 +1862,20 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
                           </div>
                         </div>
 
-                        <!-- Columna Derecha: Tabla de contraste -->
+                        <!-- Columna Derecha: Atajos y Principios DUA -->
                         <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;">
-                          <h3 style="font-size:1.15rem;font-weight:700;margin:0;">[H2: Contraste medido (WCAG 2.1)]</h3>
-                          <p style="font-size:0.8125rem;color:#64748b;margin:0;">Mediciones automáticas de relación de contraste para texto e interactivos.</p>
+                          <h3 style="font-size:1.15rem;font-weight:700;margin:0;">[H2: Atajos de teclado DUA]</h3>
+                          <p style="font-size:0.8125rem;color:#64748b;margin:0;">Navegación accesible mediante atajos rápidos sin uso de ratón.</p>
 
-                          <div style="border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;">
-                            <table style="width:100%;border-collapse:collapse;font-size:0.8125rem;text-align:left;">
-                              <thead style="background:#f8fafc;border-bottom:1px solid #cbd5e1;">
-                                <tr>
-                                  <th style="padding:0.5rem 0.65rem;">Combinación</th>
-                                  <th style="padding:0.5rem 0.65rem;">Muestra</th>
-                                  <th style="padding:0.5rem 0.65rem;">Relación</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr style="border-bottom:1px solid #e2e8f0;">
-                                  <td style="padding:0.5rem 0.65rem;">Texto sobre fondo oscuro</td>
-                                  <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#000;color:#fff;border:0;">Aa</span></td>
-                                  <td style="padding:0.5rem 0.65rem;"><strong>21,0:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                                </tr>
-                                <tr style="border-bottom:1px solid #e2e8f0;">
-                                  <td style="padding:0.5rem 0.65rem;">Acento alto contraste sobre negro</td>
-                                  <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#000;color:#fff;border:0;">Aa</span></td>
-                                  <td style="padding:0.5rem 0.65rem;"><strong>14,2:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                                </tr>
-                                <tr style="border-bottom:1px solid #e2e8f0;">
-                                  <td style="padding:0.5rem 0.65rem;">Texto sobre botón primario</td>
-                                  <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#334155;color:#fff;border:0;">Aa</span></td>
-                                  <td style="padding:0.5rem 0.65rem;"><strong>7,4:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                                </tr>
-                                <tr>
-                                  <td style="padding:0.5rem 0.65rem;">Texto estándar sobre fondo</td>
-                                  <td style="padding:0.5rem 0.65rem;"><span class="wf-box" style="padding:0.15rem 0.4rem;background:#fff;color:#0f172a;border:1px solid #cbd5e1;">Aa</span></td>
-                                  <td style="padding:0.5rem 0.65rem;"><strong>16,8:1</strong><br><span class="wf-tag live">Cumple AAA</span></td>
-                                </tr>
-                              </tbody>
-                            </table>
+                          <div style="display:grid;gap:0.4rem;font-size:0.8125rem;">
+                            <div style="display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid #e2e8f0;"><span>[Alt + 1/2/3]</span><span>Texto 16 / 18 / 20 px</span></div>
+                            <div style="display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid #e2e8f0;"><span>[Alt + A]</span><span>Alto Contraste AAA</span></div>
+                            <div style="display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid #e2e8f0;"><span>[Alt + V]</span><span>Lector de voz</span></div>
+                            <div style="display:flex;justify-content:space-between;padding:0.35rem 0;"><span>[Tab]</span><span>Navegación secuencial</span></div>
                           </div>
 
-                          <div class="wf-box" style="font-size:0.75rem;color:#475569;background:#f8fafc;">
-                            <strong>[ℹ Criterio WCAG AA / AAA]</strong> El umbral mínimo requerido es de 4,5:1 para texto estándar y 3:1 para componentes de interfaz. Todas las combinaciones de AccesoEdu superan el estándar AA y alcanzan AAA.
+                          <div class="wf-box" style="font-size:0.75rem;color:#475569;background:#f8fafc;margin-top:0.5rem;">
+                            <strong>[💡 Principio DUA: Representación]</strong> Múltiples formas de representación gráfica y textual para eliminar barreras cognitivas y sensoriales.
                           </div>
                         </div>
                       </div>
@@ -1932,14 +1957,12 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
   </div>
 </template>
 
-<div class="toast-wrap" id="toast-wrap" role="status" aria-live="polite">
+<div class="toast-wrap" id="toast-wrap" role="status">
   <div class="wrap">
     <div class="toast" id="toast" hidden>
-      <div class="toast-icon-wrap" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      </div>
+      <i data-ic="info"></i>
       <p id="toast-msg"></p>
-      <button type="button" class="btn" id="toast-close" aria-label="Cerrar aviso">✕ Cerrar</button>
+      <button type="button" class="btn" id="toast-close">Cerrar aviso</button>
     </div>
   </div>
 </div>
@@ -2141,21 +2164,9 @@ function stopTTS(silent){
 }
 
 /* ---------- Aviso ---------- */
-var toastTimer=null;
-function toast(msg){
-  var el=$('#toast');
-  if(!el)return;
-  $('#toast-msg').textContent=msg;
-  el.hidden=false;
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(closeToast, 4500);
-}
-function closeToast(){
-  clearTimeout(toastTimer);
-  var el=$('#toast');
-  if(el)el.hidden=true;
-}
-if($('#toast-close'))$('#toast-close').addEventListener('click',closeToast);
+function toast(msg){$('#toast-msg').textContent=msg;$('#toast').hidden=false}
+function closeToast(){$('#toast').hidden=true}
+$('#toast-close').addEventListener('click',closeToast);
 document.addEventListener('submit',function(e){
   var form=e.target.closest('[data-search-form]');
   if(!form)return;
