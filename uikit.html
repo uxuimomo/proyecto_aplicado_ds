@@ -2091,8 +2091,8 @@
         ]
       },
       saved: {
-        title: 'Clase grabada · Mtro. Andrés Villalobos Cruz',
-        video: 'Assets/Class_video/6985338-uhd_3840_2160_25fps.mp4',
+        title: 'Clase grabada · Mtra. Andrea Villalobos Cruz',
+        video: '',
         poster: 'Assets/Card_Class/historia.avif',
         dur: 180,
         lines: [
@@ -2121,7 +2121,11 @@
 
       demoVideo.pause();
       demoPlayIcon.innerHTML = '<path d="M7 4.5v15l12.5-7.5z"/>';
-      demoVideo.src = lesson.video;
+      if (lesson.video) {
+        demoVideo.src = lesson.video;
+      } else {
+        demoVideo.removeAttribute('src');
+      }
       demoVideo.poster = lesson.poster;
       demoVideo.currentTime = 0;
       demoVideo.load();
