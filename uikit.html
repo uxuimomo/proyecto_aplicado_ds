@@ -926,6 +926,27 @@
     }
 
     /* -------------------------------------------------------------
+       ESPECIFICACIÓN TIPOGRÁFICA & TABLA DE JERARQUÍA
+    ------------------------------------------------------------- */
+    .type-scale-table th,
+    .type-scale-table td {
+      vertical-align: middle;
+    }
+    :root[data-contrast="alto"] .type-scale-table th,
+    :root[data-contrast="alto"] .type-scale-table td {
+      border-color: #FFFFFF !important;
+      color: #FFFFFF !important;
+    }
+    :root[data-contrast="alto"] .type-scale-table small {
+      color: #FACC15 !important;
+    }
+    :root[data-contrast="alto"] .type-scale-table code {
+      background: #000000 !important;
+      color: #FACC15 !important;
+      border: 1px solid #FFFFFF !important;
+    }
+
+    /* -------------------------------------------------------------
        COMPONENTE: REPRODUCTOR MULTIMEDIA & STAGE
     ------------------------------------------------------------- */
     .player-wrap {
@@ -1240,14 +1261,15 @@
   <!-- NAVEGACIÓN RÁPIDA POR COMPONENTES -->
   <nav class="uikit-nav" aria-label="Navegación del UI Kit">
     <div class="uikit-nav-inner">
-      <a href="#tokens" class="nav-pill">🎨 Tokens & Variables</a>
-      <a href="#buttons" class="nav-pill">🔘 Botones & Acciones</a>
-      <a href="#chips" class="nav-pill">🏷️ Chips & Badges</a>
-      <a href="#inputs" class="nav-pill">📝 Formularios & Sliders</a>
-      <a href="#cards-section" class="nav-pill">🗂️ Grid de Cards</a>
-      <a href="#video-section" class="nav-pill">🎬 Reproductor de Video</a>
-      <a href="#banner-section" class="nav-pill">⭐ Banner de Evaluación</a>
-      <a href="#icons-section" class="nav-pill">✨ Iconografía SVG</a>
+      <a href="#tokens" class="nav-pill">🎨 1. Tokens & Color</a>
+      <a href="#typography" class="nav-pill">🔤 2. Tipografía & Jerarquía</a>
+      <a href="#buttons" class="nav-pill">🔘 3. Botones & Acciones</a>
+      <a href="#chips" class="nav-pill">🏷️ 4. Chips & Badges</a>
+      <a href="#inputs" class="nav-pill">📝 5. Formularios & Inputs</a>
+      <a href="#cards-section" class="nav-pill">🗂️ 6. Grid de Cards</a>
+      <a href="#video-section" class="nav-pill">🎬 7. Video & Reproductor</a>
+      <a href="#banner-section" class="nav-pill">⭐ 8. Banners</a>
+      <a href="#icons-section" class="nav-pill">✨ 9. Iconografía SVG</a>
     </div>
   </nav>
 
@@ -1422,11 +1444,223 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 2: BOTONES Y ACCIONES -->
+    <!-- SECCIÓN 2: TIPOGRAFÍA Y JERARQUÍA VISUAL -->
+    <section id="typography" style="margin-bottom: 4rem;">
+      <div class="section-head">
+        <div>
+          <h2>2. Tipografía & Jerarquía Visual</h2>
+          <p>Familia tipográfica oficial, escala modular de tamaños, pesos y line-heights optimizados para accesibilidad cognitiva y lectura continua bajo principios DUA.</p>
+        </div>
+      </div>
+
+      <!-- Familias Tipográficas Oficiales -->
+      <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 1.5rem; gap: 1.25rem;">
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Fuente Principal de Interfaz</span>
+            <span class="demo-card-badge">--font-body</span>
+          </div>
+          <div class="demo-card-body">
+            <div style="font-family: var(--font-body); font-size: 1.75rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
+              Poppins / System Sans
+            </div>
+            <p style="font-size: 0.875rem; color: var(--muted); margin: 0; line-height: 1.5;">
+              <code>"Poppins", "Segoe UI", system-ui, -apple-system, sans-serif</code>
+            </p>
+            <div style="padding: 0.75rem; background: var(--surface-2); border-radius: 8px; font-size: 0.875rem; line-height: 1.5;">
+              Tipografía geométrica con curvas limpias y alto x-height, garantizando óptima discriminación de caracteres para estudiantes con dislexia o debilidad visual leve.
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8125rem;">
+              <span><strong>Regular:</strong> 400</span>
+              <span><strong>Medium:</strong> 500</span>
+              <span><strong>Semibold:</strong> 600</span>
+              <span><strong>Bold:</strong> 700</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-card-head">
+            <span class="demo-card-title">Fuente Técnica & Monoespaciada</span>
+            <span class="demo-card-badge">--font-data</span>
+          </div>
+          <div class="demo-card-body">
+            <div style="font-family: var(--font-data); font-size: 1.75rem; font-weight: 700; color: var(--fg); line-height: 1.2;">
+              0123456789 Monospace
+            </div>
+            <p style="font-size: 0.875rem; color: var(--muted); margin: 0; line-height: 1.5;">
+              <code>ui-monospace, "SF Mono", Menlo, Consolas, monospace</code>
+            </p>
+            <div style="padding: 0.75rem; background: var(--surface-2); border-radius: 8px; font-size: 0.875rem; line-height: 1.5;">
+              Utilizada en contadores de progreso, códigos de estado, timestamps de videos (ej. <code>1:15 de 3:00</code>), tokens de configuración y atajos de teclado accesibles (<kbd>Alt</kbd> + <kbd>A</kbd>).
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8125rem;">
+              <span><strong>Alineación tabular</strong></span>
+              <span><strong>Cero unívoco</strong></span>
+              <span><strong>Ancho proporcional fijo</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Escala y Jerarquía Tipográfica Implementada -->
+      <div class="demo-card" style="margin-bottom: 1.5rem;">
+        <div class="demo-card-head">
+          <span class="demo-card-title">Escala Modular & Muestra de Jerarquía</span>
+          <span class="demo-card-badge">Escala Reactiva DUA (16px / 18px / 20px)</span>
+        </div>
+        <div class="demo-card-body" style="overflow-x: auto;">
+          <table class="type-scale-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--line); color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <th style="padding: 0.75rem 0.5rem;">Nivel / Elemento</th>
+                <th style="padding: 0.75rem 0.5rem;">Token / Tamaño</th>
+                <th style="padding: 0.75rem 0.5rem;">Peso / Line-Height</th>
+                <th style="padding: 0.75rem 0.5rem; min-width: 280px;">Muestra Visual en Pantalla</th>
+                <th style="padding: 0.75rem 0.5rem;">Caso de Uso Principal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- H1 Hero -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Heading 1 (Hero)</strong><br><small style="color:var(--muted)">h1, .page-head h1</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>2.25rem</code> (36px)<br><small style="color:var(--muted)">1.875rem - 2.25rem</small></td>
+                <td style="padding: 1rem 0.5rem;">Bold 700<br><small style="color:var(--muted)">line-height: 1.25</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 2.25rem; font-weight: 700; line-height: 1.25; color: var(--fg); display: block;">Hola, Mariana</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Título principal de página en panel, aula virtual y login.</td>
+              </tr>
+
+              <!-- H2 Section -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Heading 2 (Sección)</strong><br><small style="color:var(--muted)">h2, .resume-heading h2</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>1.5rem</code> (24px)<br><small style="color:var(--muted)">1.35rem - 1.5rem</small></td>
+                <td style="padding: 1rem 0.5rem;">Bold 700<br><small style="color:var(--muted)">line-height: 1.3</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 1.5rem; font-weight: 700; line-height: 1.3; color: var(--fg); display: block;">Continuar aprendiendo</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Encabezados de bloques temáticos y secciones del dashboard.</td>
+              </tr>
+
+              <!-- H3 Card Title -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Heading 3 (Card)</strong><br><small style="color:var(--muted)">h3, .c-top h3</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>1.125rem</code> (18px)<br><small style="color:var(--muted)">18px estándar</small></td>
+                <td style="padding: 1rem 0.5rem;">Bold 700<br><small style="color:var(--muted)">line-height: 1.35</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 1.125rem; font-weight: 700; line-height: 1.35; color: var(--fg); display: block;">Comunicación Oral y Escrita</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Títulos de tarjetas de asignaturas, actividades y lecciones.</td>
+              </tr>
+
+              <!-- H4 Subsection -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Heading 4 (Subsección)</strong><br><small style="color:var(--muted)">h4, .unit-title</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>1rem</code> (16px)<br><small style="color:var(--muted)">16px base</small></td>
+                <td style="padding: 1rem 0.5rem;">Bold 700 / Semibold 600<br><small style="color:var(--muted)">line-height: 1.4</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 1rem; font-weight: 700; line-height: 1.4; color: var(--fg); display: block;">Unidad 2: La Reconstrucción Institucional</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Unidades temáticas en temario modular y subtítulos de widgets.</td>
+              </tr>
+
+              <!-- Lead Paragraph -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Lead Paragraph</strong><br><small style="color:var(--muted)">p.lead, #panel-lead</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>1.0625rem</code> (17px)<br><small style="color:var(--muted)">17px - 18px</small></td>
+                <td style="padding: 1rem 0.5rem;">Regular 400<br><small style="color:var(--muted)">line-height: 1.45</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 1.0625rem; line-height: 1.45; color: var(--muted); display: block;">Tienes 3 entregas esta semana y 1 tarea pendiente de revisión.</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Bajadas de título de página con resumen informativo inmediato.</td>
+              </tr>
+
+              <!-- Body Regular -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Body Text (Lectura)</strong><br><small style="color:var(--muted)">p, body, .chat-text</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>1rem</code> (16px)<br><small style="color:var(--muted)">16px base</small></td>
+                <td style="padding: 1rem 0.5rem;">Regular 400<br><small style="color:var(--muted)">line-height: 1.5</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 1rem; line-height: 1.5; color: var(--fg); display: block;">La codificación dual combina canales verbales y visuales para reforzar la memoria de trabajo.</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Párrafos de contenido, transcripciones, descripciones y mensajes.</td>
+              </tr>
+
+              <!-- Small & Metadata -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Small / Metadata</strong><br><small style="color:var(--muted)">.muted, small, .tline .tc</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>0.875rem - 0.9375rem</code> (14-15px)<br><small style="color:var(--muted)">Escalado DUA</small></td>
+                <td style="padding: 1rem 0.5rem;">Regular 400 / Med 500<br><small style="color:var(--muted)">line-height: 1.4</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <span style="font-size: 0.875rem; color: var(--muted); display: block;">Mtra. Andrea Villalobos Cruz · Humanidades · 3 min 00 s</span>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Nombre de docentes, duraciones, migas de pan y metadatos secundarios.</td>
+              </tr>
+
+              <!-- Micro & Badges -->
+              <tr style="border-bottom: 1px solid var(--line-soft);">
+                <td style="padding: 1rem 0.5rem;"><strong>Micro / Badges</strong><br><small style="color:var(--muted)">.learning-badge, .chip</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>0.75rem</code> (12px)<br><small style="color:var(--muted)">12px estricto</small></td>
+                <td style="padding: 1rem 0.5rem;">Bold 700 Uppercase<br><small style="color:var(--muted)">letter-spacing: .05em</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <span class="learning-badge" style="font-size:0.75rem;">En vivo · 34</span>
+                    <span class="chip neutral" style="font-size:0.75rem;">En progreso</span>
+                  </div>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Pills de estado, indicadores de prioridad y etiquetas de curso.</td>
+              </tr>
+
+              <!-- Monospace Code / Key -->
+              <tr>
+                <td style="padding: 1rem 0.5rem;"><strong>Monospace / Data</strong><br><small style="color:var(--muted)">kbd, code, .kbd-shortcut</small></td>
+                <td style="padding: 1rem 0.5rem;"><code>0.8125rem - 0.875rem</code> (13px)<br><small style="color:var(--muted)">--font-data</small></td>
+                <td style="padding: 1rem 0.5rem;">Medium 500 Monospace<br><small style="color:var(--muted)">line-height: 1.2</small></td>
+                <td style="padding: 1rem 0.5rem;">
+                  <div style="display:flex; gap:0.4rem; align-items:center;">
+                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-data); font-size:0.8rem; border:1px solid #334155;">Alt</kbd> + 
+                    <kbd style="padding:0.15rem 0.45rem; background:#1e293b; color:#fff; border-radius:4px; font-family:var(--font-data); font-size:0.8rem; border:1px solid #334155;">A</kbd>
+                    <code style="background:var(--surface-2); padding:0.15rem 0.45rem; border-radius:4px; font-family:var(--font-data); font-size:0.8rem;">0:46 / 2:15</code>
+                  </div>
+                </td>
+                <td style="padding: 1rem 0.5rem; font-size: 0.8125rem; color: var(--muted);">Atajos de teclado, marcas temporales de video y valores de tokens.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Principios de Accesibilidad Tipográfica DUA -->
+      <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+        <div style="background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); padding:1.1rem;">
+          <h4 style="margin:0 0 0.35rem; font-size:0.95rem; font-weight:700; color:var(--fg);">📐 Jerarquía Estricta</h4>
+          <p style="margin:0; font-size:0.8125rem; color:var(--muted); line-height:1.45;">
+            Orden lineal <code>h1</code> → <code>h2</code> → <code>h3</code> sin saltos de nivel. Los lectores de pantalla navegan fluidamente la arquitectura del documento sin ambigüedades.
+          </p>
+        </div>
+
+        <div style="background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); padding:1.1rem;">
+          <h4 style="margin:0 0 0.35rem; font-size:0.95rem; font-weight:700; color:var(--fg);">📏 Escala Adaptativa DUA</h4>
+          <p style="margin:0; font-size:0.8125rem; color:var(--muted); line-height:1.45;">
+            Todas las medidas utilizan unidades relativas <code>rem</code> basadas en el <code>font-size</code> raíz. Al seleccionar 18px o 20px, todo el ecosistema escala proporcionalmente.
+          </p>
+        </div>
+
+        <div style="background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--r); padding:1.1rem;">
+          <h4 style="margin:0 0 0.35rem; font-size:0.95rem; font-weight:700; color:var(--fg);">👁️ Ratio de Contraste WCAG AAA</h4>
+          <p style="margin:0; font-size:0.8125rem; color:var(--muted); line-height:1.45;">
+            Texto primario <code>#0F172A</code> sobre blanco (ratio 15.6:1) y texto secundario <code>#475569</code> (ratio 7.2:1) superan holgadamente el criterio de accesibilidad AAA (7:1).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: BOTONES Y ACCIONES -->
     <section id="buttons" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>2. Botones & Acciones</h2>
+          <h2>3. Botones & Acciones</h2>
           <p>Jerarquía de interacción: Primario, Secundario, Terciario, Enlace y Estados interactivos.</p>
         </div>
       </div>
@@ -1508,7 +1742,7 @@
     <section id="chips" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>3. Chips, Badges & Etiquetas</h2>
+          <h2>4. Chips, Badges & Etiquetas</h2>
           <p>Micro-componentes para representar estado académico, prioridad y badges de transmisión.</p>
         </div>
       </div>
@@ -1604,7 +1838,7 @@
     <section id="inputs" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>4. Formularios, Búsqueda & Sliders DUA</h2>
+          <h2>5. Formularios, Búsqueda & Sliders DUA</h2>
           <p>Controles accesibles con radio de foco visible de 3 px, halo exterior azul #DBEAFE y cumplimiento estricto de contrastes.</p>
         </div>
       </div>
@@ -1688,7 +1922,7 @@
     <section id="cards-section" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>5. Grid de Cards del Sistema</h2>
+          <h2>6. Grid de Cards del Sistema</h2>
           <p>Modelos de tarjetas para clases en vivo, progreso de aprendizaje y asignaturas activas.</p>
         </div>
       </div>
@@ -1856,7 +2090,7 @@
     <section id="video-section" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>6. Componente de Video & Reproductor Multimedia</h2>
+          <h2>7. Componente de Video & Reproductor Multimedia</h2>
           <p>Reproductor accesible con soporte para clase en vivo y clase normal guardada, barra de control, subtítulos sincronizados duales (overlay en video + caja accesible) y cambio dinámico de lección.</p>
         </div>
       </div>
@@ -1922,7 +2156,7 @@
     <section id="banner-section" style="margin-bottom: 4rem;">
       <div class="section-head">
         <div>
-          <h2>7. Banner de Evaluación Diagnóstica</h2>
+          <h2>8. Banner de Evaluación Diagnóstica</h2>
           <p>Componente oficial de la plataforma con arte geométrico (retícula 14×5) y llamado a la acción primario.</p>
         </div>
       </div>
@@ -1952,7 +2186,7 @@
     <section id="icons-section">
       <div class="section-head">
         <div>
-          <h2>8. Iconografía SVG del Sistema</h2>
+          <h2>9. Iconografía SVG del Sistema</h2>
           <p>Iconos lineales normalizados en retícula de 24×24 con trazo de 2.2 px y esquinas redondeadas.</p>
         </div>
       </div>
