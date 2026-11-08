@@ -128,76 +128,95 @@
       border: 0;
     }
 
-    /* -------------------------------------------------------------
-       BARRA SUPERIOR DE CONTROL DEL UI KIT
-    ------------------------------------------------------------- */
-    .uikit-header {
+    /* =============================================================
+       CABECERA CANÓNICA UNIFICADA (Idéntica en UI Kit, Wireframe Studio y Sitemap)
+    ============================================================= */
+    .doc-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--bar-bg);
-      color: var(--bar-fg);
-      border-bottom: 3px solid var(--bar-accent);
-      padding: 0.75rem 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      z-index: 1000;
+      flex: 0 0 64px;
+      height: 64px;
+      min-height: 64px;
+      max-height: 64px;
+      background: #0F172A;
+      color: #F8FAFC;
+      border-bottom: 3px solid #1D4ED8;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    .uikit-header-inner {
-      max-width: 90rem;
+    .doc-header-inner {
+      width: 100%;
+      max-width: 96rem;
       margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-    .uikit-brand {
-      display: flex;
+    .doc-header-brand {
+      display: inline-flex;
       align-items: center;
       gap: 0.85rem;
+      text-decoration: none;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      transition: opacity 0.15s ease;
+    }
+    .doc-header-brand:hover {
+      opacity: 0.92;
+    }
+    .doc-header-brand svg {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .doc-header-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      line-height: 1;
+    }
+    .doc-header-title {
       font-size: 1.125rem;
       font-weight: 700;
-      text-decoration: none;
-      color: var(--bar-fg);
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
     }
-    .uikit-brand svg {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-    }
-    .uikit-tag {
-      background: var(--bar-on-bg);
-      color: var(--bar-on-fg);
+    .doc-header-tag {
+      background: #1E293B;
+      color: #93C5FD;
       font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .uikit-controls {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
+      font-weight: 600;
+      padding: 0.22rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
-    /* -------------------------------------------------------------
-       SELECTOR UNIFICADO DE DOCUMENTACIÓN (TABS EN LA MISMA VENTANA)
-    ------------------------------------------------------------- */
+    /* Navegación Unificada Tipo Tabs */
     .doc-nav-tabs {
       display: inline-flex;
       align-items: center;
       background: #1E293B;
-      padding: 0.2rem;
-      border-radius: 9px;
+      padding: 0.25rem;
+      border-radius: 10px;
       border: 1px solid #334155;
-      gap: 0.2rem;
+      gap: 0.25rem;
+      flex-shrink: 0;
     }
     .doc-tab-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.35rem 0.75rem;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
       font-size: 0.8125rem;
       font-weight: 600;
       color: #94A3B8;
@@ -205,7 +224,9 @@
       border-radius: 7px;
       transition: all 0.15s ease;
       white-space: nowrap;
-      min-height: 32px;
+      min-height: 34px;
+      box-sizing: border-box;
+      line-height: 1.2;
     }
     .doc-tab-btn:hover {
       color: #FFFFFF;
@@ -213,10 +234,14 @@
     }
     .doc-tab-btn.is-active,
     .doc-tab-btn[aria-current="page"] {
-      background: #38BDF8;
-      color: #0F172A;
+      background: #1D4ED8;
+      color: #FFFFFF;
       font-weight: 700;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.4);
+    }
+    :root[data-contrast="alto"] .doc-header {
+      background: #000000 !important;
+      border-bottom: 3px solid #FFFFFF !important;
     }
     :root[data-contrast="alto"] .doc-nav-tabs {
       background: #000000 !important;
@@ -225,32 +250,84 @@
     :root[data-contrast="alto"] .doc-tab-btn {
       color: #FFFFFF !important;
     }
-    :root[data-contrast="alto"] .doc-tab-btn.is-active {
+    :root[data-contrast="alto"] .doc-tab-btn.is-active,
+    :root[data-contrast="alto"] .doc-tab-btn[aria-current="page"] {
       background: #FACC15 !important;
       color: #000000 !important;
       border: 1px solid #FFFFFF !important;
     }
 
     /* -------------------------------------------------------------
-       NAV RÁPIDA DE SECCIONES (PILLS)
+       NAV RÁPIDA DE SECCIONES (PILLS) + CONTROLES DUA UI KIT
     ------------------------------------------------------------- */
     .uikit-nav {
       background: var(--surface-2);
       border-bottom: 1px solid var(--line-soft);
-      padding: 0.6rem 1.5rem;
+      padding: 0.5rem 1.5rem;
       position: sticky;
-      top: 59px;
+      top: 64px;
       z-index: 90;
       backdrop-filter: blur(8px);
     }
     .uikit-nav-inner {
-      max-width: 90rem;
+      max-width: 96rem;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .uikit-nav-pills {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       overflow-x: auto;
       padding-bottom: 2px;
+      flex: 1 1 auto;
+    }
+    .uikit-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+    .uikit-scale-group {
+      display: inline-flex;
+      border: 1px solid var(--line-soft);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--surface-1);
+    }
+    .btn-scale {
+      min-height: 32px;
+      padding: 0.2rem 0.6rem;
+      background: transparent;
+      color: var(--fg);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s ease;
+    }
+    .btn-scale:hover {
+      background: var(--surface-3);
+    }
+    .btn-contrast {
+      min-height: 32px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid var(--line-soft);
+      background: var(--surface-1);
+      color: var(--fg);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+    .btn-contrast:hover {
+      background: var(--surface-3);
     }
     .nav-pill {
       display: inline-flex;
@@ -1268,63 +1345,67 @@
 </head>
 <body>
 
-  <!-- BARRA DE CONTROL GLOBAL DEL UI KIT -->
-  <header class="uikit-header">
-    <div class="uikit-header-inner">
-      <a href="#tokens" class="uikit-brand">
+  <!-- CABECERA CANÓNICA UNIFICADA (Idéntica en UI Kit, Wireframe Studio y Sitemap) -->
+  <header class="doc-header">
+    <div class="doc-header-inner">
+      <a href="uikit.html" class="doc-header-brand" title="AccesoEdu · Documentación">
         <svg viewBox="0 0 40 40" aria-hidden="true">
           <rect width="40" height="40" rx="9" fill="#1D4ED8"/>
           <path d="M11 31V19a9 9 0 0 1 18 0v12" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
           <path d="M16.5 31v-8a3.5 3.5 0 0 1 7 0v8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
         </svg>
-        <span>AccesoEdu</span>
-        <span class="uikit-tag">UI Kit & Design Tokens</span>
+        <div class="doc-header-title-group">
+          <span class="doc-header-title">AccesoEdu</span>
+          <span class="doc-header-tag">Diseño &amp; Arquitectura</span>
+        </div>
       </a>
 
-      <div class="uikit-controls">
-        <!-- Selector de escala tipográfica -->
-        <div style="display:inline-flex; border:1px solid var(--bar-line); border-radius:6px; overflow:hidden;">
-          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(16)">16 px</button>
-          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(18)">18 px</button>
-          <button type="button" class="btn" style="min-height:36px; padding:0.25rem 0.65rem; background:transparent; color:var(--bar-fg); font-size:0.75rem;" onclick="setFontSize(20)">20 px</button>
-        </div>
-
-        <!-- Toggle Alto Contraste -->
-        <button type="button" class="btn btn-secondary" style="min-height:36px; padding:0.25rem 0.75rem; font-size:0.8125rem;" id="toggle-contrast-btn" onclick="toggleContrast()">
-          Contraste Estándar
-        </button>
-
-        <!-- Navegación Unificada Tipo Tabs (Misma Ventana) -->
-        <nav class="doc-nav-tabs" aria-label="Navegación entre documentos de diseño">
-          <a href="uikit.html" class="doc-tab-btn is-active" aria-current="page">
-            <span>🎨</span>
-            <span>UI Kit & Tokens</span>
-          </a>
-          <a href="wireframes.html" class="doc-tab-btn">
-            <span>📋</span>
-            <span>Wireframe Studio</span>
-          </a>
-          <a href="sitemap.html" class="doc-tab-btn">
-            <span>🗺️</span>
-            <span>Sitemap & Flujos</span>
-          </a>
-        </nav>
-      </div>
+      <!-- Navegación Unificada Tipo Tabs (Misma Ventana) -->
+      <nav class="doc-nav-tabs" aria-label="Navegación entre documentos de diseño">
+        <a href="uikit.html" class="doc-tab-btn is-active" aria-current="page">
+          <span>🎨</span>
+          <span>UI Kit &amp; Tokens</span>
+        </a>
+        <a href="wireframes.html" class="doc-tab-btn">
+          <span>📋</span>
+          <span>Wireframe Studio</span>
+        </a>
+        <a href="sitemap.html" class="doc-tab-btn">
+          <span>🗺️</span>
+          <span>Sitemap &amp; Flujos</span>
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- NAVEGACIÓN RÁPIDA POR COMPONENTES -->
+  <!-- NAVEGACIÓN RÁPIDA POR COMPONENTES + CONTROLES DUA UI KIT -->
   <nav class="uikit-nav" aria-label="Navegación del UI Kit">
     <div class="uikit-nav-inner">
-      <a href="#tokens" class="nav-pill">🎨 1. Tokens & Color</a>
-      <a href="#typography" class="nav-pill">🔤 2. Tipografía & Jerarquía</a>
-      <a href="#buttons" class="nav-pill">🔘 3. Botones & Acciones</a>
-      <a href="#chips" class="nav-pill">🏷️ 4. Chips & Badges</a>
-      <a href="#inputs" class="nav-pill">📝 5. Formularios & Inputs</a>
-      <a href="#cards-section" class="nav-pill">🗂️ 6. Grid de Cards</a>
-      <a href="#video-section" class="nav-pill">🎬 7. Video & Reproductor</a>
-      <a href="#banner-section" class="nav-pill">⭐ 8. Banners</a>
-      <a href="#icons-section" class="nav-pill">✨ 9. Iconografía SVG</a>
+      <div class="uikit-nav-pills">
+        <a href="#tokens" class="nav-pill">🎨 1. Tokens &amp; Color</a>
+        <a href="#typography" class="nav-pill">🔤 2. Tipografía &amp; Jerarquía</a>
+        <a href="#buttons" class="nav-pill">🔘 3. Botones &amp; Acciones</a>
+        <a href="#chips" class="nav-pill">🏷️ 4. Chips &amp; Badges</a>
+        <a href="#inputs" class="nav-pill">📝 5. Formularios &amp; Inputs</a>
+        <a href="#cards-section" class="nav-pill">🗂️ 6. Grid de Cards</a>
+        <a href="#video-section" class="nav-pill">🎬 7. Video &amp; Reproductor</a>
+        <a href="#banner-section" class="nav-pill">⭐ 8. Banners</a>
+        <a href="#icons-section" class="nav-pill">✨ 9. Iconografía SVG</a>
+      </div>
+
+      <div class="uikit-nav-controls">
+        <!-- Selector de escala tipográfica DUA -->
+        <div class="uikit-scale-group" role="group" aria-label="Tamaño de texto DUA">
+          <button type="button" class="btn-scale" onclick="setFontSize(16)" title="Ajustar a 16 px">16 px</button>
+          <button type="button" class="btn-scale" onclick="setFontSize(18)" title="Ajustar a 18 px">18 px</button>
+          <button type="button" class="btn-scale" onclick="setFontSize(20)" title="Ajustar a 20 px">20 px</button>
+        </div>
+
+        <!-- Toggle Alto Contraste -->
+        <button type="button" class="btn-contrast" id="toggle-contrast-btn" onclick="toggleContrast()">
+          Contraste Estándar
+        </button>
+      </div>
     </div>
   </nav>
 
