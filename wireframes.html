@@ -771,11 +771,6 @@
       height: 260px !important;
     }
 
-    .mode-tablet .wf-grid-all {
-      grid-template-columns: 1fr !important;
-      gap: 1.5rem;
-    }
-
     /* --- MÓVIL SIMULATOR (412px) --- */
     .mode-mobile .wf-browser-viewport {
       padding: 0.85rem 0.65rem;
@@ -928,12 +923,6 @@
       font-size: 0.75rem !important;
     }
 
-    /* Vista comparativa en móvil */
-    .mode-mobile .wf-grid-all {
-      grid-template-columns: 1fr !important;
-      gap: 1rem !important;
-    }
-
     /* Barra inferior de navegación móvil (estilo app nativa) */
     .wf-mobile-bottom-nav {
       display: none;
@@ -1082,39 +1071,6 @@
         display: flex !important;
       }
     }
-
-    /* -------------------------------------------------------------
-       VISTA COMPARATIVA (TODOS LOS WIREFRAMES)
-    ------------------------------------------------------------- */
-    .wf-grid-all {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-      gap: 2rem;
-    }
-
-    .wf-card-board {
-      border: 1.5px solid #64748B;
-      border-radius: 10px;
-      background: #FFFFFF;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    .wf-card-board-head {
-      background: #F8FAFC;
-      border-bottom: 1.5px solid var(--wf-border-light);
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .wf-card-board-body {
-      padding: 1rem;
-      font-size: 0.85rem;
-      max-height: 600px;
-      overflow-y: auto;
-    }
   </style>
 </head>
 
@@ -1178,11 +1134,6 @@
           data-wf-tab="dua">
           <span class="wf-tab-num">4</span>
           <span>Configuración DUA</span>
-        </button>
-        <button type="button" class="wf-tab-btn" role="tab" id="tab-all" aria-selected="false" aria-controls="view-all"
-          data-wf-tab="all">
-          <span class="wf-tab-num">📑</span>
-          <span>Vista Comparativa (Todas)</span>
         </button>
       </div>
 
@@ -2188,114 +2139,6 @@
           </div>
         </div>
 
-        <!-- ========================================================
-             5. VISTA COMPARATIVA: TODAS LAS PANTALLAS
-             ======================================================== -->
-        <div class="wf-view-panel" id="view-all" data-wf-view="all" role="tabpanel" aria-labelledby="tab-all" hidden>
-          <div style="margin-bottom:1.5rem;">
-            <h2 style="font-size:1.5rem;font-weight:700;color:#0F172A;margin:0 0 0.25rem;">
-              [Vista Comparativa de la Plataforma Completa]
-            </h2>
-            <p style="color:#64748B;font-size:0.95rem;margin:0;">
-              Visualiza en simultáneo la arquitectura esquemática y el flujo de navegación de las 4 pantallas.
-            </p>
-          </div>
-
-          <div class="wf-grid-all">
-            <!-- Board 1: Login -->
-            <div class="wf-card-board">
-              <div class="wf-card-board-head">
-                <strong>1. Login y Acceso</strong>
-                <span class="wf-tag">Pantalla Inicial</span>
-              </div>
-              <div class="wf-card-board-body">
-                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Barra Flotante DUA]</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-                  <div class="wf-box" style="font-size:0.75rem;">
-                    <strong>[H1 Intro]</strong><br>Beneficios accesibles + Arte collage
-                  </div>
-                  <div class="wf-box-solid" style="font-size:0.75rem;">
-                    <strong>[H2 Iniciar sesión]</strong><br>Email, Password, Mantener sesión, Botones
-                    primario/secundario
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Board 2: Inicio / Panel -->
-            <div class="wf-card-board">
-              <div class="wf-card-board-head">
-                <strong>2. Inicio (Panel del Estudiante)</strong>
-                <span class="wf-tag">Dashboard</span>
-              </div>
-              <div class="wf-card-board-body">
-                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Cabecera: Buscador + DUA + Perfil]
-                </div>
-                <div class="wf-box-solid" style="margin-bottom:0.5rem;font-size:0.75rem;background:#0F172A;color:#fff;">
-                  [Hero Card: Clase en vivo Introducción a la Psicología + Video 16:9]
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.35rem;margin-bottom:0.5rem;">
-                  <div class="wf-box" style="font-size:0.7rem;">[Próxima entrega]</div>
-                  <div class="wf-box" style="font-size:0.7rem;">[Clase guardada]</div>
-                  <div class="wf-box" style="font-size:0.7rem;">[Calificación]</div>
-                </div>
-                <div class="wf-box" style="font-size:0.75rem;">[Continuar aprendiendo (3 videos) + Banner Test + 5
-                  Asignaturas]</div>
-              </div>
-            </div>
-
-            <!-- Board 3: Aula Virtual -->
-            <div class="wf-card-board">
-              <div class="wf-card-board-head">
-                <strong>3. Detalle de Curso (Aula Virtual)</strong>
-                <span class="wf-tag">Lección Activa</span>
-              </div>
-              <div class="wf-card-board-body">
-                <div class="wf-box" style="margin-bottom:0.5rem;font-size:0.75rem;">[Crumbs: Inicio > Cursos >
-                  Psicología]</div>
-                <div class="wf-media-box" style="height:120px;margin-bottom:0.5rem;">
-                  <span class="wf-media-label" style="font-size:0.75rem;">[Reproductor Video HTML5 16:9 +
-                    Transporte]</span>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-                  <div class="wf-box" style="font-size:0.75rem;">
-                    <strong>[Transcripción DUA]</strong><br>Línea activa resaltada + Buscador + TTS
-                  </div>
-                  <div class="wf-box" style="font-size:0.75rem;">
-                    <strong>[Recursos & Temario]</strong><br>Lecciones 1 a 8 + Descarga PDF/Audio
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Board 4: Configuración DUA -->
-            <div class="wf-card-board">
-              <div class="wf-card-board-head">
-                <strong>4. Configuración DUA</strong>
-                <span class="wf-tag">Accesibilidad</span>
-              </div>
-              <div class="wf-card-board-body">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-                  <div class="wf-box-solid" style="font-size:0.75rem;">
-                    <strong>[Adaptaciones activas]</strong><br>
-                    • Texto 20px<br>
-                    • Alto contraste<br>
-                    • Lector de voz<br>
-                    • Animaciones pausadas
-                  </div>
-                  <div class="wf-box-solid" style="font-size:0.75rem;">
-                    <strong>[Contraste WCAG 2.1]</strong><br>
-                    • 21:1 (Fondo negro AAA)<br>
-                    • 14.2:1 (Oro AAA)<br>
-                    • 7.4:1 (Botón AAA)<br>
-                    • 16.8:1 (Estándar AAA)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -2319,8 +2162,7 @@
         'login': 'https://accesoedu.universidad.example/#inicio (Pantalla 1: Login y Acceso)',
         'panel': 'https://accesoedu.universidad.example/#panel (Pantalla 2: Panel del Estudiante)',
         'aula': 'https://accesoedu.universidad.example/#aula (Pantalla 3: Detalle de Cursos y Aula Virtual)',
-        'dua': 'https://accesoedu.universidad.example/#dua-activo (Pantalla 4: Configuración DUA Adaptativa)',
-        'all': 'https://accesoedu.universidad.example/specs/#comparativa (Vista Arquitectónica Global)'
+        'dua': 'https://accesoedu.universidad.example/#dua-activo (Pantalla 4: Configuración DUA Adaptativa)'
       };
 
       var SIZES = {
