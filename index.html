@@ -419,43 +419,33 @@ input[type="range"]{width:100%;height:2.75rem;margin:0;accent-color:var(--accent
 .resume-card[data-lesson-id]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
 /* Aula Virtual: Chat en vivo y Temario modular */
-.live-chat-panel{display:flex;flex-direction:column;gap:.75rem;border-radius:var(--r);background:var(--bg);padding:1.25rem;height:620px;max-height:calc(100vh - 12rem);box-shadow:var(--shadow)}
+.stage.is-live-stage,
+.screen[data-screen="aula"].is-live .stage{min-height:clamp(36rem, 70vh, 46rem)}
+@media (min-width:1024px){
+  .screen[data-screen="aula"].is-live .stage{min-height:640px}
+  .screen[data-screen="aula"].is-live .live-chat-panel{height:640px}
+}
+.live-chat-panel{display:flex;flex-direction:column;gap:.75rem;border-radius:var(--r);background:var(--bg);padding:1.25rem;height:640px;max-height:calc(100vh - 12rem);box-shadow:var(--shadow)}
 .live-chat-panel[hidden]{display:none !important}
-.live-chat-header{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;padding-bottom:.65rem;border-bottom:1px solid var(--line-soft)}
+.live-chat-header{display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding-bottom:.65rem;border-bottom:1px solid var(--line-soft)}
 .live-chat-header h2{font-size:1.1rem;font-weight:700;margin:0;display:flex;align-items:center;gap:.45rem;color:var(--fg)}
-.live-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .55rem;border-radius:999px;background:#EF4444;color:#FFFFFF;font-size:.7rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
-.live-dot{width:6px;height:6px;border-radius:50%;background:#FFFFFF;animation:livePulse 1.4s ease-in-out infinite}
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
 .live-chat-notice{padding:.5rem .75rem;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);font-size:.775rem;line-height:1.4;display:flex;align-items:center;gap:.4rem}
-.live-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;padding:.5rem;border-radius:10px;background:var(--page);border:1px solid var(--line-soft)}
+.live-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;padding:.5rem;border-radius:10px;background:var(--page);border:1px solid var(--line-soft);scrollbar-width:none;-ms-overflow-style:none}
+.live-chat-messages::-webkit-scrollbar{display:none;width:0;height:0}
 .chat-msg{display:flex;gap:.55rem;font-size:.8125rem;align-items:flex-start}
-.chat-avatar{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:700;background:#E0E7FF;color:#3730A3;flex-shrink:0}
-.chat-avatar.mod{background:#FEF3C7;color:#92400E}
-.chat-avatar.prof{background:#DCFCE7;color:#166534}
-.chat-avatar.me{background:var(--primary);color:#FFFFFF}
-.chat-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15rem}
-.chat-meta{display:flex;align-items:center;gap:.4rem;font-size:.75rem}
+.chat-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.2rem}
+.chat-meta{display:flex;align-items:center;gap:.45rem;font-size:.75rem}
 .chat-sender{font-weight:700;color:var(--fg)}
-.chat-role-tag{font-size:.65rem;padding:0 .35rem;border-radius:4px;font-weight:600}
-.chat-role-tag.mod{background:#FDE68A;color:#78350F}
-.chat-role-tag.prof{background:#BBF7D0;color:#14532D}
 .chat-time{color:var(--muted);font-size:.7rem;margin-left:auto}
-.chat-bubble{padding:.45rem .65rem;border-radius:8px;background:var(--bg);color:var(--fg);border:1px solid var(--line-soft);line-height:1.4;word-break:break-word}
+.chat-bubble{padding:.5rem .75rem;border-radius:8px;background:var(--bg);color:var(--fg);border:1px solid var(--line-soft);line-height:1.4;word-break:break-word}
 .chat-msg.me .chat-bubble{background:#EEF2FF;border-color:#C7D2FE}
 .live-chat-form{display:flex;gap:.5rem;margin-top:auto}
-.live-chat-input{flex:1;min-height:40px;padding:.4rem .75rem;border-radius:8px;border:1.5px solid var(--line-soft);font-size:.8125rem;background:var(--bg);color:var(--fg);outline-offset:2px}
-.live-chat-input:focus{border-color:var(--primary);outline:2px solid var(--primary)}
-.live-chat-submit{min-height:40px;padding:.4rem .85rem;border-radius:8px;font-size:.8125rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
 
 :root[data-contrast="alto"] .live-chat-panel{background:#000;color:#fff;border:2px solid #FACC15;box-shadow:none}
 :root[data-contrast="alto"] .live-chat-header{border-bottom-color:#FACC15}
 :root[data-contrast="alto"] .live-chat-messages{background:#000;border:1px solid #FACC15}
 :root[data-contrast="alto"] .chat-bubble{background:#000;color:#fff;border:1px solid #FACC15}
 :root[data-contrast="alto"] .chat-msg.me .chat-bubble{background:#000;border:2px solid #FACC15}
-:root[data-contrast="alto"] .live-chat-input{background:#000;color:#fff;border:2px solid #FACC15}
-:root[data-contrast="alto"] .chat-avatar{background:#000;color:#FACC15;border:1px solid #FACC15}
-:root[data-contrast="alto"] .live-badge{background:#000;color:#FACC15;border:1px solid #FACC15}
-:root[data-contrast="alto"] .live-dot{background:#FACC15}
 
 /* Temario de Asignatura (Clases guardadas) */
 .temario-section{display:flex;flex-direction:column;gap:1.25rem;padding:1.5rem;border-radius:var(--r);background:var(--bg);border:1px solid var(--line-soft);box-shadow:var(--shadow);margin-bottom:1.5rem}
@@ -1194,7 +1184,7 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
                 <h2 id="h-live-chat">💬 Chat en vivo</h2>
                 <p class="muted" style="margin:0.2rem 0 0; font-size:0.8125rem;">Participación activa con docentes y compañeros</p>
               </div>
-              <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN VIVO · 34</span>
+              <span class="learning-badge" style="position:static;">En vivo · 34</span>
             </div>
             <div class="live-chat-notice" role="note">
               <i data-ic="voice"></i>
@@ -1205,8 +1195,8 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
             </div>
             <form class="live-chat-form" id="live-chat-form">
               <label for="live-chat-input" class="sr-only">Escribe tu pregunta o comentario</label>
-              <input type="text" id="live-chat-input" class="live-chat-input" placeholder="Pregunta o participa en vivo..." maxlength="280" required autocomplete="off">
-              <button type="submit" class="btn btn-primary live-chat-submit" aria-label="Enviar mensaje al chat">
+              <input type="text" id="live-chat-input" class="input-control" placeholder="Pregunta o participa en vivo..." maxlength="280" required autocomplete="off" style="flex:1;">
+              <button type="submit" class="btn btn-primary" aria-label="Enviar mensaje al chat" style="min-height:42px; padding:0.4rem 0.95rem; font-weight:600;">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 <span>Enviar</span>
               </button>
@@ -1215,7 +1205,7 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
         </div>
       </div>
     </main>
-    <footer class="site-footer"><div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p><a href="uikit.html" target="_blank" class="btn-link" style="color:var(--primary);">Ver UI Kit & Tokens</a></div></footer>
+    <footer class="site-footer"><div class="wrap"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p></div></footer>
   </div>
 
   <!-- PANTALLA 4 · Configuración DUA y Accesibilidad -->
@@ -1331,7 +1321,7 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
         </div>
       </main>
     </div>
-    <footer class="site-footer"><div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p><a href="uikit.html" target="_blank" class="btn-link" style="color:var(--primary);">Ver UI Kit & Tokens</a></div></footer>
+    <footer class="site-footer"><div class="wrap"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p></div></footer>
   </div>
 
   <!-- PANTALLA 5 · Wireframes -->
@@ -1995,7 +1985,7 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
         </div>
       </main>
     </div>
-    <footer class="site-footer"><div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p><a href="uikit.html" target="_blank" class="btn-link" style="color:var(--primary);">Ver UI Kit & Tokens</a></div></footer>
+    <footer class="site-footer"><div class="wrap"><p>AccesoEdu · Diseñado con base en WCAG 2.1 AA y DUA.</p></div></footer>
   </div>
 
 </div>
@@ -2944,6 +2934,9 @@ function loadLesson(id,preserveTime){
 
   /* Diferenciación: Clases en vivo vs Clases guardadas */
   var isLive=Boolean(lesson.isLive);
+  var screenAula=$('#screen-aula');
+  if(screenAula)screenAula.classList.toggle('is-live',isLive);
+  if(stageEl)stageEl.classList.toggle('is-live-stage',isLive);
 
   // 1. Botón descargar resumen: omitir en clase en vivo
   var pdfBtn=$('#pdf-btn');
@@ -3068,14 +3061,15 @@ function renderLiveChat(){
   if(!box)return;
   box.innerHTML=LIVE_CHAT_MESSAGES.map(function(m){
     var isMe=m.role==='me';
-    var tagClass=m.role==='mod'?'mod':(m.role==='prof'?'prof':'');
-    var tagText=m.role==='mod'?'Moderadora':(m.role==='prof'?'Docente':(isMe?'Tú':'Estudiante'));
+    var chipClass=m.role==='mod'?'status-progreso':(m.role==='prof'?'ok':(isMe?'ok':'neutral'));
+    var roleLabel=m.role==='mod'?'Moderadora':(m.role==='prof'?'Docente':(isMe?'Tú':'Estudiante'));
+    var avColor=isMe?'background:var(--primary);color:#fff':(m.role==='prof'?'background:#DCFCE7;color:#166534':(m.role==='mod'?'background:#FEF3C7;color:#92400E':'background:var(--accent-soft);color:var(--accent-ink)'));
     return '<div class="chat-msg'+(isMe?' me':'')+'">'+
-      '<span class="chat-avatar '+(m.role||'student')+'" aria-hidden="true">'+m.initials+'</span>'+
+      '<span class="avatar" style="width:28px;height:28px;font-size:0.75rem;flex-shrink:0;'+avColor+'" aria-hidden="true">'+m.initials+'</span>'+
       '<div class="chat-body">'+
         '<div class="chat-meta">'+
           '<span class="chat-sender">'+m.sender+'</span>'+
-          '<span class="chat-role-tag '+tagClass+'">'+tagText+'</span>'+
+          '<span class="chip '+chipClass+'" style="font-size:0.68rem;padding:0.05rem 0.45rem;border-radius:999px;">'+roleLabel+'</span>'+
           '<span class="chat-time">'+m.time+'</span>'+
         '</div>'+
         '<div class="chat-bubble">'+m.text+'</div>'+
