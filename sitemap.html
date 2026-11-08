@@ -43,7 +43,11 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html, body {
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    body {
       height: 100vh;
       min-height: 100vh;
       margin: 0;
@@ -51,7 +55,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: 1rem;
       line-height: 1.45;
       -webkit-font-smoothing: antialiased;
       overflow: hidden;
@@ -195,78 +199,6 @@
       border: 1px solid #FFFFFF !important;
     }
 
-    /* BARRA SECUNDARIA DE CONTROL DEL SITEMAP */
-    .sitemap-toolbar {
-      flex: 0 0 48px;
-      height: 48px;
-      min-height: 48px;
-      background: #1E293B;
-      border-bottom: 1px solid #334155;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      z-index: 10;
-    }
-    .sitemap-toolbar-inner {
-      width: 100%;
-      max-width: 96rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .sitemap-toolbar-info {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-    .sitemap-toolbar-title {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: #F8FAFC;
-      letter-spacing: -0.01em;
-    }
-    .sitemap-toolbar-sub {
-      font-size: 0.75rem;
-      color: #94A3B8;
-    }
-
-    /* Selector de vista (Flujo vs Cuadrícula) */
-    .view-switcher {
-      display: inline-flex;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #0F172A;
-      padding: 0.2rem;
-      gap: 0.2rem;
-    }
-    .view-btn {
-      padding: 0.3rem 0.75rem;
-      font-size: 0.775rem;
-      font-weight: 600;
-      border: none;
-      background: transparent;
-      color: #94A3B8;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.15s ease;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .view-btn:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .view-btn.is-active {
-      background: #1D4ED8;
-      color: #FFFFFF;
-      font-weight: 700;
-    }
     .sitemap-btn {
       display: inline-flex;
       align-items: center;
@@ -730,26 +662,6 @@
       </div>
     </header>
 
-    <!-- BARRA SECUNDARIA DE CONTROL DEL SITEMAP -->
-    <nav class="sitemap-toolbar" aria-label="Controles del Sitemap">
-      <div class="sitemap-toolbar-inner">
-        <div class="sitemap-toolbar-info">
-          <span class="sitemap-toolbar-title">🗺️ Flujo &amp; Sitemap de Navegación</span>
-          <span class="sitemap-toolbar-sub">AccesoEdu · Arquitectura de Información</span>
-        </div>
-
-        <!-- Selector de Modo de Visualización -->
-        <div class="view-switcher" role="group" aria-label="Selector de visualización">
-          <button type="button" class="view-btn is-active" id="btn-flow" data-mode="flow" title="Ver diagrama de árbol por niveles de flujo">
-            🌳 Diagrama de Flujo
-          </button>
-          <button type="button" class="view-btn" id="btn-grid" data-mode="grid" title="Ver cuadrícula de navegación compacta">
-            📊 Vista Cuadrícula
-          </button>
-        </div>
-      </div>
-    </nav>
-
     <!-- ÁREA DE CONTENIDO (ESCALADA EN VH) -->
     <main class="sitemap-content" id="sitemap-main">
 
@@ -1113,10 +1025,6 @@
   <script>
   (function(){
     'use strict';
-    var btnFlow = document.getElementById('btn-flow');
-    var btnGrid = document.getElementById('btn-grid');
-    var flowView = document.getElementById('flow-view');
-    var gridView = document.getElementById('grid-view');
     var toast = document.getElementById('sitemap-toast');
     var toastMsg = document.getElementById('toast-msg');
     var toastTimer = null;
@@ -1130,20 +1038,6 @@
         toast.style.display = 'none';
       }, 3500);
     };
-
-    function switchView(mode){
-      if(mode === 'flow'){
-        btnFlow.classList.add('is-active');
-        btnGrid.classList.remove('is-active');
-        flowView.hidden = false;
-        gridView.hidden = true;
-      } else {
-        btnGrid.classList.add('is-active');
-        btnFlow.classList.remove('is-active');
-        flowView.hidden = true;
-        gridView.hidden = false;
-      }
-    }
 
     function alignBusBar(){
       var row = document.querySelector('.flow-branches-row');
@@ -1161,11 +1055,6 @@
       bus.style.right = Math.max(0, rightOffset) + 'px';
     }
 
-    btnFlow.addEventListener('click', function(){ 
-      switchView('flow'); 
-      setTimeout(alignBusBar, 20);
-    });
-    btnGrid.addEventListener('click', function(){ switchView('grid'); });
     window.addEventListener('load', alignBusBar);
     window.addEventListener('resize', alignBusBar);
   })();
