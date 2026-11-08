@@ -970,6 +970,40 @@
       font-weight: 700;
       border-top: 2px solid #fff;
     }
+    .stage-captions {
+      position: absolute;
+      bottom: 4.75rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 3;
+      transition: opacity .2s ease;
+    }
+    .stage-captions[hidden] {
+      display: none !important;
+    }
+    .stage-captions span {
+      display: inline-block;
+      padding: .4rem 1rem;
+      background: rgba(15, 23, 42, .88);
+      color: #fff;
+      font-size: 1.0625rem;
+      font-weight: 500;
+      border-radius: 8px;
+      max-width: 85%;
+      text-align: center;
+      line-height: 1.45;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+      backdrop-filter: blur(4px);
+    }
+    :root[data-contrast="alto"] .stage-captions span {
+      background: #000;
+      color: #facc15;
+      border: 2px solid #fff;
+      font-weight: 700;
+    }
 
     /* -------------------------------------------------------------
        COMPONENTE: ASSESSMENT BANNER
@@ -1741,14 +1775,31 @@
       <div class="section-head">
         <div>
           <h2>6. Componente de Video & Reproductor Multimedia</h2>
-          <p>Reproductor accesible con video en vivo, barra de control personalizada, subtítulos sincronizados y transcripción interactiva.</p>
+          <p>Reproductor accesible con soporte para clase en vivo y clase normal guardada, barra de control, subtítulos sincronizados duales (overlay en video + caja accesible) y cambio dinámico de lección.</p>
         </div>
       </div>
 
+      <!-- Selector de Modo: Clase en vivo vs Clase normal guardada -->
+      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:1.25rem;">
+        <button type="button" class="btn is-selected" id="uikit-tab-live" onclick="switchDemoLesson('live')">
+          <span class="learning-badge" style="font-size:0.75rem; padding:0.15rem 0.5rem;">En vivo</span>
+          <span>Clase en vivo (Psicología)</span>
+        </button>
+        <button type="button" class="btn" id="uikit-tab-saved" onclick="switchDemoLesson('saved')">
+          <span class="stage-badge" style="font-size:0.75rem; padding:0.15rem 0.5rem;">Grabada</span>
+          <span>Clase normal guardada (Historia)</span>
+        </button>
+      </div>
+
       <div class="player-wrap">
-        <div class="stage" role="group" aria-label="Reproductor de demostración del UI Kit">
+        <div class="stage" id="demo-stage" role="group" aria-label="Reproductor de demostración del UI Kit">
           <video class="stage-media-el" id="demo-video" src="Assets/Class_video/psicologia.mp4" muted playsinline preload="metadata" poster="Assets/Card_Class/profesora-psicologia.jpg"></video>
-          <span class="stage-badge">Clase en vivo · Dra. Lucía Hernández Ortega</span>
+          <span class="stage-badge" id="demo-stage-badge">Clase en vivo · Dra. Lucía Hernández Ortega</span>
+
+          <!-- Subtítulos superpuestos directamente en el video -->
+          <div class="stage-captions" id="demo-stage-captions" aria-hidden="true">
+            <span id="demo-stage-cap-text">Te damos la bienvenida a la lección siete: cómo funciona la memoria de trabajo.</span>
+          </div>
 
           <!-- Barra flotante de controles -->
           <div class="stage-player">
@@ -1930,22 +1981,78 @@
     var demoPlayIcon = document.getElementById('demo-play-icon');
     var demoVolIcon = document.getElementById('demo-vol-icon');
     var demoCapText = document.getElementById('demo-cap-text');
+    var demoStageCapText = document.getElementById('demo-stage-cap-text');
+    var demoStageCaptions = document.getElementById('demo-stage-captions');
+    var demoStageBadge = document.getElementById('demo-stage-badge');
     var demoRates = [0.75, 1, 1.25, 1.5];
     var demoRateIdx = 1;
     var demoCCActive = true;
+    var currentDemoType = 'live';
 
-    var DEMO_LINES = [
-      [0, 'Te damos la bienvenida a la lección siete: cómo funciona la memoria de trabajo.'],
-      [12, 'Cuando recibes información nueva, primero pasa por la memoria sensorial, que dura apenas una fracción de segundo.'],
-      [26, 'Si le prestas atención, la información llega a la memoria de trabajo, el espacio donde piensas y resuelves problemas.'],
-      [42, 'Este espacio es limitado: la investigación actual sugiere que sostenemos alrededor de cuatro elementos a la vez.'],
-      [58, 'Sin repaso, esos elementos se desvanecen en unas decenas de segundos.'],
-      [70, 'Por eso conviene agrupar los datos en bloques con sentido. Un número de teléfono se recuerda mejor en grupos de dos o tres cifras.'],
-      [88, 'Otra estrategia es combinar canales: leer, escuchar y hacer un esquema al mismo tiempo refuerza el recuerdo.'],
-      [106, 'Esto se conoce como codificación dual, y es la razón por la que esta lección ofrece video, subtítulos, transcripción y resumen.'],
-      [124, 'Por último, repasar en intervalos espaciados, uno, tres y siete días después, consolida lo aprendido en la memoria a largo plazo.'],
-      [142, 'Para cerrar, descarga el resumen accesible y responde el cuestionario de repaso. Gracias por tu atención.']
-    ];
+    var DEMO_LESSONS = {
+      live: {
+        title: 'Clase en vivo · Dra. Lucía Hernández Ortega',
+        video: 'Assets/Class_video/psicologia.mp4',
+        poster: 'Assets/Card_Class/profesora-psicologia.jpg',
+        dur: 160,
+        lines: [
+          [0, 'Te damos la bienvenida a la clase en vivo de Introducción a la Psicología: cómo funciona la memoria de trabajo.'],
+          [12, 'Cuando recibes información nueva, primero pasa por la memoria sensorial, que dura apenas una fracción de segundo.'],
+          [26, 'Si le prestas atención, la información llega a la memoria de trabajo, el espacio donde piensas y resuelves problemas.'],
+          [42, 'Este espacio es limitado: la investigación actual sugiere que sostenemos alrededor de cuatro elementos a la vez.'],
+          [58, 'Sin repaso, esos elementos se desvanecen en unas decenas de segundos.'],
+          [70, 'Por eso conviene agrupar los datos en bloques con sentido. Un número de teléfono se recuerda mejor en grupos de dos o tres cifras.'],
+          [88, 'Otra estrategia es combinar canales: leer, escuchar y hacer un esquema al mismo tiempo refuerza el recuerdo.'],
+          [106, 'Esto se conoce como codificación dual, y es la razón por la que esta lección ofrece video, subtítulos, transcripción y resumen.'],
+          [124, 'Por último, repasar en intervalos espaciados, uno, tres y siete días después, consolida lo aprendido en la memoria a largo plazo.'],
+          [142, 'Para cerrar, descarga el resumen accesible y responde el cuestionario de repaso. Gracias por tu atención.']
+        ]
+      },
+      saved: {
+        title: 'Clase grabada · Mtro. Andrés Villalobos Cruz',
+        video: 'Assets/Class_video/6985338-uhd_3840_2160_25fps.mp4',
+        poster: 'Assets/Card_Class/historia.avif',
+        dur: 180,
+        lines: [
+          [0, 'Iniciamos la revisión del periodo posrevolucionario en México, que abarca de 1920 a 1940.'],
+          [18, 'Tras una década de conflicto armado, la prioridad nacional fue pacificar el territorio y brindar certidumbre jurídica al pacto social.'],
+          [38, 'La Constitución promulgada en 1917 sentó las bases para el reparto agrario y los derechos laborales consagrados en ley.'],
+          [58, 'En 1921 se crea la Secretaría de Educación Pública bajo la dirección de José Vasconcelos, desplegando misiones culturales en todo el país.'],
+          [78, 'El muralismo mexicano surgió como una herramienta pedagógica para construir identidad nacional y memoria colectiva.'],
+          [98, 'Hacia la década de 1930, el Estado consolida instituciones bancarias, obreras y de infraestructura estratégica.'],
+          [120, 'La expropiación de la industria petrolera en 1938 consolida la soberanía económica y fortalece la cohesión política nacional.'],
+          [142, 'Comprender esta transformación permite analizar cómo las instituciones civiles reemplazaron progresivamente al caudillismo militar.'],
+          [164, 'Para profundizar, consulta la cronología en el resumen descargable y responde las preguntas del cuestionario de repaso.']
+        ]
+      }
+    };
+
+    function switchDemoLesson(type) {
+      currentDemoType = type;
+      var lesson = DEMO_LESSONS[type];
+      if (!lesson || !demoVideo) return;
+
+      var tabLive = document.getElementById('uikit-tab-live');
+      var tabSaved = document.getElementById('uikit-tab-saved');
+      if (tabLive) tabLive.classList.toggle('is-selected', type === 'live');
+      if (tabSaved) tabSaved.classList.toggle('is-selected', type === 'saved');
+
+      demoVideo.pause();
+      demoPlayIcon.innerHTML = '<path d="M7 4.5v15l12.5-7.5z"/>';
+      demoVideo.src = lesson.video;
+      demoVideo.poster = lesson.poster;
+      demoVideo.currentTime = 0;
+      demoVideo.load();
+
+      if (demoStageBadge) demoStageBadge.textContent = lesson.title;
+      demoSeek.value = '0';
+      demoSeek.max = String(lesson.dur);
+      demoTimeTxt.textContent = '0:00 / ' + fmtTime(lesson.dur);
+
+      var firstLine = lesson.lines[0][1];
+      if (demoCapText) demoCapText.textContent = firstLine;
+      if (demoStageCapText) demoStageCapText.textContent = firstLine;
+    }
 
     function fmtTime(s) {
       s = Math.floor(s);
@@ -1966,7 +2073,9 @@
 
     function stepDemoTime(delta) {
       if (!demoVideo) return;
-      demoVideo.currentTime = Math.max(0, Math.min(demoVideo.duration || 160, demoVideo.currentTime + delta));
+      var curLesson = DEMO_LESSONS[currentDemoType];
+      var maxDur = (curLesson && curLesson.dur) || (demoVideo.duration || 160);
+      demoVideo.currentTime = Math.max(0, Math.min(maxDur, demoVideo.currentTime + delta));
     }
 
     function toggleDemoMute() {
@@ -1988,6 +2097,7 @@
       demoCCActive = !demoCCActive;
       var cap = document.getElementById('demo-captions');
       if (cap) cap.style.display = demoCCActive ? 'flex' : 'none';
+      if (demoStageCaptions) demoStageCaptions.hidden = !demoCCActive;
       var btn = document.getElementById('demo-cc-btn');
       if (btn) btn.style.opacity = demoCCActive ? '1' : '0.5';
     }
@@ -2003,17 +2113,28 @@
     if (demoVideo) {
       demoVideo.addEventListener('timeupdate', function(){
         var cur = demoVideo.currentTime;
-        var dur = demoVideo.duration || 160;
+        var curLesson = DEMO_LESSONS[currentDemoType];
+        var dur = (curLesson && curLesson.dur) || (demoVideo.duration || 160);
         demoSeek.value = String(Math.floor(cur));
         demoSeek.max = String(Math.floor(dur));
         demoTimeTxt.textContent = fmtTime(cur) + ' / ' + fmtTime(dur);
 
-        // Actualizar subtítulos dinámicamente
-        var currentText = DEMO_LINES[0][1];
-        for (var i = 0; i < DEMO_LINES.length; i++) {
-          if (cur >= DEMO_LINES[i][0]) currentText = DEMO_LINES[i][1];
+        // Actualizar subtítulos dinámicamente según la lección activa
+        var lines = curLesson ? curLesson.lines : DEMO_LESSONS.live.lines;
+        var currentText = lines[0][1];
+        for (var i = 0; i < lines.length; i++) {
+          if (cur >= lines[i][0]) currentText = lines[i][1];
         }
         if (demoCapText) demoCapText.textContent = currentText;
+        if (demoStageCapText) demoStageCapText.textContent = currentText;
+      });
+
+      demoVideo.addEventListener('ended', function(){
+        var curLesson = DEMO_LESSONS[currentDemoType];
+        if (curLesson && demoVideo.currentTime < curLesson.dur) {
+          demoVideo.currentTime = 0;
+          demoVideo.play().catch(function(){});
+        }
       });
     }
   </script>
