@@ -465,7 +465,8 @@
     }
 
     .learning-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       padding: 0.35rem 0.65rem;
       border-radius: 6px;
       background: #BEF264;
@@ -474,6 +475,8 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
     }
     :root[data-contrast="alto"] .learning-badge {
       background: #FACC15;

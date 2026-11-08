@@ -1554,7 +1554,9 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .05em;
-      line-height: 1.2
+      line-height: 1.2;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
     }
 
     .learning-card .learning-badge {
@@ -2688,9 +2690,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: .5rem;
+      gap: .75rem;
       padding-bottom: .65rem;
       border-bottom: 1px solid var(--line-soft)
+    }
+
+    .live-chat-header > div {
+      min-width: 0;
+      flex: 1 1 auto;
     }
 
     .live-chat-header h2 {
@@ -5589,7 +5596,7 @@
                   <h2 id="h-live-chat">Chat en vivo</h2>
                   <p class="muted" style="margin:0.2rem 0 0; font-size:0.8125rem;">Participación activa con docentes y compañeros</p>
                 </div>
-                <span class="learning-badge" style="position:static;">En vivo · 34</span>
+                <span class="learning-badge" style="position:static; white-space:nowrap; flex-shrink:0;">En vivo · 34</span>
               </div>
               <div class="live-chat-notice" role="note">
                 <i data-ic="voice"></i>
@@ -6627,30 +6634,6 @@
         <button type="button" data-stub="Tareas y entregas"><i data-ic="file"></i>Tareas</button>
         <button type="button" data-stub="Compañeros"><i data-ic="users"></i>Compañeros</button>
         <a href="#configuracion" data-sidebar-link="configuracion"><i data-ic="settings"></i>Configuración</a>
-
-        <div class="sidebar-a11y-section">
-          <h2>Accesibilidad</h2>
-          <a href="#configuracion" class="sidebar-a11y-btn" data-sidebar-link="configuracion"
-            title="Configurar herramientas y accesibilidad DUA">
-            <i data-ic="bulb"></i>
-            <span>Herramientas DUA</span>
-          </a>
-          <button type="button" class="sidebar-a11y-btn btn-keyboard-toggle" aria-expanded="false"
-            aria-controls="keyboard-panel" title="Ver lista de atajos de teclado">
-            <i data-ic="laptop"></i>
-            <span>Atajos de teclado</span>
-          </button>
-        </div>
-
-        <div class="sidebar-a11y-section">
-          <h2>Plataforma</h2>
-          <a href="uikit.html" target="_blank" title="Ver UI Kit y Design Tokens"><i data-ic="bulb"></i><span>UI
-              Tokens</span></a>
-          <a href="wireframes.html" target="_blank" title="Ver Wireframes de la plataforma en ventana separada"><i
-              data-ic="list"></i><span>Wireframes</span></a>
-          <a href="sitemap.html" target="_blank" title="Ver Sitemap completo de la plataforma en ventana separada"><i
-              data-ic="globe"></i><span>Sitemap</span></a>
-        </div>
 
         <a class="logout-link" href="#inicio"><i data-ic="logout"></i>Cerrar sesión</a>
       </nav>
@@ -8341,8 +8324,8 @@
         <button type="button" class="temp-action-btn" data-capture-target="aula">
           <span class="temp-action-icon">📺</span>
           <div class="temp-action-text">
-            <strong>Detalle de Clase (Aula)</strong>
-            <small>Reproductor, chat en vivo, transcripción</small>
+            <strong>Detalle de Clase (Guardada)</strong>
+            <small>Clase oficial grabada, transcripción y resumen</small>
           </div>
           <span class="temp-action-badge">HD</span>
         </button>
@@ -8437,7 +8420,7 @@
 
       var META = {
         'panel': { name: 'Pantalla de Inicio', filename: 'AccesoEdu-01-Pantalla-Inicio-HD.png' },
-        'aula': { name: 'Detalle de Clase (Aula)', filename: 'AccesoEdu-02-Detalle-Clase-HD.png' },
+        'aula': { name: 'Detalle de Clase (Guardada)', filename: 'AccesoEdu-02-Detalle-Clase-HD.png' },
         'configuracion': { name: 'Configuración DUA', filename: 'AccesoEdu-03-Configuracion-DUA-HD.png' },
         'inicio': { name: 'Pantalla de Acceso', filename: 'AccesoEdu-00-Acceso-Login-HD.png' }
       };
@@ -8464,6 +8447,14 @@
         if (location.hash !== '#' + targetKey) {
           location.hash = '#' + targetKey;
           await new Promise(function (res) { setTimeout(res, 450); });
+        }
+
+        // Si es aula, cargar explícitamente la clase guardada oficial de "Continuar aprendiendo" (Historia)
+        if (targetKey === 'aula' && typeof loadLesson === 'function') {
+          try {
+            loadLesson('historia');
+            await new Promise(function (res) { setTimeout(res, 350); });
+          } catch (e) { }
         }
 
         // Si es panel, forzar ajuste de cards de cursos
