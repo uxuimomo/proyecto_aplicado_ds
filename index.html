@@ -418,6 +418,73 @@ input[type="range"]{width:100%;height:2.75rem;margin:0;accent-color:var(--accent
 .resume-card[data-lesson-id]:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
 .resume-card[data-lesson-id]:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
+/* Aula Virtual: Chat en vivo y Temario modular */
+.live-chat-panel{display:flex;flex-direction:column;gap:.75rem;border-radius:var(--r);background:var(--bg);padding:1.25rem;height:620px;max-height:calc(100vh - 12rem);box-shadow:var(--shadow)}
+.live-chat-panel[hidden]{display:none !important}
+.live-chat-header{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;padding-bottom:.65rem;border-bottom:1px solid var(--line-soft)}
+.live-chat-header h2{font-size:1.1rem;font-weight:700;margin:0;display:flex;align-items:center;gap:.45rem;color:var(--fg)}
+.live-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .55rem;border-radius:999px;background:#EF4444;color:#FFFFFF;font-size:.7rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#FFFFFF;animation:livePulse 1.4s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+.live-chat-notice{padding:.5rem .75rem;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);font-size:.775rem;line-height:1.4;display:flex;align-items:center;gap:.4rem}
+.live-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:.65rem;padding:.5rem;border-radius:10px;background:var(--page);border:1px solid var(--line-soft)}
+.chat-msg{display:flex;gap:.55rem;font-size:.8125rem;align-items:flex-start}
+.chat-avatar{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:700;background:#E0E7FF;color:#3730A3;flex-shrink:0}
+.chat-avatar.mod{background:#FEF3C7;color:#92400E}
+.chat-avatar.prof{background:#DCFCE7;color:#166534}
+.chat-avatar.me{background:var(--primary);color:#FFFFFF}
+.chat-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15rem}
+.chat-meta{display:flex;align-items:center;gap:.4rem;font-size:.75rem}
+.chat-sender{font-weight:700;color:var(--fg)}
+.chat-role-tag{font-size:.65rem;padding:0 .35rem;border-radius:4px;font-weight:600}
+.chat-role-tag.mod{background:#FDE68A;color:#78350F}
+.chat-role-tag.prof{background:#BBF7D0;color:#14532D}
+.chat-time{color:var(--muted);font-size:.7rem;margin-left:auto}
+.chat-bubble{padding:.45rem .65rem;border-radius:8px;background:var(--bg);color:var(--fg);border:1px solid var(--line-soft);line-height:1.4;word-break:break-word}
+.chat-msg.me .chat-bubble{background:#EEF2FF;border-color:#C7D2FE}
+.live-chat-form{display:flex;gap:.5rem;margin-top:auto}
+.live-chat-input{flex:1;min-height:40px;padding:.4rem .75rem;border-radius:8px;border:1.5px solid var(--line-soft);font-size:.8125rem;background:var(--bg);color:var(--fg);outline-offset:2px}
+.live-chat-input:focus{border-color:var(--primary);outline:2px solid var(--primary)}
+.live-chat-submit{min-height:40px;padding:.4rem .85rem;border-radius:8px;font-size:.8125rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
+
+:root[data-contrast="alto"] .live-chat-panel{background:#000;color:#fff;border:2px solid #FACC15;box-shadow:none}
+:root[data-contrast="alto"] .live-chat-header{border-bottom-color:#FACC15}
+:root[data-contrast="alto"] .live-chat-messages{background:#000;border:1px solid #FACC15}
+:root[data-contrast="alto"] .chat-bubble{background:#000;color:#fff;border:1px solid #FACC15}
+:root[data-contrast="alto"] .chat-msg.me .chat-bubble{background:#000;border:2px solid #FACC15}
+:root[data-contrast="alto"] .live-chat-input{background:#000;color:#fff;border:2px solid #FACC15}
+:root[data-contrast="alto"] .chat-avatar{background:#000;color:#FACC15;border:1px solid #FACC15}
+:root[data-contrast="alto"] .live-badge{background:#000;color:#FACC15;border:1px solid #FACC15}
+:root[data-contrast="alto"] .live-dot{background:#FACC15}
+
+/* Temario de Asignatura (Clases guardadas) */
+.temario-section{display:flex;flex-direction:column;gap:1.25rem;padding:1.5rem;border-radius:var(--r);background:var(--bg);border:1px solid var(--line-soft);box-shadow:var(--shadow);margin-bottom:1.5rem}
+.temario-section[hidden]{display:none !important}
+.temario-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.temario-head h2{font-size:1.25rem;font-weight:700;margin:0;display:flex;align-items:center;gap:.5rem;color:var(--fg)}
+.temario-modules{display:flex;flex-direction:column;gap:1rem}
+.temario-unit{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:var(--bg)}
+.temario-unit-header{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:var(--surface-2);font-weight:700;font-size:.9375rem;color:var(--fg)}
+.temario-lesson-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.temario-lesson-item{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1rem;border-top:1px solid var(--line-soft);font-size:.875rem;transition:background-color .15s}
+.temario-lesson-item:hover{background:var(--surface)}
+.temario-lesson-item.is-current{background:#EEF2FF;border-left:4px solid var(--primary);font-weight:600}
+.temario-lesson-main{display:flex;align-items:center;gap:.65rem;flex:1;min-width:0}
+.temario-lesson-ic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;flex-shrink:0}
+.temario-lesson-ic.done{background:#DCFCE7;color:#166534}
+.temario-lesson-ic.current{background:var(--primary);color:#FFFFFF}
+.temario-lesson-ic.pending{background:var(--line-soft);color:var(--muted)}
+.temario-lesson-meta{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+
+:root[data-contrast="alto"] .temario-section{background:#000;color:#fff;border:2px solid #FACC15;box-shadow:none}
+:root[data-contrast="alto"] .temario-unit{border:1px solid #FACC15}
+:root[data-contrast="alto"] .temario-unit-header{background:#000;border-bottom:1px solid #FACC15;color:#FACC15}
+:root[data-contrast="alto"] .temario-lesson-item{border-top-color:#FACC15}
+:root[data-contrast="alto"] .temario-lesson-item.is-current{background:#000;border-left:4px solid #FACC15}
+:root[data-contrast="alto"] .temario-lesson-ic.done{background:#000;color:#FACC15;border:1px solid #FACC15}
+:root[data-contrast="alto"] .temario-lesson-ic.current{background:#FACC15;color:#000}
+:root[data-contrast="alto"] .temario-lesson-ic.pending{background:#000;color:#FFF;border:1px solid #FFF}
+
 /* Pantalla 4 */
 .rows{border:2px solid var(--line);border-radius:8px}
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;padding:1rem}
@@ -1063,7 +1130,19 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
 
             </section>
 
-            <section class="resume-section lesson-next-section" aria-labelledby="h-next">
+            <!-- Temario de la Asignatura (Exclusivo para clases guardadas) -->
+            <section class="card temario-section" id="lesson-temario-section" aria-labelledby="h-temario" hidden>
+              <div class="temario-head">
+                <div>
+                  <h2 id="h-temario" data-tts>📖 Temario de la asignatura</h2>
+                  <p class="muted" id="temario-course-meta" style="margin:0.25rem 0 0; font-size:0.875rem;">Plan modular de estudios · Acceso a lecciones grabadas y materiales</p>
+                </div>
+                <span class="chip ok" id="temario-progress-chip"><i data-ic="check"></i>En progreso</span>
+              </div>
+              <div class="temario-modules" id="temario-modules"></div>
+            </section>
+
+            <section class="resume-section lesson-next-section" id="lesson-next-section" aria-labelledby="h-next">
               <div class="resume-heading courses-title-group">
                 <h2 id="h-next" data-tts>Después de esta lección</h2>
               </div>
@@ -1096,7 +1175,8 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
             </section>
           </div>
 
-          <aside class="col-side card transcript" aria-labelledby="h-trans">
+          <!-- Transcripción completa (Exclusivo para clases guardadas) -->
+          <aside class="col-side card transcript" id="transcript-aside" aria-labelledby="h-trans">
             <div class="th">
               <h2 id="h-trans">Transcripción completa</h2>
               <p class="note-small">Selecciona una línea para ir a ese momento del video.</p>
@@ -1105,6 +1185,32 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
             <div class="tscroll" id="tscroll" role="region" aria-label="Texto de la transcripción" tabindex="0">
               <ol class="tlist" id="tlist"></ol>
             </div>
+          </aside>
+
+          <!-- Chat en vivo (Exclusivo para clases en directo) -->
+          <aside class="col-side card live-chat-panel" id="live-chat-aside" aria-labelledby="h-live-chat" hidden>
+            <div class="live-chat-header">
+              <div>
+                <h2 id="h-live-chat">💬 Chat en vivo</h2>
+                <p class="muted" style="margin:0.2rem 0 0; font-size:0.8125rem;">Participación activa con docentes y compañeros</p>
+              </div>
+              <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN VIVO · 34</span>
+            </div>
+            <div class="live-chat-notice" role="note">
+              <i data-ic="voice"></i>
+              <span><strong>Moderación activa:</strong> Respeta las normas de convivencia y accesibilidad.</span>
+            </div>
+            <div class="live-chat-messages" id="live-chat-messages" role="log" aria-live="polite" aria-label="Historial de mensajes del chat en vivo" tabindex="0">
+              <!-- Mensajes generados dinámicamente -->
+            </div>
+            <form class="live-chat-form" id="live-chat-form">
+              <label for="live-chat-input" class="sr-only">Escribe tu pregunta o comentario</label>
+              <input type="text" id="live-chat-input" class="live-chat-input" placeholder="Pregunta o participa en vivo..." maxlength="280" required autocomplete="off">
+              <button type="submit" class="btn btn-primary live-chat-submit" aria-label="Enviar mensaje al chat">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span>Enviar</span>
+              </button>
+            </form>
           </aside>
         </div>
       </div>
@@ -2435,13 +2541,14 @@ var gradedDelivery=COURSES.find(function(c){return c.name==='Comunicación Oral 
 var AULA_LESSONS={
   psicologia:{
     id:'psicologia',
+    isLive:true,
     hasVideo:true,
     course:'Introducción a la Psicología',
     lessonNum:'Lección 7 (En curso)',
     title:'Clase en vivo: Introducción a la Psicología',
     teacher:'Dra. Lucía Hernández Ortega',
     badge:'Clase en vivo · Dra. Lucía Hernández Ortega · Lección 7 en curso',
-    lead:'Introducción a la Psicología · Dra. Lucía Hernández Ortega · Lección 7 en curso · 2 min 40 s. Esta clase en vivo se ofrece con video, subtítulos, transcripción y resumen en PDF.',
+    lead:'Introducción a la Psicología · Dra. Lucía Hernández Ortega · Lección 7 en curso · 2 min 40 s. Esta clase en vivo se ofrece con video, subtítulos, chat interactivo en directo y retroalimentación docente.',
     pdfFile:'Resumen-clase-en-vivo-introduccion-a-la-psicologia.pdf',
     videoSrc:'Assets/Class_video/psicologia.mp4',
     imageSrc:'Assets/Card_Class/profesora-psicologia.jpg',
@@ -2473,6 +2580,7 @@ var AULA_LESSONS={
   },
   historia:{
     id:'historia',
+    isLive:false,
     hasVideo:false,
     course:'Historia de México Contemporáneo',
     lessonNum:'Lección 4',
@@ -2484,6 +2592,30 @@ var AULA_LESSONS={
     videoSrc:'',
     imageSrc:'Assets/Card_Class/historia.avif',
     dur:180,
+    syllabus:[
+      {
+        unit:'Unidad 1: Antecedentes y Revolución Mexicana',
+        lessons:[
+          {num:'Lección 1',title:'Crisis del Porfiriato y movimientos obreros de 1906',dur:'12 min',status:'completed'},
+          {num:'Lección 2',title:'El movimiento maderista y la Decena Trágica',dur:'15 min',status:'completed'}
+        ]
+      },
+      {
+        unit:'Unidad 2: La Reconstrucción Institucional (1920-1940)',
+        lessons:[
+          {num:'Lección 3',title:'La Constitución de 1917 y el nuevo orden jurídico',dur:'18 min',status:'completed'},
+          {num:'Lección 4',title:'El México posrevolucionario y la SEP de Vasconcelos',dur:'3 min 00 s',status:'current',id:'historia'},
+          {num:'Lección 5',title:'La reforma agraria y los movimientos sociales',dur:'14 min',status:'pending',id:'historia-l5'}
+        ]
+      },
+      {
+        unit:'Unidad 3: Consolidación del Estado Moderno',
+        lessons:[
+          {num:'Lección 6',title:'Nacionalización petrolera y soberanía económica',dur:'16 min',status:'pending'},
+          {num:'Lección 7',title:'El modelo de sustitución de importaciones',dur:'20 min',status:'pending'}
+        ]
+      }
+    ],
     lines:[
       [0,'Iniciamos la revisión del periodo posrevolucionario en México, que abarca de 1920 a 1940.'],
       [18,'Tras una década de conflicto armado, la prioridad nacional fue pacificar el territorio y brindar certidumbre jurídica al pacto social.'],
@@ -2510,6 +2642,7 @@ var AULA_LESSONS={
   },
   alfa:{
     id:'alfa',
+    isLive:false,
     hasVideo:false,
     course:'Alfabetización Digital',
     lessonNum:'Lección 3',
@@ -2521,6 +2654,28 @@ var AULA_LESSONS={
     videoSrc:'',
     imageSrc:'Assets/Card_Class/alfabetizacion.jpg',
     dur:135,
+    syllabus:[
+      {
+        unit:'Unidad 1: Fundamentos de Seguridad y Ciberhigiene',
+        lessons:[
+          {num:'Lección 1',title:'Identidad digital y huella en internet',dur:'10 min',status:'completed'},
+          {num:'Lección 2',title:'Gestión robusta de contraseñas y bóvedas digitales',dur:'12 min',status:'completed'}
+        ]
+      },
+      {
+        unit:'Unidad 2: Comunicaciones y Canales Institucionales',
+        lessons:[
+          {num:'Lección 3',title:'Correo electrónico seguro y buenas prácticas',dur:'2 min 15 s',status:'current',id:'alfa'},
+          {num:'Lección 4',title:'Detección de phishing, spam y suplantación',dur:'15 min',status:'pending',id:'alfa-l4'}
+        ]
+      },
+      {
+        unit:'Unidad 3: Trabajo Colaborativo en la Nube',
+        lessons:[
+          {num:'Lección 5',title:'Almacenamiento seguro y permisos de compartición',dur:'14 min',status:'pending'}
+        ]
+      }
+    ],
     lines:[
       [0,'Te damos la bienvenida a la lección tres: buenas prácticas para el uso seguro del correo electrónico.'],
       [16,'El correo institucional y personal continúa siendo el principal vector de ataques mediante engaño digital o phishing.'],
@@ -2546,6 +2701,7 @@ var AULA_LESSONS={
   },
   mat:{
     id:'mat',
+    isLive:false,
     hasVideo:false,
     course:'Cálculo Diferencial',
     lessonNum:'Lección 5',
@@ -2557,6 +2713,31 @@ var AULA_LESSONS={
     videoSrc:'',
     imageSrc:'Assets/Card_Class/matematicas.avif',
     dur:190,
+    syllabus:[
+      {
+        unit:'Unidad 1: Funciones y Modelos Matemáticos',
+        lessons:[
+          {num:'Lección 1',title:'Números reales, intervalos y desigualdades',dur:'14 min',status:'completed'},
+          {num:'Lección 2',title:'Dominio, rango y gráficas de funciones',dur:'16 min',status:'completed'},
+          {num:'Lección 3',title:'Composición y transformaciones funcionales',dur:'15 min',status:'completed'},
+          {num:'Lección 4',title:'Límites intuitivos y aproximación numérica',dur:'18 min',status:'completed'}
+        ]
+      },
+      {
+        unit:'Unidad 2: Límites y Continuidad',
+        lessons:[
+          {num:'Lección 5',title:'Límites laterales y concepto formal de continuidad',dur:'3 min 10 s',status:'current',id:'mat'},
+          {num:'Lección 6',title:'La derivada como razón de cambio instantánea',dur:'20 min',status:'pending',id:'mat-l6'}
+        ]
+      },
+      {
+        unit:'Unidad 3: Cálculo Diferencial Aplicado',
+        lessons:[
+          {num:'Lección 7',title:'Reglas de derivación algebraica y trigonométrica',dur:'22 min',status:'pending'},
+          {num:'Lección 8',title:'Optimización y puntos críticos en problemas reales',dur:'25 min',status:'pending'}
+        ]
+      }
+    ],
     lines:[
       [0,'En esta sesión analizaremos el concepto de límite funcional y su papel indispensable en la continuidad.'],
       [22,'El límite de f de x cuando x tiende a c existe únicamente cuando los límites laterales coinciden en un mismo valor real.'],
@@ -2760,8 +2941,194 @@ function loadLesson(id,preserveTime){
     nlBtn.setAttribute('data-stub',lesson.nextLesson.title);
     if(lesson.nextLesson.id)nlBtn.setAttribute('data-lesson-id',lesson.nextLesson.id);
   }
+
+  /* Diferenciación: Clases en vivo vs Clases guardadas */
+  var isLive=Boolean(lesson.isLive);
+
+  // 1. Botón descargar resumen: omitir en clase en vivo
+  var pdfBtn=$('#pdf-btn');
+  if(pdfBtn){
+    pdfBtn.style.display=isLive?'none':'';
+  }
+
+  // 2. Sección "Después de esta lección": omitir en clase en vivo
+  var nextSec=$('#lesson-next-section');
+  if(nextSec){
+    nextSec.hidden=isLive;
+  }
+
+  // 3. Temario de la asignatura: mostrar SOLO en clases guardadas
+  var temarioSec=$('#lesson-temario-section');
+  if(temarioSec){
+    temarioSec.hidden=isLive;
+    if(!isLive){
+      renderTemario(lesson);
+    }
+  }
+
+  // 4. Panel lateral: Chat en vivo en clases en vivo, Transcripción en guardadas
+  var transcriptAside=$('#transcript-aside');
+  var chatAside=$('#live-chat-aside');
+  if(isLive){
+    if(transcriptAside)transcriptAside.hidden=true;
+    if(chatAside){
+      chatAside.hidden=false;
+      initLiveChat();
+    }
+  }else{
+    if(transcriptAside)transcriptAside.hidden=false;
+    if(chatAside)chatAside.hidden=true;
+  }
+
   renderPlayer(true);
   playerUI();
+}
+
+/* ---------- Temario de asignatura (Clases guardadas) ---------- */
+function renderTemario(lesson){
+  var cont=$('#temario-modules');
+  if(!cont)return;
+  var metaEl=$('#temario-course-meta');
+  if(metaEl)metaEl.textContent=lesson.course+' · '+lesson.teacher+' · Plan de estudios oficial';
+  var syllabus=lesson.syllabus||[
+    {
+      unit:'Unidad 1: Introducción y Fundamentos',
+      lessons:[
+        {num:'Lección 1',title:'Marco teórico y antecedentes formativos',dur:'12 min',status:'completed'},
+        {num:'Lección 2',title:'Metodología de estudio y diagnóstico inicial',dur:'14 min',status:'completed'}
+      ]
+    },
+    {
+      unit:'Unidad 2: Desarrollo y Aplicación Práctica',
+      lessons:[
+        {num:lesson.lessonNum||'Lección actual',title:lesson.title,dur:fmtT(lesson.dur),status:'current',id:lesson.id},
+        {num:'Siguiente sesión',title:(lesson.nextLesson&&lesson.nextLesson.title)||'Profundización temática',dur:'16 min',status:'pending'}
+      ]
+    }
+  ];
+
+  cont.innerHTML=syllabus.map(function(u){
+    var lessonsHtml=u.lessons.map(function(l){
+      var isCur=l.status==='current'||l.id===lesson.id;
+      var isDone=l.status==='completed';
+      var icClass=isCur?'current':(isDone?'done':'pending');
+      var icSymbol=isCur?'▶':(isDone?'✓':'○');
+      var statusTag=isCur?'<span class="chip" style="background:var(--primary);color:#fff;font-size:0.75rem;padding:0.15rem 0.5rem;font-weight:600;">En reproducción</span>':
+        (isDone?'<span class="chip ok" style="font-size:0.75rem;padding:0.15rem 0.5rem;">✓ Completada</span>':
+        '<span class="chip neutral" style="font-size:0.75rem;padding:0.15rem 0.5rem;">Pendiente</span>');
+      var clickAttr=l.id?' data-lesson-id="'+l.id+'" style="cursor:pointer;"':(isDone?' data-stub="'+l.title+'" style="cursor:pointer;"':'');
+      return '<li class="temario-lesson-item'+(isCur?' is-current':'')+'"'+clickAttr+'>'+
+        '<div class="temario-lesson-main">'+
+          '<span class="temario-lesson-ic '+icClass+'" aria-hidden="true">'+icSymbol+'</span>'+
+          '<div>'+
+            '<strong style="display:block;color:var(--fg);font-size:0.875rem;">'+l.num+': '+l.title+'</strong>'+
+            '<span class="muted" style="font-size:0.775rem;">Duración: '+l.dur+'</span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="temario-lesson-meta">'+statusTag+'</div>'+
+      '</li>';
+    }).join('');
+
+    return '<div class="temario-unit">'+
+      '<div class="temario-unit-header">'+
+        '<span>'+u.unit+'</span>'+
+        '<span class="muted" style="font-size:0.8125rem;font-weight:500;">'+u.lessons.length+' lecciones</span>'+
+      '</div>'+
+      '<ul class="temario-lesson-list">'+lessonsHtml+'</ul>'+
+    '</div>';
+  }).join('');
+}
+
+document.addEventListener('click',function(e){
+  var item=e.target.closest('.temario-lesson-item');
+  if(!item)return;
+  var lid=item.getAttribute('data-lesson-id');
+  if(lid&&AULA_LESSONS[lid]){
+    loadLesson(lid);
+    playPlayer();
+    say('Reproduciendo '+AULA_LESSONS[lid].title);
+  }else{
+    var stub=item.getAttribute('data-stub');
+    if(stub)toast('Lección completada: «'+stub+'». Disponible en el repositorio de la materia.');
+  }
+});
+
+/* ---------- Chat en vivo (Clases en directo) ---------- */
+var LIVE_CHAT_MESSAGES=[
+  {sender:'Dra. Lucía Hernández',role:'prof',initials:'LH',text:'¡Te damos la bienvenida a la clase en vivo! Pueden compartir sus dudas y aportes en este chat.',time:'10:02'},
+  {sender:'Mtra. Sofía (Moderadora)',role:'mod',initials:'SH',text:'Recordatorio: mantendremos el chat moderado y responderemos preguntas clave al final.',time:'10:05'},
+  {sender:'Carlos Méndez',role:'student',initials:'CM',text:'Profesora, ¿la codificación dual aplica también cuando escuchamos podcasts educativos?',time:'10:14'},
+  {sender:'Mtra. Sofía (Moderadora)',role:'mod',initials:'SH',text:'¡Buena pregunta Carlos! Sí, combinar audio con diagramas o notas visuales refuerza la retención.',time:'10:16'},
+  {sender:'Andrea Ruiz',role:'student',initials:'AR',text:'El ejemplo de los números de teléfono me quedó clarísimo 🧠',time:'10:19'}
+];
+var liveChatInitialized=false;
+
+function renderLiveChat(){
+  var box=$('#live-chat-messages');
+  if(!box)return;
+  box.innerHTML=LIVE_CHAT_MESSAGES.map(function(m){
+    var isMe=m.role==='me';
+    var tagClass=m.role==='mod'?'mod':(m.role==='prof'?'prof':'');
+    var tagText=m.role==='mod'?'Moderadora':(m.role==='prof'?'Docente':(isMe?'Tú':'Estudiante'));
+    return '<div class="chat-msg'+(isMe?' me':'')+'">'+
+      '<span class="chat-avatar '+(m.role||'student')+'" aria-hidden="true">'+m.initials+'</span>'+
+      '<div class="chat-body">'+
+        '<div class="chat-meta">'+
+          '<span class="chat-sender">'+m.sender+'</span>'+
+          '<span class="chat-role-tag '+tagClass+'">'+tagText+'</span>'+
+          '<span class="chat-time">'+m.time+'</span>'+
+        '</div>'+
+        '<div class="chat-bubble">'+m.text+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+  box.scrollTop=box.scrollHeight;
+}
+
+function initLiveChat(){
+  renderLiveChat();
+  if(liveChatInitialized)return;
+  liveChatInitialized=true;
+  var form=$('#live-chat-form');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var input=$('#live-chat-input');
+      if(!input)return;
+      var txt=input.value.trim();
+      if(!txt)return;
+      var now=new Date();
+      var hh=String(now.getHours()).padStart(2,'0');
+      var mm=String(now.getMinutes()).padStart(2,'0');
+      LIVE_CHAT_MESSAGES.push({
+        sender:'Mariana Torres (Tú)',
+        role:'me',
+        initials:'MT',
+        text:txt,
+        time:hh+':'+mm
+      });
+      input.value='';
+      renderLiveChat();
+      say('Mensaje enviado al chat: '+txt);
+
+      setTimeout(function(){
+        if(currentLessonId==='psicologia'){
+          var tNow=new Date();
+          var tH=String(tNow.getHours()).padStart(2,'0');
+          var tM=String(tNow.getMinutes()).padStart(2,'0');
+          LIVE_CHAT_MESSAGES.push({
+            sender:'Mtra. Sofía (Moderadora)',
+            role:'mod',
+            initials:'SH',
+            text:'Recibido Mariana, anotamos tu aporte para el bloque de resolución de dudas con la Dra. Lucía.',
+            time:tH+':'+tM
+          });
+          renderLiveChat();
+          say('Nuevo mensaje de Mtra. Sofía en el chat en vivo.');
+        }
+      },2500);
+    });
+  }
 }
 function renderPlayer(scroll){
   var i=lineIdx(P.t),seek=$('#seek');

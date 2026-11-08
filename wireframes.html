@@ -1277,30 +1277,33 @@
                 <span class="wf-spec-badge">nav.crumbs aria-label</span>
               </div>
 
-              <!-- Encabezado de la lección -->
+              <!-- Encabezado de la lección con selector de modalidad (En vivo vs Guardada) -->
               <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
                 <div>
                   <h1 style="font-size:1.85rem;font-weight:700;color:#0F172A;margin:0 0 0.35rem;">
-                    [H1: Clase en vivo: Introducción a la Psicología]
+                    [H1: Detalle de Clase · Aula Virtual]
                   </h1>
                   <p style="color:#64748B;font-size:0.95rem;margin:0;">
-                    Dra. Lucía Hernández Ortega · Lección 7 en curso · 2 min 40 s. Lección multimodal con video HTML5 y transcripción sincronizada.
+                    Arquitectura adaptativa según modalidad: <strong>Clases en vivo</strong> (video en directo + chat interactivo sin botón de resumen ni bloque posterior) vs <strong>Clases guardadas</strong> (audio/video con temario modular, transcripción sincronizada y resumen descargable).
                   </p>
                 </div>
-                <span class="wf-tag live">Clase en vivo · Dra. Lucía</span>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                  <span class="wf-tag live">🔴 Modalidad: Clase en Vivo</span>
+                  <span class="wf-tag">💾 Modalidad: Clase Guardada</span>
+                </div>
               </div>
 
               <!-- Escenario del Reproductor de Video (16:9) -->
               <div class="wf-box-solid" style="background:#0F172A;color:#FFFFFF;padding:0.85rem;display:flex;flex-direction:column;gap:0.65rem;">
-                <div class="wf-media-box" style="height:360px;background:#020617;border-color:#334155;">
+                <div class="wf-media-box" style="height:340px;background:#020617;border-color:#334155;">
                   <span class="wf-media-label" style="background:#0F172A;color:#FFFFFF;border-color:#475569;font-size:0.9rem;">
-                    [ REPRODUCTOR ACCESIBLE HTML5 · VIDEO 16:9: Assets/Class_video/psicologia.mp4 ]
+                    [ REPRODUCTOR ACCESIBLE HTML5 · VIDEO 16:9 / AUDIO CON PORTADA ]
                   </span>
                   <span style="margin-top:0.65rem;font-size:0.8125rem;color:#94A3B8;">
                     [ Subtítulos CC en español sincronizados en tiempo real ]
                   </span>
                   <span class="wf-spec-badge" style="position:absolute;bottom:10px;right:10px;background:#0F172A;color:#FFFFFF;border-color:#334155;">
-                    WCAG 1.2.2 Subtítulos (Grabados)
+                    WCAG 1.2.2 / 1.2.4 Accesibilidad Multimedia
                   </span>
                 </div>
 
@@ -1316,74 +1319,81 @@
                     <span class="wf-tag" style="background:#334155;color:#FFF;">🔊 Volumen 80%</span>
                     <span class="wf-tag live">CC Subtítulos (Activo)</span>
                     <span class="wf-tag" style="background:#334155;color:#FFF;">⚡ 1.0x</span>
-                    <button type="button" class="wf-pill-btn" style="padding:0.3rem 0.75rem;font-size:0.8125rem;">⛶ Pantalla completa</button>
                   </div>
                 </div>
               </div>
 
-              <!-- Distribución: Transcripción Interactiva + Recursos -->
+              <!-- Comparativa de Estructura: Clase en Vivo vs Clase Guardada -->
               <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:1.5rem;">
-                <!-- Columna Izquierda: Transcripción -->
-                <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;">
+                <!-- Panel 1: Chat en Vivo (Solo en clases en vivo) -->
+                <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #334155;">
                   <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <h2 style="font-size:1.15rem;font-weight:700;margin:0;">
-                      [H2: Transcripción interactiva DUA]
+                    <h2 style="font-size:1.15rem;font-weight:700;margin:0;color:#0F172A;">
+                      [H2: 💬 Chat en vivo de la clase]
                     </h2>
-                    <span class="wf-tag spec">Sincronizada</span>
+                    <span class="wf-tag live">● EN VIVO · 34 alumnos</span>
+                  </div>
+                  <p style="font-size:0.8125rem;color:#64748B;margin:0;">
+                    Espacio interactivo en tiempo real en sustitución de la transcripción. Sin botón de descarga de resumen ni sección posterior.
+                  </p>
+
+                  <div class="wf-box" style="font-size:0.775rem;background:#F1F5F9;">
+                    <strong>[ℹ Moderación activa]:</strong> Preguntas gestionadas por Mtra. Sofía (Moderadora) y Dra. Lucía Hernández (Docente).
                   </div>
 
-                  <div class="wf-input-mock">
-                    <span>[🔍 Input: Buscar en la transcripción…]</span>
-                    <span class="wf-tag">3 coincidencias</span>
+                  <!-- Mensajes simulados -->
+                  <div style="display:flex;flex-direction:column;gap:0.5rem;max-height:220px;overflow-y:auto;padding-right:0.25rem;">
+                    <div class="wf-box" style="font-size:0.8125rem;">
+                      <strong>[LH] Dra. Lucía Hernández [Docente]:</strong> Bienvenidos al aula en vivo. Pueden dejar sus dudas aquí.
+                    </div>
+                    <div class="wf-box" style="font-size:0.8125rem;">
+                      <strong>[CM] Carlos Méndez [Estudiante]:</strong> ¿La codificación dual ayuda a personas con TDAH?
+                    </div>
+                    <div class="wf-box" style="font-size:0.8125rem;background:#F8FAFC;">
+                      <strong>[SH] Mtra. Sofía [Moderadora]:</strong> ¡Excelente pregunta! La profesora la abordará en el minuto 2.
+                    </div>
+                    <div class="wf-box" style="font-size:0.8125rem;border-color:#0F172A;">
+                      <strong>[MT] Mariana Torres (Tú):</strong> [Mensaje propio interactivo con confirmación por lector de voz]
+                    </div>
                   </div>
 
-                  <!-- Lista interactiva de transcripción -->
-                  <div style="display:flex;flex-direction:column;gap:0.5rem;max-height:280px;overflow-y:auto;padding-right:0.25rem;">
-                    <div class="wf-box" style="font-size:0.8125rem;">
-                      <strong style="color:#0F172A;">00:00</strong> — <em>Dra. Lucía Hernández:</em> Bienvenidos a la clase de Introducción a la Psicología. Hoy abordaremos los procesos cognitivos fundamentales.
+                  <div style="display:flex;gap:0.5rem;margin-top:auto;">
+                    <div class="wf-input-mock" style="flex:1;"><span>[Escribe tu pregunta o comentario en vivo...]</span></div>
+                    <button type="button" class="wf-pill-btn primary" style="font-size:0.8125rem;">[ Enviar ]</button>
+                  </div>
+                </div>
+
+                <!-- Panel 2: Temario de la Asignatura (Solo en clases guardadas) -->
+                <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.85rem;border:2px solid #CBD5E1;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h2 style="font-size:1.15rem;font-weight:700;margin:0;color:#0F172A;">
+                      [H2: 📖 Temario de la Asignatura]
+                    </h2>
+                    <span class="wf-tag spec">Solo Clases Guardadas</span>
+                  </div>
+                  <p style="font-size:0.8125rem;color:#64748B;margin:0;">
+                    Desglose modular de unidades y lecciones con estados de avance, duración e interactividad.
+                  </p>
+
+                  <div class="wf-box" style="font-size:0.8125rem;">
+                    <strong>[Unidad 1: Fundamentos y Antecedentes]</strong> · 2 lecciones
+                    <div style="margin-top:0.35rem;padding-left:0.5rem;color:#64748B;">
+                      <div>✓ Lección 1 · Crisis del Porfiriato (12 min) <span class="wf-tag">[Completada]</span></div>
+                      <div>✓ Lección 2 · Movimiento maderista (15 min) <span class="wf-tag">[Completada]</span></div>
                     </div>
-                    <div class="wf-box" style="font-size:0.8125rem;background:#F1F5F9;border-color:#0F172A;color:#0F172A;">
-                      <strong>[▶ LÍNEA ACTIVA 00:24]</strong> — <em>Dra. Lucía Hernández:</em> El modelo de memoria de trabajo propuesto por Baddeley y Hitch explica cómo sostenemos y manipulamos información temporal.
-                      <span class="wf-spec-badge">Auto-Scroll</span>
-                    </div>
-                    <div class="wf-box" style="font-size:0.8125rem;">
-                      <strong style="color:#0F172A;">00:48</strong> — <em>Dra. Lucía Hernández:</em> El ejecutivo central coordina los recursos de atención hacia las tareas más prioritarias.
-                    </div>
-                    <div class="wf-box" style="font-size:0.8125rem;">
-                      <strong style="color:#0F172A;">01:12</strong> — <em>Dra. Lucía Hernández:</em> El bucle fonológico retiene secuencias verbales mientras que la agenda visoespacial procesa imágenes.
+                  </div>
+
+                  <div class="wf-box" style="font-size:0.8125rem;background:#F8FAFC;border-color:#0F172A;">
+                    <strong>[Unidad 2: Reconstrucción Institucional]</strong> · 3 lecciones
+                    <div style="margin-top:0.35rem;padding-left:0.5rem;">
+                      <div style="color:#0F172A;font-weight:700;">▶ Lección 4 · México Posrevolucionario y la SEP (3 min) <span class="wf-tag live">[En curso]</span></div>
+                      <div style="color:#64748B;">○ Lección 5 · La reforma agraria y movimientos sociales (14 min) <span class="wf-tag">[Pendiente]</span></div>
                     </div>
                   </div>
 
                   <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:auto;">
-                    <button type="button" class="wf-pill-btn" style="font-size:0.8125rem;">[ 🔊 Escuchar con lector de voz (TTS) ]</button>
-                    <button type="button" class="wf-pill-btn" style="font-size:0.8125rem;">[ 📄 Descargar notas en PDF ]</button>
-                  </div>
-                </div>
-
-                <!-- Columna Derecha: Temario & Materiales -->
-                <div style="display:flex;flex-direction:column;gap:1.25rem;">
-                  <!-- Temario -->
-                  <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.65rem;">
-                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;">[H3: Temario y Unidades]</h3>
-                    <div class="wf-box"><span>[✓] Lección 1 · Conceptos básicos</span></div>
-                    <div class="wf-box"><span>[✓] Lección 2 · Neurobiología de la atención</span></div>
-                    <div class="wf-box" style="background:#F1F5F9;border-color:#0F172A;">
-                      <strong>[▶] Lección 3 · Memoria de trabajo (En curso)</strong>
-                    </div>
-                    <div class="wf-box" style="color:#94A3B8;"><span>[○] Lección 4 · Memoria a largo plazo</span></div>
-                  </div>
-
-                  <!-- Materiales -->
-                  <div class="wf-box-solid" style="display:flex;flex-direction:column;gap:0.65rem;">
-                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;">[H3: Materiales complementarios]</h3>
-                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.8125rem;">
-                      <span>📄 Diapositivas de la lección (PDF Accesible)</span>
-                      <button type="button" class="wf-pill-btn" style="padding:0.25rem 0.65rem;font-size:0.75rem;">Descargar</button>
-                    </div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.8125rem;">
-                      <span>🎧 Audio resumen podcast (MP3 320kbps)</span>
-                      <button type="button" class="wf-pill-btn" style="padding:0.25rem 0.65rem;font-size:0.75rem;">Descargar</button>
-                    </div>
+                    <span class="wf-tag spec">📄 Descargar resumen en PDF disponible</span>
+                    <span class="wf-tag spec">🎯 Sección "Después de esta lección" visible</span>
                   </div>
                 </div>
               </div>
